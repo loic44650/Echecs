@@ -39,7 +39,7 @@ class Piece
  		 *
  		 * @complexité
 		**/
-		virtual void afficher();
+		virtual char afficher() = 0;
 
 		/**
  		 * @brief

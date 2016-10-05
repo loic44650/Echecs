@@ -15,7 +15,6 @@
 #define PION_HPP
 
 #include "Piece.hpp"
-#include <iostream>
 
 class Pion: public Piece
 {
@@ -39,7 +38,7 @@ class Pion: public Piece
  		 *
  		 * @complexité
 		**/
-		void afficher();
+		char afficher();
 
 		/**
  		 * @brief

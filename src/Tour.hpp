@@ -15,7 +15,6 @@
 **/
 
 #include "Piece.hpp"
-#include <iostream>
 
 class Tour : public Piece
 {
@@ -39,7 +38,7 @@ class Tour : public Piece
  		 *
  		 * @complexité
 		**/
-		void afficher();
+		char afficher();
 
 		/**
  		 * @brief

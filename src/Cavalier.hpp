@@ -14,7 +14,6 @@
 **/
 
 #include "Piece.hpp"
-#include <iostream>
 
 class Cavalier : public Piece
 {
@@ -38,7 +37,7 @@ class Cavalier : public Piece
  		 *
  		 * @complexité
 		**/
-		void afficher();
+		char afficher();
 
 		/**
  		 * @brief

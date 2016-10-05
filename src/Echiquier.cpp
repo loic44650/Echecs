@@ -14,13 +14,22 @@ Echiquier::~Echiquier() {
 }
 
 void Echiquier::afficher() {
+   Color::Modifier lgrey(Color::BG_LIGHTGREY);
+   Color::Modifier bgrey(Color::BG_DARKGRAY);
+   Color::Modifier black(Color::FG_BLACK);
+   Color::Modifier white(Color::FG_WHITE);
    for(auto i = 0; i < 8; ++i) {
       for(auto j = 0; j < 8; ++j) {
-         if ( echiquier_[i][j] ) (echiquier_[i][j])->afficher();
-         else std::cout << "_|";
+         if((i+j)%2) std::cout << lgrey;
+         else std::cout << bgrey;
+         if ( echiquier_[i][j] ) std::cout << " " << (echiquier_[i][j])->afficher() << " ";
+         else std::cout << "   ";
       }
       std::cout << std::endl;
    }
+   Color::Modifier fg_def(Color::FG_DEFAULT);
+   Color::Modifier bg_def(Color::BG_DEFAULT);
+   std::cout << fg_def << bg_def << std::endl;
 }
 
 

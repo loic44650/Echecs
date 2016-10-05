@@ -6,6 +6,6 @@ Roi::Roi(int id, bool etat, char c) : Piece(id,etat,c), echec_(false), echecEtMa
 
 Roi::~Roi() {}
 
-void Roi::afficher() {
-   std::cout << "K|";
+char Roi::afficher() {
+   return 'K';
 }

@@ -18,6 +18,7 @@
 #include <memory>
 #include "Piece.hpp"
 #include "Pion.hpp"
+#include "Colormod.hpp"
 
 
 class Echiquier
