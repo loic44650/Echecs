@@ -10,5 +10,5 @@ int main()
 {
 	Echiquier e;
 	e.afficher();
-	e.count_ptr();
+	
 }

@@ -14,6 +14,7 @@
 #ifndef PIECE_HPP
 #define PIECE_HPP
 
+#include <iostream>
 
 
 class Piece
@@ -38,7 +39,7 @@ class Piece
  		 *
  		 * @complexité
 		**/
-		void afficher();
+		virtual void afficher();
 
 		/**
  		 * @brief

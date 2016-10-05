@@ -2,46 +2,53 @@
  * @file Fou.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class 
+ * @brief Fichier header définissant une class
 **/
 
+#ifndef FOU_HPP
+#define FOU_HPP
 
 /**
  * @brief
  *
 **/
 
+#include "Piece.hpp"
+#include <iostream>
+
 class Fou : public Piece
 {
 	public:
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		Fou();
+		Fou(int id, bool etat, char c);
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		~Fou();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		void afficher();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		void deplacement(Echiquier plateau);
+		//void deplacement(Echiquier plateau);
 
-	private:
+
 
 };
+
+#endif

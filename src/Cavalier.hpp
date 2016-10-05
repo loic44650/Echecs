@@ -2,46 +2,53 @@
  * @file Cavalier.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class 
+ * @brief Fichier header définissant une class
 **/
 
+#ifndef CAVALIER_HPP
+#define CAVALIER_HPP
 
 /**
  * @brief
  *
 **/
 
-class CAvalier : public Piece
+#include "Piece.hpp"
+#include <iostream>
+
+class Cavalier : public Piece
 {
 	public:
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		Cavalier();
+		Cavalier(int id, bool etat, char c);
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		~Cavalier();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		void afficher();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		void deplacement(Echiquier plateau);
+		//void deplacement(Echiquier plateau);
 
-	private:
+
 
 };
+
+#endif

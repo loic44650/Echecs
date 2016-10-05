@@ -2,46 +2,54 @@
  * @file Tour.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class 
+ * @brief Fichier header définissant une class
 **/
 
+
+#ifndef TOUR_HPP
+#define TOUR_HPP
 
 /**
  * @brief
  *
 **/
 
+#include "Piece.hpp"
+#include <iostream>
+
 class Tour : public Piece
 {
 	public:
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		Tour();
+		Tour(int id, bool etat, char c);
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		~Tour();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		void afficher();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		void deplacement(Echiquier plateau);
+		//void deplacement(Echiquier plateau);
 
-	private:
+
 
 };
+
+#endif

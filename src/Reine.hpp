@@ -2,46 +2,54 @@
  * @file Reine.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class 
+ * @brief Fichier header définissant une class
 **/
 
+
+#ifndef REINE_HPP
+#define REINE_HPP
 
 /**
  * @brief
  *
 **/
 
+#include "Piece.hpp"
+#include <iostream>
+
 class Reine : public Piece
 {
 	public:
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		Reine();
+		Reine(int id, bool etat, char c);
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		~Reine();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
 		void afficher();
 
 		/**
- 		 * @brief 
+ 		 * @brief
  		 *
  		 * @complexité
 		**/
-		void deplacement(Echiquier plateau);
+		//void deplacement(Echiquier plateau);
 
-	private:
+
 
 };
+
+#endif

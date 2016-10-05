@@ -16,7 +16,7 @@ Echiquier::~Echiquier() {
 void Echiquier::afficher() {
    for(auto i = 0; i < 8; ++i) {
       for(auto j = 0; j < 8; ++j) {
-         if ( echiquier_[i][j] ) (echiquier_[i][j]).get()->afficher();
+         if ( echiquier_[i][j] ) (echiquier_[i][j])->afficher();
          else std::cout << "_|";
       }
       std::cout << std::endl;
