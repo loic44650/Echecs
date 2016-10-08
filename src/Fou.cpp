@@ -9,3 +9,5 @@ Fou::~Fou() {}
 char Fou::afficher() {
    return 'F';
 }
+
+void Fou::deplacement(Coord &c, Echiquier &e) {}

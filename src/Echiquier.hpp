@@ -19,7 +19,7 @@
 #include "Piece.hpp"
 #include "Pion.hpp"
 #include "Colormod.hpp"
-
+#include "utils.hpp"
 
 class Echiquier
 {
@@ -32,6 +32,7 @@ class Echiquier
 
 		Echiquier();
 		~Echiquier();
+		bool estOccupee(int x, int y);
 		void afficher();
 		void count_ptr();
 

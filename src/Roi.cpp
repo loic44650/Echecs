@@ -9,3 +9,5 @@ Roi::~Roi() {}
 char Roi::afficher() {
    return 'K';
 }
+
+void Roi::deplacement(Coord &c, Echiquier &e) {}

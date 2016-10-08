@@ -13,6 +13,12 @@ Echiquier::~Echiquier() {
    }
 }
 
+
+bool Echiquier::estOccupee(int x, int y) {
+   if( echiquier_[x][y]) return true;
+   else return false;
+}
+
 void Echiquier::afficher() {
    Color::Modifier lgrey(Color::BG_LIGHTGREY);
    Color::Modifier bgrey(Color::BG_DARKGRAY);

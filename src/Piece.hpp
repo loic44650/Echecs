@@ -15,7 +15,10 @@
 #define PIECE_HPP
 
 #include <iostream>
-
+#include <vector>
+#include "utils.hpp"
+#include "Mouvement.hpp"
+#include "Echiquier.hpp"
 
 class Piece
 {
@@ -46,12 +49,15 @@ class Piece
  		 *
  		 * @complexité
 		**/
-		//void deplacement(Echiquier plateau);
+		virtual void deplacement(Coord &c, Echiquier &e) = 0;
+
+
 
 	private:
 		int identifiant_;								// distinction des pieces
 		bool statut_;									// en jeu ou non
 		char c_;									// couleur
+		std::vector<Mouvement> mvmt_;
 
 };
 

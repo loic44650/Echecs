@@ -45,7 +45,7 @@ class Pion: public Piece
  		 *
  		 * @complexité
 		**/
-		//void deplacement(Echiquier plateau);
+		void deplacement(Coord c, Echiquier e);
 
 
 };

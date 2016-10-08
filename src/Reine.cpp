@@ -9,3 +9,5 @@ Reine::~Reine() {}
 char Reine::afficher() {
    return 'R';
 }
+
+void Reine::deplacement(Coord &c, Echiquier &e) {}

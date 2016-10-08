@@ -9,3 +9,7 @@ Pion::~Pion() {}
 char Pion::afficher() {
    return 'P';
 }
+
+void Pion::deplacement(Coord &c, Echiquier &e) {
+
+}
