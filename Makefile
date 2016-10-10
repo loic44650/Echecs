@@ -2,7 +2,7 @@
 EXEC=Echecs
 
 # Compiler
-IDIR=include include/constraints include/domains include/misc include/objectives include/variables
+IDIR=include include/constraints include/domains include/misc include/objectives include/variables SMFL/include
 IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
 CXXFLAGS=-std=c++0x -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
 
@@ -60,8 +60,7 @@ $(BINDIR)/$(EXEC): $(OBJECTS)
 $(OBJDIR)/%.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
-.PHONY: gcc gcc-debug clang clang-debug clean 
+.PHONY: gcc gcc-debug clang clang-debug clean
 
 clean:
 	rm -fr core *~ $(OBJECTS) $(BINDIR)/$(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
-
