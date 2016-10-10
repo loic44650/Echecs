@@ -35,6 +35,7 @@ class Echiquier
 		bool estOccupee(int x, int y);
 		void afficher();
 		void count_ptr();
+		std::shared_ptr<Piece> selectPiece(int x, int y);
 
 	private:
 		std::shared_ptr<Piece> echiquier_[8][8];

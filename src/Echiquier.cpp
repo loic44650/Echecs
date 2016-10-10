@@ -1,9 +1,12 @@
 #include "Echiquier.hpp"
-
+#include "Piece.hpp"
+#include "Pion.hpp"
+#include "Tour.hpp"
 
 Echiquier::Echiquier() {
    for(auto i = 0; i < 8; ++i)
       echiquier_[1][i] = std::shared_ptr<Piece>(new Pion(i, true, 'N'));
+   echiquier_[3][4] = std::shared_ptr<Tour>(new Tour(9, true, 'B'));
 }
 
 Echiquier::~Echiquier() {
@@ -44,4 +47,9 @@ void Echiquier::count_ptr() {
       for(auto j = 0; j < 8; ++j)
          std::cout << "(" << i << "," << j << ")" <<  echiquier_[i][j].use_count() << std::endl;
    }
+}
+
+
+std::shared_ptr<Piece> Echiquier::selectPiece(int x, int y) {
+   return echiquier_[x][y];
 }

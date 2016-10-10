@@ -1,6 +1,6 @@
 
 #include "Tour.hpp"
-
+#include <iostream>
 
 Tour::Tour(int id, bool etat, char c) : Piece(id,etat,c) {
    MouvementHorizontal mvmtH(8,false);
@@ -18,4 +18,8 @@ void Tour::deplacement(Coord &c, Echiquier &e) {
    for(auto m : mvmt_) {
       mvmt_possible = m.deplacement(c, e);
    }
+   for(auto coord : mvmt_possible) {
+      std::cout << "(" << coord.x << "," << coord.y << ") ";
+   }
+   std::cout << "\n";
 }
