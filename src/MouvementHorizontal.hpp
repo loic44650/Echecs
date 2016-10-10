@@ -14,8 +14,6 @@
  *
 **/
 
-class Echiquier;
-
 #include "Mouvement.hpp"
 
 
@@ -48,7 +46,7 @@ class MouvementHorizontal : public Mouvement
  		 *
  		 * @complexité
 		**/
-		virtual std::vector<Coord> deplacement(Echiquier &e, Coord &dep);
+		virtual std::vector<Coord> deplacement(Coord &dep, Echiquier &e);
 
 
 };

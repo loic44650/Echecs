@@ -15,7 +15,7 @@ char Tour::afficher() {
 
 void Tour::deplacement(Coord &c, Echiquier &e) {
    std::vector<Coord> mvmt_possible;
-   for(m : mvmt_) {
+   for(auto m : mvmt_) {
       mvmt_possible = m.deplacement(c, e);
    }
 }

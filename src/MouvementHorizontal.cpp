@@ -7,7 +7,7 @@ MouvementHorizontal::MouvementHorizontal(int d, bool saut) : Mouvement(d,saut) {
 MouvementHorizontal::~MouvementHorizontal() {}
 
 
-std::vector<Coord> MouvementHorizontal::deplacement(Echiquier &e, Coord &dep) {
+std::vector<Coord> MouvementHorizontal::deplacement(Coord &dep, Echiquier &e) {
    std::vector<Coord> mvmt_possible;
    int g = 0, d = 0, i = 0;
    int x = dep.x, y = dep.y;

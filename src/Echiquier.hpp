@@ -16,10 +16,10 @@
 
 #include <iostream>
 #include <memory>
-#include "Piece.hpp"
-#include "Pion.hpp"
 #include "Colormod.hpp"
-#include "utils.hpp"
+
+class Piece;
+class Pion;
 
 class Echiquier
 {

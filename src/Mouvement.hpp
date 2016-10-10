@@ -15,9 +15,8 @@
 **/
 
 #include <vector>
-#include "utils.hpp"
+#include "utils.hpp" // contient struct Coord
 #include "Echiquier.hpp"
-
 
 class Mouvement
 {
@@ -48,7 +47,7 @@ class Mouvement
  		 *
  		 * @complexité
 		**/
-		virtual std::vector<Coord> deplacement(Echiquier &e, Coord &dep) = 0;
+		virtual std::vector<Coord> deplacement(Coord &dep, Echiquier &e);
 
    private:
 

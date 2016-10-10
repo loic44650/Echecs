@@ -14,11 +14,7 @@
 #ifndef PIECE_HPP
 #define PIECE_HPP
 
-#include <iostream>
-#include <vector>
-#include "utils.hpp"
-#include "Mouvement.hpp"
-#include "Echiquier.hpp"
+#include "MouvementHorizontal.hpp"
 
 class Piece
 {
@@ -53,7 +49,7 @@ class Piece
 
 
 
-	private:
+	protected:
 		int identifiant_;								// distinction des pieces
 		bool statut_;									// en jeu ou non
 		char c_;									// couleur

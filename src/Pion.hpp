@@ -16,6 +16,7 @@
 
 #include "Piece.hpp"
 
+
 class Pion: public Piece
 {
 	public:
@@ -45,7 +46,7 @@ class Pion: public Piece
  		 *
  		 * @complexité
 		**/
-		void deplacement(Coord c, Echiquier e);
+		void deplacement(Coord &c, Echiquier &e);
 
 
 };

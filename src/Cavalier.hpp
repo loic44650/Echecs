@@ -44,7 +44,7 @@ class Cavalier : public Piece
  		 *
  		 * @complexité
 		**/
-		void deplacement(Coord c, Echiquier e);
+		void deplacement(Coord &c, Echiquier &e);
 
 
 
