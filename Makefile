@@ -2,12 +2,12 @@
 EXEC=Echecs
 
 # Compiler
-IDIR=include include/constraints include/domains include/misc include/objectives include/variables
+IDIR=include include/constraints include/domains include/misc include/objectives include/variables SFML/include
 IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
 CXXFLAGS=-std=c++0x -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
 
 # Linker
-LFLAGS=$(IDIRFLAG)
+LFLAGS=$(IDIRFLAG) -LSFML/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Directories
 SRCDIR=src src/constraints src/domains src/misc src/objectives src/variables
@@ -17,7 +17,6 @@ BINDIR=bin
 # Files
 SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
-
 # For rm
 SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
 INCLUDESTILDE=$(foreach idir, $(IDIR), $(wildcard $(idir)/*.hpp~))
@@ -64,4 +63,3 @@ $(OBJDIR)/%.o: %.cpp
 
 clean:
 	rm -fr core *~ $(OBJECTS) $(BINDIR)/$(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
-
