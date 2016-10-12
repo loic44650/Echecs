@@ -10,4 +10,4 @@ char Reine::afficher() {
    return 'R';
 }
 
-void Reine::deplacement(Coord &c, Echiquier &e) {}
+bool Reine::moveTo(Coord dep, Coord but, Echiquier *e){ return false; }

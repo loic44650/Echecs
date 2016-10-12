@@ -45,7 +45,7 @@ class Tour : public Piece
  		 *
  		 * @complexité
 		**/
-		void deplacement(Coord &c, Echiquier &e);
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
 
 

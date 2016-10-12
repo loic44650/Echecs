@@ -7,6 +7,7 @@ Echiquier::Echiquier() {
    for(auto i = 0; i < 8; ++i)
       echiquier_[1][i] = std::shared_ptr<Piece>(new Pion(i, true, 'N'));
    echiquier_[3][4] = std::shared_ptr<Tour>(new Tour(9, true, 'B'));
+   echiquier_[3][2] = std::shared_ptr<Tour>(new Tour(9, true, 'B'));
 }
 
 Echiquier::~Echiquier() {
@@ -31,7 +32,7 @@ void Echiquier::afficher() {
       for(auto j = 0; j < 8; ++j) {
          if((i+j)%2) std::cout << lgrey;
          else std::cout << bgrey;
-         if ( echiquier_[i][j] ) std::cout << " " << (echiquier_[i][j])->afficher() << " ";
+         if ( echiquier_[i][j] ) std::cout << " " << echiquier_[i][j]->afficher() << " ";
          else std::cout << "   ";
       }
       std::cout << std::endl;
@@ -50,6 +51,14 @@ void Echiquier::count_ptr() {
 }
 
 
-std::shared_ptr<Piece> Echiquier::selectPiece(int x, int y) {
-   return echiquier_[x][y];
+bool Echiquier::move(Coord dep, Coord but) {
+   bool mvmtEffectue = false;
+   std::cout << "dep.x, dep.y" << dep.x << "," << dep.y << "\n";
+   if(echiquier_[dep.x][dep.y]->moveTo(dep, but, this)) {
+      std::cout << "cond Echiquier::move\n";
+      echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
+      echiquier_[dep.x][dep.y] = nullptr;
+      mvmtEffectue = true;
+   }
+   return mvmtEffectue;
 }

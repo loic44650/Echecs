@@ -17,6 +17,7 @@
 #include <iostream>
 #include <memory>
 #include "Colormod.hpp"
+#include "utils.hpp"
 
 class Piece;
 class Pion;
@@ -35,7 +36,7 @@ class Echiquier
 		bool estOccupee(int x, int y);
 		void afficher();
 		void count_ptr();
-		std::shared_ptr<Piece> selectPiece(int x, int y);
+		bool move(Coord dep, Coord but);
 
 	private:
 		std::shared_ptr<Piece> echiquier_[8][8];

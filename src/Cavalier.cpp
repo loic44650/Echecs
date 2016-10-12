@@ -10,4 +10,4 @@ char Cavalier::afficher() {
    return 'C';
 }
 
-void Cavalier::deplacement(Coord &c, Echiquier &e) {}
+bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

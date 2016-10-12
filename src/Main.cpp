@@ -10,8 +10,12 @@ int main()
 {
 	Echiquier e;
 	e.afficher();
-	Coord c;
-	c.x = 3; c.y = 4;
-	e.selectPiece(3,4)->deplacement(c, e);
-
+	Coord dep, but;
+	cout << "Selectionne la pièce à déplacer : ";
+	cin >> dep.x >> dep.y;
+	cout << "Sélectionne la case d'arrivée : ";
+	cin >> but.x >> but.y;
+	e.move(dep,but);
+	e.afficher();
+	cout << e.estOccupee(dep.x, dep.y)  << "|" << e.estOccupee(but.x,but.y) << "\n";
 }

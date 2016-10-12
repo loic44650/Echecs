@@ -10,4 +10,4 @@ char Roi::afficher() {
    return 'K';
 }
 
-void Roi::deplacement(Coord &c, Echiquier &e) {}
+bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

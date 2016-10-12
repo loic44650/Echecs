@@ -1,13 +1,13 @@
 /**
- * @file MouvementHorizontal.hpp
+ * @file MouvementVertical.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementHorizontal
+ * @brief Fichier header définissant la classe MouvementVertical
 **/
 
 
-#ifndef MouvementHorizontal_HPP
-#define MouvementHorizontal_HPP
+#ifndef MouvementVertical_HPP
+#define MouvementVertical_HPP
 
 /**
  * @brief
@@ -17,7 +17,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementHorizontal : public Mouvement
+class MouvementVertical : public Mouvement
 {
 	public:
 		/**
@@ -25,14 +25,14 @@ class MouvementHorizontal : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementHorizontal(int d, bool saut);
+		MouvementVertical(int d, bool saut);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementHorizontal();
+		~MouvementVertical();
 
 		/**
  		 * @brief

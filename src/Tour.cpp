@@ -3,8 +3,8 @@
 #include <iostream>
 
 Tour::Tour(int id, bool etat, char c) : Piece(id,etat,c) {
-   MouvementHorizontal mvmtH(8,false);
-   mvmt_.push_back(mvmtH);
+   mvmt_.push_back(new MouvementHorizontal(8,false));
+   mvmt_.push_back(new MouvementVertical(8,false));
 }
 
 Tour::~Tour() {}
@@ -13,13 +13,14 @@ char Tour::afficher() {
    return 'T';
 }
 
-void Tour::deplacement(Coord &c, Echiquier &e) {
-   std::vector<Coord> mvmt_possible;
-   for(auto m : mvmt_) {
-      mvmt_possible = m.deplacement(c, e);
+bool Tour::moveTo(Coord dep, Coord but, Echiquier *e) {
+   bool mvmtOk = false;
+   int i = 0;
+
+   while(i < mvmt_.size() && !mvmtOk) {
+      mvmtOk = mvmt_[i]->isMoveOk(dep, but, e);
+      ++i;
    }
-   for(auto coord : mvmt_possible) {
-      std::cout << "(" << coord.x << "," << coord.y << ") ";
-   }
-   std::cout << "\n";
+
+   return mvmtOk;
 }

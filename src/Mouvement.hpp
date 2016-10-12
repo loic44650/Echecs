@@ -47,7 +47,7 @@ class Mouvement
  		 *
  		 * @complexité
 		**/
-		virtual std::vector<Coord> deplacement(Coord &dep, Echiquier &e);
+		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e) = 0;
 
    private:
 

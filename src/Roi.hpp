@@ -44,7 +44,7 @@ class Roi : public Piece
  		 *
  		 * @complexité
 		**/
-		void deplacement(Coord &c, Echiquier &e);
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
 	private:
 		bool echec_;

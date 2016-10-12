@@ -15,6 +15,7 @@
 #define PIECE_HPP
 
 #include "MouvementHorizontal.hpp"
+#include "MouvementVertical.hpp"
 
 class Piece
 {
@@ -45,7 +46,7 @@ class Piece
  		 *
  		 * @complexité
 		**/
-		virtual void deplacement(Coord &c, Echiquier &e) = 0;
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e) = 0;
 
 
 
@@ -53,7 +54,7 @@ class Piece
 		int identifiant_;								// distinction des pieces
 		bool statut_;									// en jeu ou non
 		char c_;									// couleur
-		std::vector<Mouvement> mvmt_;
+		std::vector<Mouvement*> mvmt_;
 
 };
 

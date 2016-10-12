@@ -10,4 +10,4 @@ char Fou::afficher() {
    return 'F';
 }
 
-void Fou::deplacement(Coord &c, Echiquier &e) {}
+bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

@@ -10,6 +10,4 @@ char Pion::afficher() {
    return 'P';
 }
 
-void Pion::deplacement(Coord &c, Echiquier &e) {
-
-}
+bool Pion::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }
