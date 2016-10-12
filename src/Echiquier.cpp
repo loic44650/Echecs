@@ -26,20 +26,24 @@ bool Echiquier::estOccupee(int x, int y) {
 void Echiquier::afficher() {
    Color::Modifier lgrey(Color::BG_LIGHTGREY);
    Color::Modifier bgrey(Color::BG_DARKGRAY);
+   Color::Modifier lblue(Color::BG_LIGHTBLUE);
    Color::Modifier black(Color::FG_BLACK);
    Color::Modifier white(Color::FG_WHITE);
+   Color::Modifier fg_def(Color::FG_DEFAULT);
+   Color::Modifier bg_def(Color::BG_DEFAULT);
+   std::cout << "  ";
+   for(auto i = 0; i < 8; ++i) std::cout << " " << char('A'+i) << " ";
+   std::cout << "\n";
    for(auto i = 0; i < 8; ++i) {
+      std::cout << 8-i << " ";
       for(auto j = 0; j < 8; ++j) {
          if((i+j)%2) std::cout << lgrey;
-         else std::cout << bgrey;
+         else std::cout << lblue;
          if ( echiquier_[i][j] ) std::cout << " " << echiquier_[i][j]->afficher() << " ";
          else std::cout << "   ";
       }
-      std::cout << std::endl;
+      std::cout << fg_def << bg_def << std::endl;
    }
-   Color::Modifier fg_def(Color::FG_DEFAULT);
-   Color::Modifier bg_def(Color::BG_DEFAULT);
-   std::cout << fg_def << bg_def << std::endl;
 }
 
 
@@ -53,12 +57,12 @@ void Echiquier::count_ptr() {
 
 bool Echiquier::move(Coord dep, Coord but) {
    bool mvmtEffectue = false;
-   std::cout << "dep.x, dep.y" << dep.x << "," << dep.y << "\n";
+
    if(echiquier_[dep.x][dep.y]->moveTo(dep, but, this)) {
-      std::cout << "cond Echiquier::move\n";
       echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
       echiquier_[dep.x][dep.y] = nullptr;
       mvmtEffectue = true;
    }
+
    return mvmtEffectue;
 }

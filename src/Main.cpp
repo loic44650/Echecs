@@ -17,5 +17,4 @@ int main()
 	cin >> but.x >> but.y;
 	e.move(dep,but);
 	e.afficher();
-	cout << e.estOccupee(dep.x, dep.y)  << "|" << e.estOccupee(but.x,but.y) << "\n";
 }

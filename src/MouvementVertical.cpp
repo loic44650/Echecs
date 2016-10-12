@@ -10,7 +10,7 @@ MouvementVertical::~MouvementVertical() {}
 bool MouvementVertical::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    bool isOk = true;
    int x;
-   std::cout << "isMoveok\n";
+   
    if(dep.x < but.x) {
       x = dep.x+1;
       while( x <= but.x ) {
