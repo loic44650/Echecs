@@ -33,6 +33,13 @@ class Window
  		 *
  		 * @complexité
 		**/
+		~Window();
+
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		void drawPlateauInitial(sf::RenderTarget& app);
 
 

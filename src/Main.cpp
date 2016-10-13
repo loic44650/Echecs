@@ -17,10 +17,15 @@ int main()
 	
 
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
+    
+    sf::Image logo;
+    logo.loadFromFile("picture/logo.png");
+    app.setIcon(256, 256, logo.getPixelsPtr());
+
 
     Window window;
-
-   	while (app.isOpen())
+   	
+    while (app.isOpen())
     {
         sf::Event event;
 
@@ -29,6 +34,8 @@ int main()
             if (event.type == sf::Event::Closed)
                 app.close();
         }
+
+        
 
         app.clear(sf::Color(187, 174, 152));
     	window.drawPlateauInitial(app);
