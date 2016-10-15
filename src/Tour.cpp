@@ -3,8 +3,8 @@
 #include <iostream>
 
 Tour::Tour(int id, bool etat, char c) : Piece(id,etat,c) {
-   mvmt_.push_back(new MouvementHorizontal(8,false));
-   mvmt_.push_back(new MouvementVertical(8,false));
+   mvmt_.push_back(new MouvementHorizontal(8));
+   mvmt_.push_back(new MouvementVertical(8));
 }
 
 Tour::~Tour() {}

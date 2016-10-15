@@ -25,7 +25,7 @@ class MouvementHorizontal : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementHorizontal(int d, bool saut);
+		MouvementHorizontal(int d);
 
 		/**
  		 * @brief

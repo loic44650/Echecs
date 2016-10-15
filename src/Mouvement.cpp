@@ -2,6 +2,6 @@
 #include "Mouvement.hpp"
 
 
-Mouvement::Mouvement(int d, bool saut) : distance_(d), saut_(saut) {}
+Mouvement::Mouvement(int d) : distance_(d) {}
 
 Mouvement::~Mouvement() {}

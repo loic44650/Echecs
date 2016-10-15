@@ -1,13 +1,13 @@
 /**
- * @file MouvementVertical.hpp
+ * @file MouvementCavalier.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementVertical
+ * @brief Fichier header définissant la classe MouvementCavalier
 **/
 
 
-#ifndef MouvementVertical_HPP
-#define MouvementVertical_HPP
+#ifndef MouvementCavalier_HPP
+#define MouvementCavalier_HPP
 
 /**
  * @brief
@@ -17,7 +17,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementVertical : public Mouvement
+class MouvementCavalier : public Mouvement
 {
 	public:
 		/**
@@ -25,14 +25,14 @@ class MouvementVertical : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementVertical(int d);
+		MouvementCavalier(int d);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementVertical();
+		~MouvementCavalier();
 
 		/**
  		 * @brief

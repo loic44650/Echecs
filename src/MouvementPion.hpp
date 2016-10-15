@@ -1,13 +1,14 @@
+
 /**
- * @file MouvementVertical.hpp
+ * @file MouvementPion.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementVertical
+ * @brief Fichier header définissant la classe MouvementPion
 **/
 
 
-#ifndef MouvementVertical_HPP
-#define MouvementVertical_HPP
+#ifndef MouvementPion_HPP
+#define MouvementPion_HPP
 
 /**
  * @brief
@@ -17,7 +18,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementVertical : public Mouvement
+class MouvementPion : public Mouvement
 {
 	public:
 		/**
@@ -25,14 +26,14 @@ class MouvementVertical : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementVertical(int d);
+		MouvementPion(int d, char dir);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementVertical();
+		~MouvementPion();
 
 		/**
  		 * @brief
@@ -48,6 +49,8 @@ class MouvementVertical : public Mouvement
 		**/
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e);
 
+   private:
+      char direction_;
 
 };
 

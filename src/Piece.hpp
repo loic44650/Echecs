@@ -16,6 +16,7 @@
 
 #include "MouvementHorizontal.hpp"
 #include "MouvementVertical.hpp"
+#include "MouvementDiagonale.hpp"
 
 class Piece
 {
@@ -40,6 +41,13 @@ class Piece
  		 * @complexité
 		**/
 		virtual char afficher() = 0;
+
+		/**
+		 * @brief
+		 *
+		 * @complexité
+		**/
+		char getCouleur();
 
 		/**
  		 * @brief

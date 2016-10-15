@@ -26,7 +26,7 @@ class Mouvement
  		 *
  		 * @complexité
 		**/
-		Mouvement(int d, bool saut);
+		Mouvement(int d);
 
 		/**
  		 * @brief
@@ -49,11 +49,9 @@ class Mouvement
 		**/
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e) = 0;
 
-   private:
+   protected:
 
       int distance_;
-      bool saut_;
-
 
 };
 
