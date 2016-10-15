@@ -45,7 +45,7 @@ class Reine : public Piece
  		 *
  		 * @complexité
 		**/
-		//void deplacement(Echiquier plateau);
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
 
 

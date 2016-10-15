@@ -9,3 +9,5 @@ Fou::~Fou() {}
 char Fou::afficher() {
    return 'F';
 }
+
+bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

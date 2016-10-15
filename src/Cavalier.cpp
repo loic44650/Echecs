@@ -9,3 +9,5 @@ Cavalier::~Cavalier() {}
 char Cavalier::afficher() {
    return 'C';
 }
+
+bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

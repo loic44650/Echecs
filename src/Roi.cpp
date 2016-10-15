@@ -9,3 +9,5 @@ Roi::~Roi() {}
 char Roi::afficher() {
    return 'K';
 }
+
+bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

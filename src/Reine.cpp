@@ -9,3 +9,5 @@ Reine::~Reine() {}
 char Reine::afficher() {
    return 'R';
 }
+
+bool Reine::moveTo(Coord dep, Coord but, Echiquier *e){ return false; }

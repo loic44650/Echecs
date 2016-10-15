@@ -2,7 +2,7 @@
  * @file Tour.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class
+ * @brief Fichier header définissant la classe Tour
 **/
 
 
@@ -45,7 +45,7 @@ class Tour : public Piece
  		 *
  		 * @complexité
 		**/
-		//void deplacement(Echiquier plateau);
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
 
 

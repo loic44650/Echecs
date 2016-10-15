@@ -16,6 +16,7 @@
 
 #include "Piece.hpp"
 
+
 class Pion: public Piece
 {
 	public:
@@ -45,7 +46,7 @@ class Pion: public Piece
  		 *
  		 * @complexité
 		**/
-		//void deplacement(Echiquier plateau);
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
 
 };

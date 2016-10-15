@@ -14,8 +14,8 @@
 #ifndef PIECE_HPP
 #define PIECE_HPP
 
-#include <iostream>
-
+#include "MouvementHorizontal.hpp"
+#include "MouvementVertical.hpp"
 
 class Piece
 {
@@ -46,12 +46,15 @@ class Piece
  		 *
  		 * @complexité
 		**/
-		//void deplacement(Echiquier plateau);
+		virtual bool moveTo(Coord dep, Coord but, Echiquier *e) = 0;
 
-	private:
+
+
+	protected:
 		int identifiant_;								// distinction des pieces
 		bool statut_;									// en jeu ou non
 		char c_;									// couleur
+		std::vector<Mouvement*> mvmt_;
 
 };
 

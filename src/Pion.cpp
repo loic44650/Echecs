@@ -9,3 +9,5 @@ Pion::~Pion() {}
 char Pion::afficher() {
    return 'P';
 }
+
+bool Pion::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }
