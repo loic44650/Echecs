@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
 #include "Window.hpp"
@@ -12,16 +13,11 @@ using namespace std;
 
 int main()
 {
-	//Echiquier e;
-	//e.afficher();
-	
-
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
     
     sf::Image logo;
     logo.loadFromFile("picture/logo.png");
-    app.setIcon(256, 256, logo.getPixelsPtr());
-
+    app.setIcon(256, 256, logo.getPixelsPtr()); // ne fonctionne pas ?!?!
 
     Window window;
    	
@@ -35,9 +31,7 @@ int main()
                 app.close();
         }
 
-        
-
-        app.clear(sf::Color(187, 174, 152));
+        app.clear();
     	window.drawPlateauInitial(app);
         app.display();
     }

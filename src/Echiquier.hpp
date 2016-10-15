@@ -18,6 +18,11 @@
 #include <memory>
 #include "Piece.hpp"
 #include "Pion.hpp"
+#include "Tour.hpp"
+#include "Cavalier.hpp"
+#include "Fou.hpp"
+#include "Reine.hpp"
+#include "Roi.hpp"
 #include "Colormod.hpp"
 
 
