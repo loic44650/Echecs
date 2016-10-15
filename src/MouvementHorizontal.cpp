@@ -15,14 +15,22 @@ bool MouvementHorizontal::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
 
    if(dep.y < but.y) {
       y = dep.y+1;
+<<<<<<< HEAD
       while( y <= but.y ) {
+=======
+      while( y <= but.y && (y-dep.y) <= distance_) {
+>>>>>>> mouvement_pieces
          if(e->estOccupee(but.x,y)) isOk = false;
          ++y;
       }
    }
    else {
       y = dep.y-1;
+<<<<<<< HEAD
       while( y >= but.y ) {
+=======
+      while( y >= but.y && (dep.y-y) <= distance_) {
+>>>>>>> mouvement_pieces
          if(e->estOccupee(but.x, y)) isOk = false;
          --y;
       }

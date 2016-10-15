@@ -14,6 +14,7 @@ using namespace std;
 
 int main()
 {
+<<<<<<< HEAD
 
     Echiquier e;
     e.afficher();
@@ -58,3 +59,8 @@ int main()
     }
     */
 }
+=======
+	Echiquier e;
+	e.afficher();
+}
+>>>>>>> mouvement_pieces

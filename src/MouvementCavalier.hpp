@@ -1,13 +1,13 @@
 /**
- * @file MouvementHDiagonale.hpp
+ * @file MouvementCavalier.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementHDiagonale
+ * @brief Fichier header définissant la classe MouvementCavalier
 **/
 
 
-#ifndef MouvementHDiagonale_HPP
-#define MouvementHDiagonale_HPP
+#ifndef MouvementCavalier_HPP
+#define MouvementCavalier_HPP
 
 /**
  * @brief
@@ -17,7 +17,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementDiagonale : public Mouvement
+class MouvementCavalier : public Mouvement
 {
 	public:
 		/**
@@ -25,18 +25,14 @@ class MouvementDiagonale : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementDiagonale(int d);
+		MouvementCavalier(int d);
 
-<<<<<<< HEAD
 		/**
-=======
-		/**ww
->>>>>>> mouvement_pieces
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementDiagonale();
+		~MouvementCavalier();
 
 		/**
  		 * @brief

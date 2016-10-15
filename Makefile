@@ -3,6 +3,7 @@ EXEC=Echecs
 
 # Compiler
 <<<<<<< HEAD
+<<<<<<< HEAD
 IDIR=include include/constraints include/domains include/misc include/objectives include/variables SMFL/include
 =======
 IDIR=include 
@@ -18,6 +19,17 @@ LFLAGS=$(IDIRFLAG) $(LIBDIRFLAG)
 
 # Directories
 SRCDIR=src src/AbstractFactory src/Dir src/StateVideo src/StateAudio src/Observer
+=======
+IDIR=include include/constraints include/domains include/misc include/objectives include/variables
+IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
+CXXFLAGS=-std=c++0x -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
+
+# Linker
+LFLAGS=$(IDIRFLAG)
+
+# Directories
+SRCDIR=src src/constraints src/domains src/misc src/objectives src/variables
+>>>>>>> mouvement_pieces
 OBJDIR=obj
 BINDIR=bin
 
@@ -37,10 +49,13 @@ vpath %.cpp $(SRCDIR)
 # $< is the first item in the dependencies list
 
 # Rules
+<<<<<<< HEAD
 
 #script:
 #	@./modifVariable.sh
 
+=======
+>>>>>>> mouvement_pieces
 gcc: clean
 gcc: CXX=g++
 gcc: LINKER=g++ -o
@@ -66,12 +81,24 @@ clang-debug: CXXFLAGS += -g -stdlib=libc++
 clang-debug: $(BINDIR)/$(EXEC)
 
 $(BINDIR)/$(EXEC): $(OBJECTS)
+<<<<<<< HEAD
 	@$(LINKER) $@ $(LFLAGS) $^ $(SFMLFLAG)
+=======
+	@$(LINKER) $@ $(LFLAGS) $^
+>>>>>>> mouvement_pieces
 
 $(OBJDIR)/%.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
+<<<<<<< HEAD
 .PHONY: gcc gcc-debug clang clang-debug clean
 
 clean:
 	rm -fr core *~ $(OBJECTS) $(BINDIR)/$(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
+=======
+.PHONY: gcc gcc-debug clang clang-debug clean 
+
+clean:
+	rm -fr core *~ $(OBJECTS) $(BINDIR)/$(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
+
+>>>>>>> mouvement_pieces

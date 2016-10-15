@@ -49,11 +49,17 @@ class Mouvement
 		**/
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e) = 0;
 
+<<<<<<< HEAD
    private:
 
       int distance_;
       bool saut_;
 
+=======
+   protected:
+
+      int distance_;
+>>>>>>> mouvement_pieces
 
 };
 

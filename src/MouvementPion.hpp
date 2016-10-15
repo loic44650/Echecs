@@ -1,13 +1,14 @@
+
 /**
- * @file MouvementHDiagonale.hpp
+ * @file MouvementPion.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementHDiagonale
+ * @brief Fichier header définissant la classe MouvementPion
 **/
 
 
-#ifndef MouvementHDiagonale_HPP
-#define MouvementHDiagonale_HPP
+#ifndef MouvementPion_HPP
+#define MouvementPion_HPP
 
 /**
  * @brief
@@ -17,7 +18,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementDiagonale : public Mouvement
+class MouvementPion : public Mouvement
 {
 	public:
 		/**
@@ -25,18 +26,14 @@ class MouvementDiagonale : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementDiagonale(int d);
+		MouvementPion(int d, char dir);
 
-<<<<<<< HEAD
 		/**
-=======
-		/**ww
->>>>>>> mouvement_pieces
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementDiagonale();
+		~MouvementPion();
 
 		/**
  		 * @brief
@@ -52,6 +49,8 @@ class MouvementDiagonale : public Mouvement
 		**/
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e);
 
+   private:
+      char direction_;
 
 };
 

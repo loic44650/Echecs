@@ -1,2 +1,6 @@
 *.[ao]
 ~*
+<<<<<<< HEAD
+=======
+sfml/
+>>>>>>> mouvement_pieces
