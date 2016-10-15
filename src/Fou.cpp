@@ -12,9 +12,7 @@ char Fou::afficher() {
    return 'F';
 }
 
-<<<<<<< HEAD
-bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }
-=======
+
 bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) {
    bool mvmtOk = false;
    int i = 0;
@@ -25,4 +23,3 @@ bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
->>>>>>> mouvement_pieces

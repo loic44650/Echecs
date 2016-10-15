@@ -16,10 +16,9 @@
 
 #include "MouvementHorizontal.hpp"
 #include "MouvementVertical.hpp"
-<<<<<<< HEAD
-=======
 #include "MouvementDiagonale.hpp"
->>>>>>> mouvement_pieces
+#include "MouvementCavalier.hpp"
+#include "MouvementPion.hpp"
 
 class Piece
 {
