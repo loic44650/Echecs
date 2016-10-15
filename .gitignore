@@ -2,3 +2,5 @@
 ~*
 sfml/
 Makefile
+obj/
+bin/

@@ -11,14 +11,14 @@ bool MouvementCavalier::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    bool isOk = false;
 
    if( !(e->estOccupee(but.x,but.y)) ) {
-      if(dep.x+3 == but.x && dep.y+1 == but.y) isOk = true;
-      else if(dep.x+3 == but.x && dep.y-1 == but.y) isOk = true;
-      else if(dep.x-3 == but.x && dep.y+1 == but.y) isOk = true;
-      else if(dep.x-3 == but.x && dep.y-1 == but.y) isOk = true;
-      else if(dep.y+3 == but.y && dep.x+1 == but.x) isOk = true;
-      else if(dep.y+3 == but.y && dep.x-1 == but.x) isOk = true;
-      else if(dep.y-3 == but.y && dep.x+1 == but.x) isOk = true;
-      else if(dep.y-3 == but.y && dep.x-1 == but.x) isOk = true;
+      if(dep.x+2 == but.x && dep.y+1 == but.y) isOk = true;
+      else if(dep.x+2 == but.x && dep.y-1 == but.y) isOk = true;
+      else if(dep.x-2 == but.x && dep.y+1 == but.y) isOk = true;
+      else if(dep.x-2 == but.x && dep.y-1 == but.y) isOk = true;
+      else if(dep.y+2 == but.y && dep.x+1 == but.x) isOk = true;
+      else if(dep.y+2 == but.y && dep.x-1 == but.x) isOk = true;
+      else if(dep.y-2 == but.y && dep.x+1 == but.x) isOk = true;
+      else if(dep.y-2 == but.y && dep.x-1 == but.x) isOk = true;
    }
 
    return isOk;

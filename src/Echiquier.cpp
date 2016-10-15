@@ -9,9 +9,10 @@
 
 Echiquier::Echiquier() {
    for(auto i = 0; i < 8; ++i) {
-      echiquier_[1][i] = std::shared_ptr<Piece>(new Pion(i, true, 'N'));
-      echiquier_[6][i] = std::shared_ptr<Piece>(new Pion(i, true, 'B'));
+      echiquier_[1][i] = std::shared_ptr<Piece>(new Pion(i, true, 'N', 'S'));
+      echiquier_[6][i] = std::shared_ptr<Piece>(new Pion(i, true, 'B', 'N'));
    }
+
    echiquier_[0][0] = std::shared_ptr<Piece>(new Tour(9, true, 'N'));
    echiquier_[0][1] = std::shared_ptr<Piece>(new Cavalier(9, true, 'N'));
    echiquier_[0][2] = std::shared_ptr<Piece>(new Fou(9, true, 'N'));
@@ -53,7 +54,7 @@ void Echiquier::afficher() {
    Color::Modifier fg_def(Color::FG_DEFAULT);
    Color::Modifier bg_def(Color::BG_DEFAULT);
 
-   std:: cout << "\n ";
+   std:: cout << "\n  ";
    for(auto i = 0; i < 8; ++i) std::cout << " " << char('A'+i) << " ";
    std::cout << "\n";
 

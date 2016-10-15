@@ -25,7 +25,7 @@ class Pion: public Piece
  		 *
  		 * @complexité
 		**/
-		Pion(int, bool, char);
+		Pion(int, bool, char, char);
 
 		/**
  		 * @brief

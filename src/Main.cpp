@@ -28,7 +28,7 @@ int main()
 
     dep.getCoord(strDep);
     but.getCoord(strBut);
-
+    cout << "Piece en " << dep.x << "," << dep.y << " va en " << but.x << "," << but.y << "\n";
     e.move(dep,but);
     e.afficher();
 
