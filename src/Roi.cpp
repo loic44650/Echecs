@@ -24,5 +24,3 @@ bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
-
-bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) { return false; }

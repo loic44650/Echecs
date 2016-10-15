@@ -8,16 +8,15 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
-<<<<<<< HEAD
-#include <string>
-#include <iostream>
 
-struct Coord 
-{
+#include <string>
+
+struct Coord {
    int x;
    int y;
 
-   inline bool operator==(const Coord b) { return ( this->x == b.x && this->y == b.y ); }
+   Coord() { x=0; y=0; }
+   Coord(int a, int b) { x=a; y=b; }
 
    void getCoord(std::string str)
 	{
@@ -30,7 +29,7 @@ struct Coord
 			x = (8 - (str[1] - '0'));
 		}
 		if (str[0] >= 'A' && str[0] <='H')
-		{		
+		{
 			y = str[0] - 'A';
 		}
 		else if (str[1] >= 'A' && str[1] <= 'H')
@@ -38,18 +37,9 @@ struct Coord
 			y = str[1] - 'A';
 		}
 	}
-};
 
-=======
-struct Coord {
-   int x;
-   int y;
-
-   Coord() { x=0; y=0; }
-   Coord(int a, int b) { x=a; y=b; }
    inline bool operator==(const Coord b) { return ( this->x == b.x && this->y == b.y ); }
 };
 
 
->>>>>>> mouvement_pieces
 #endif

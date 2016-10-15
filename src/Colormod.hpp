@@ -7,7 +7,6 @@ namespace Color {
         FG_DEFAULT   = 39,
         BG_LIGHTBLUE = 104,
         BG_LIGHTGREY = 47,
-        BG_LIGHTBLUE = 104,
         BG_DARKGRAY  = 100,
         BG_DEFAULT   = 49
     };

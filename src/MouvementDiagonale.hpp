@@ -27,11 +27,7 @@ class MouvementDiagonale : public Mouvement
 		**/
 		MouvementDiagonale(int d);
 
-<<<<<<< HEAD
 		/**
-=======
-		/**ww
->>>>>>> mouvement_pieces
  		 * @brief
  		 *
  		 * @complexité

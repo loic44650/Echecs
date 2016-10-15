@@ -2,15 +2,18 @@
 EXEC=Echecs
 
 # Compiler
-IDIR=include include/constraints include/domains include/misc include/objectives include/variables
+IDIR=include
 IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
-CXXFLAGS=-std=c++0x -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
+LIBDIR=lib
+LIBDIRFLAG =$(foreach libdir, $(LIBDIR), -L$(libdir))
+CXXFLAGS=-std=c++11 -c -g $(IDIRFLAG)
+SFMLFLAG= -lX11 -lGLEW -lopenal -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio $(LIBDIRFLAG)
 
 # Linker
-LFLAGS=$(IDIRFLAG)
+LFLAGS=$(IDIRFLAG) $(LIBDIRFLAG)
 
 # Directories
-SRCDIR=src src/constraints src/domains src/misc src/objectives src/variables
+SRCDIR=src src/AbstractFactory src/Dir src/StateVideo src/StateAudio src/Observer
 OBJDIR=obj
 BINDIR=bin
 
@@ -30,6 +33,10 @@ vpath %.cpp $(SRCDIR)
 # $< is the first item in the dependencies list
 
 # Rules
+
+#script:
+#	@./modifVariable.sh
+
 gcc: clean
 gcc: CXX=g++
 gcc: LINKER=g++ -o
@@ -55,7 +62,7 @@ clang-debug: CXXFLAGS += -g -stdlib=libc++
 clang-debug: $(BINDIR)/$(EXEC)
 
 $(BINDIR)/$(EXEC): $(OBJECTS)
-	@$(LINKER) $@ $(LFLAGS) $^
+	@$(LINKER) $@ $(LFLAGS) $^ $(SFMLFLAG)
 
 $(OBJDIR)/%.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@

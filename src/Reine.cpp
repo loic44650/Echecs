@@ -24,5 +24,3 @@ bool Reine::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
-
-bool Reine::moveTo(Coord dep, Coord but, Echiquier *e){ return false; }

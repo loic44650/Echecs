@@ -14,7 +14,6 @@ using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
 
     Echiquier e;
     e.afficher();
@@ -29,20 +28,20 @@ int main()
 
     dep.getCoord(strDep);
     but.getCoord(strBut);
-    
+
     e.move(dep,but);
     e.afficher();
 
 
     /*
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
-    
+
     sf::Image logo;
     logo.loadFromFile("picture/logo.png");
     app.setIcon(256, 256, logo.getPixelsPtr()); // ne fonctionne pas ?!?!
 
     Window window;
-   	
+
     while (app.isOpen())
     {
         sf::Event event;
@@ -59,8 +58,3 @@ int main()
     }
     */
 }
-=======
-	Echiquier e;
-	e.afficher();
-}
->>>>>>> mouvement_pieces
