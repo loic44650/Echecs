@@ -49,6 +49,8 @@ class MouvementPion : public Mouvement
 		**/
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e);
 
+		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e);
+
    private:
       char direction_;
 

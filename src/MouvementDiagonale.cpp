@@ -52,3 +52,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
 
    return isOk;
 }
+
+bool MouvementDiagonale::isAttackOk(Coord &dep, Coord &but, Echiquier *e) {
+   return isMoveOk(dep,but,e);
+}

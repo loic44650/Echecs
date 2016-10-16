@@ -46,7 +46,7 @@ class Fou : public Piece
 		**/
 		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
-
+		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
 };
 

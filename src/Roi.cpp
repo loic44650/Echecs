@@ -24,3 +24,7 @@ bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
+
+bool Roi::attaquer(Coord dep, Coord but, Echiquier *e) {
+   return moveTo(dep,but,e);
+}

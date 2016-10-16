@@ -49,6 +49,8 @@ class Mouvement
 		**/
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e) = 0;
 
+		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e) = 0;
+
    protected:
 
       int distance_;

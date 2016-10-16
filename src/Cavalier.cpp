@@ -22,3 +22,7 @@ bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
+
+bool Cavalier::attaquer(Coord dep, Coord but, Echiquier *e) {
+   return moveTo(dep,but,e);
+}

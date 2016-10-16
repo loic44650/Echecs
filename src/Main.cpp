@@ -21,16 +21,18 @@ int main()
     Coord dep, but;
 
 
-    cout << "Selectionne la pièce à déplacer : ";
-    cin >> strDep;
-    cout << "Sélectionne la case d'arrivée : ";
-    cin >> strBut;
 
-    dep.getCoord(strDep);
-    but.getCoord(strBut);
-    cout << "Piece en " << dep.x << "," << dep.y << " va en " << but.x << "," << but.y << "\n";
-    e.move(dep,but);
-    e.afficher();
+   for(int i=0; i < 10; ++i) {
+      cout << "Selectionne la pièce à déplacer : ";
+      cin >> strDep;
+      cout << "Sélectionne la case d'arrivée : ";
+      cin >> strBut;
+      dep.getCoord(strDep);
+      but.getCoord(strBut);
+      e.move(dep,but);
+      e.afficher();
+      e.count_ptr();
+   }
 
 
     /*

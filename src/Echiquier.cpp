@@ -45,6 +45,17 @@ bool Echiquier::estOccupee(int x, int y) {
    else return false;
 }
 
+// Renvoie -1 si case occupée par pièce de meme couleur
+// Renvoie 0 si case Vide
+// Renvoie 1 si case occupée par pièce ennemie
+int Echiquier::estOccupee(int x, int y, char c) {
+   if(echiquier_[x][y]) {
+      if(echiquier_[x][y]->getCouleur() == c) return -1;
+      else  return 1;
+   }
+   else  return 0;
+}
+
 void Echiquier::afficher() {
    Color::Modifier lgrey(Color::BG_LIGHTGREY);
    Color::Modifier bgrey(Color::BG_DARKGRAY);
@@ -90,10 +101,24 @@ void Echiquier::count_ptr() {
 
 bool Echiquier::move(Coord dep, Coord but) {
    bool mvmtEffectue = false;
+   int typeMvmt = estOccupee(but.x,but.y,echiquier_[dep.x][dep.y]->getCouleur());
 
-   if(echiquier_[dep.x][dep.y]->moveTo(dep, but, this)) {
-      echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
-      echiquier_[dep.x][dep.y] = nullptr;
+   // Case but vide
+   if(typeMvmt == 0) {
+      if(echiquier_[dep.x][dep.y]->moveTo(dep, but, this)) {
+         echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
+         echiquier_[dep.x][dep.y] = nullptr;
+         mvmtEffectue = true;
+         std::cout << "\npiece->moveTo\n";
+      }
+   }
+   // Case but occupée par pièce ennemie
+   else if(typeMvmt > 0) {
+      if(echiquier_[dep.x][dep.y]->attaquer(dep,but,this)) {
+         echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
+         echiquier_[dep.x][dep.y] = nullptr;
+         std::cout << "\npiece->Attaquer\n";
+      }
       mvmtEffectue = true;
    }
 

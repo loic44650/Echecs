@@ -23,3 +23,7 @@ bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
+
+bool Fou::attaquer(Coord dep, Coord but, Echiquier *e) {
+   return moveTo(dep,but,e);
+}

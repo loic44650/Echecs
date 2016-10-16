@@ -16,12 +16,16 @@ char Tour::afficher() {
 bool Tour::moveTo(Coord dep, Coord but, Echiquier *e) {
    bool mvmtOk = false;
    int i = 0;
-   std::cout << "taille : " << mvmt_.size() << "\n";
+
    while(i < mvmt_.size() && !mvmtOk) {
       mvmtOk = mvmt_[i]->isMoveOk(dep, but, e);
-      std::cout << "mvmtok = " << mvmtOk << "|i = " << i << "\n";
       ++i;
    }
 
    return mvmtOk;
+}
+
+
+bool Tour::attaquer(Coord dep, Coord but, Echiquier *e) {
+   return moveTo(dep,but,e);
 }

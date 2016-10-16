@@ -58,6 +58,8 @@ class Piece
 		**/
 		virtual bool moveTo(Coord dep, Coord but, Echiquier *e) = 0;
 
+		virtual bool attaquer(Coord dep, Coord but, Echiquier *e) = 0;
+
 
 
 	protected:

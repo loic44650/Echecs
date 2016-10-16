@@ -24,3 +24,7 @@ bool Reine::moveTo(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
+
+bool Reine::attaquer(Coord dep, Coord but, Echiquier *e) {
+   return moveTo(dep,but,e);
+}

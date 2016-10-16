@@ -34,6 +34,7 @@ class Echiquier
 		Echiquier();
 		~Echiquier();
 		bool estOccupee(int x, int y);
+		int estOccupee(int x, int y, char c);
 		void afficher();
 		void count_ptr();
 		bool move(Coord dep, Coord but);

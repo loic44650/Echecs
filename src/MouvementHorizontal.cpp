@@ -16,7 +16,7 @@ bool MouvementHorizontal::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    if(dep.y < but.y) {
       y = dep.y+1;
 
-      while( y <= but.y && (y-dep.y) <= distance_) {
+      while( y < but.y && (y-dep.y) <= distance_) {
          if(e->estOccupee(but.x,y)) isOk = false;
          ++y;
       }
@@ -24,11 +24,15 @@ bool MouvementHorizontal::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    else {
       y = dep.y-1;
 
-      while( y >= but.y && (dep.y-y) <= distance_) {
+      while( y > but.y && (dep.y-y) <= distance_) {
          if(e->estOccupee(but.x, y)) isOk = false;
          --y;
       }
    }
 
    return isOk;
+}
+
+bool MouvementHorizontal::isAttackOk(Coord &dep, Coord &but, Echiquier *e) {
+   return isMoveOk(dep,but,e);
 }
