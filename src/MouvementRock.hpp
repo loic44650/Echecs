@@ -1,14 +1,13 @@
-
 /**
- * @file MouvementPion.hpp
+ * @file MouvementRock.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementPion
+ * @brief Fichier header définissant la classe MouvementRock
 **/
 
 
-#ifndef MouvementPion_HPP
-#define MouvementPion_HPP
+#ifndef MouvementRock_HPP
+#define MouvementRock_HPP
 
 /**
  * @brief
@@ -18,7 +17,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementPion : public Mouvement
+class MouvementRock : public Mouvement
 {
 	public:
 		/**
@@ -26,14 +25,14 @@ class MouvementPion : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementPion(int d, char dir);
+		MouvementRock(int d);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementPion();
+		~MouvementRock();
 
 		/**
  		 * @brief
@@ -50,9 +49,6 @@ class MouvementPion : public Mouvement
 		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
-
-   private:
-      char direction_;
 
 };
 

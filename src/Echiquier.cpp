@@ -40,6 +40,10 @@ Echiquier::~Echiquier() {
 }
 
 
+bool Echiquier::pieceEnPosInit(int x, int y) {
+   return echiquier_[x][y]->pieceEnPosInit();
+}
+
 bool Echiquier::estOccupee(int x, int y) {
    if( echiquier_[x][y]) return true;
    else return false;
@@ -118,8 +122,20 @@ bool Echiquier::move(Coord dep, Coord but) {
          echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
          echiquier_[dep.x][dep.y] = nullptr;
          std::cout << "\npiece->Attaquer\n";
+         mvmtEffectue = true;
       }
-      mvmtEffectue = true;
+   }
+   // Case but occupée par pièce amie : ROCK seul mvmt possible
+   else {
+      if( echiquier_[dep.x][dep.y]->afficher() == 'R' || echiquier_[dep.x][dep.y]->afficher() == 'T') {
+         if(echiquier_[but.x][but.y]->afficher() == 'R' || echiquier_[but.x][but.y]->afficher() == 'T') {
+            if(echiquier_[dep.x][dep.y]->moveTo(dep,but,this)) {
+               echiquier_[but.x][but.y]->setPosInitiale(false);
+               swap(echiquier_[dep.x][dep.y],echiquier_[but.x][but.y]);
+               mvmtEffectue = true;
+            }
+         }
+      }
    }
 
    return mvmtEffectue;

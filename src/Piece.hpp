@@ -19,6 +19,7 @@
 #include "MouvementDiagonale.hpp"
 #include "MouvementCavalier.hpp"
 #include "MouvementPion.hpp"
+#include "MouvementRock.hpp"
 
 class Piece
 {
@@ -51,6 +52,10 @@ class Piece
 		**/
 		char getCouleur();
 
+		bool pieceEnPosInit();
+
+		void setPosInitiale(bool posInit);
+
 		/**
  		 * @brief
  		 *
@@ -63,8 +68,8 @@ class Piece
 
 
 	protected:
-		int identifiant_;								// distinction des pieces
-		bool statut_;									// en jeu ou non
+		int identifiant_;						// distinction des pieces
+		bool posInitiale_;					// est sur position initiale (pours coups spéciaux)
 		char c_;									// couleur
 		std::vector<Mouvement*> mvmt_;
 

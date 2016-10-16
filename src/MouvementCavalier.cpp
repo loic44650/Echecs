@@ -7,7 +7,7 @@ MouvementCavalier::MouvementCavalier(int d) : Mouvement(d) {}
 MouvementCavalier::~MouvementCavalier() {}
 
 
-bool MouvementCavalier::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
+bool MouvementCavalier::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
    bool isOk = false;
 
    if( !(e->estOccupee(but.x,but.y)) ) {
@@ -24,6 +24,6 @@ bool MouvementCavalier::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    return isOk;
 }
 
-bool MouvementCavalier::isAttackOk(Coord &dep, Coord &but, Echiquier *e) {
-   return isMoveOk(dep,but,e);
+bool MouvementCavalier::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
+   return isMoveOk(dep,but,e,posInit);
 }

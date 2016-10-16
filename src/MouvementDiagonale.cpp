@@ -7,7 +7,7 @@ MouvementDiagonale::MouvementDiagonale(int d) : Mouvement(d) {}
 MouvementDiagonale::~MouvementDiagonale() {}
 
 
-bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
+bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
    bool isOk = true;
    int x, y;
 
@@ -16,7 +16,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    if(but.x < dep.x && but.y < dep.y) {
       x = dep.x-1;
       y = dep.y-1;
-      while( x >= but.x && (dep.x-x) <= distance_) {
+      while( x > but.x && (dep.x-x) <= distance_) {
          if(e->estOccupee(x,y)) isOk = false;
          --x;
          --y;
@@ -25,7 +25,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    else if(but.x < dep.x && but.y > dep.y) {
       x = dep.x-1;
       y = dep.y+1;
-      while( x <= but.x && (dep.x-x) <= distance_) {
+      while( x < but.x && (dep.x-x) <= distance_) {
          if(e->estOccupee(x,y)) isOk = false;
          --x;
          ++y;
@@ -34,7 +34,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    else if(but.x > dep.x && but.y < dep.y) {
       x = dep.x+1;
       y = dep.y-1;
-      while( x >= but.x && (x-dep.x) <= distance_) {
+      while( x > but.x && (x-dep.x) <= distance_) {
          if(e->estOccupee(x,y)) isOk = false;
          ++x;
          --y;
@@ -43,7 +43,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    else if(but.x > dep.x && but.y > dep.y) {
       x = dep.x+1;
       y = dep.y+1;
-      while( x >= but.x && (x-dep.x) <= distance_) {
+      while( x > but.x && (x-dep.x) <= distance_) {
          if(e->estOccupee(x,y)) isOk = false;
          ++x;
          ++y;
@@ -53,6 +53,6 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    return isOk;
 }
 
-bool MouvementDiagonale::isAttackOk(Coord &dep, Coord &but, Echiquier *e) {
-   return isMoveOk(dep,but,e);
+bool MouvementDiagonale::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
+   return isMoveOk(dep,but,e,posInit);
 }

@@ -31,7 +31,6 @@ int main()
       but.getCoord(strBut);
       e.move(dep,but);
       e.afficher();
-      e.count_ptr();
    }
 
 

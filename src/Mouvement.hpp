@@ -47,9 +47,9 @@ class Mouvement
  		 *
  		 * @complexité
 		**/
-		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e) = 0;
+		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
 
-		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e) = 0;
+		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
 
    protected:
 

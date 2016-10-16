@@ -46,9 +46,9 @@ class MouvementHorizontal : public Mouvement
  		 *
  		 * @complexité
 		**/
-		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e);
+		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e);
+		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
 };
 

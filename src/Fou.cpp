@@ -18,7 +18,7 @@ bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) {
    int i = 0;
 
    while(i < mvmt_.size() && !mvmtOk) {
-      mvmtOk = mvmt_[i]->isMoveOk(dep, but, e);
+      mvmtOk = mvmt_[i]->isMoveOk(dep, but, e, posInitiale_);
       ++i;
    }
    return mvmtOk;

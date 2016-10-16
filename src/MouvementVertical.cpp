@@ -7,7 +7,7 @@ MouvementVertical::MouvementVertical(int d) : Mouvement(d) {}
 MouvementVertical::~MouvementVertical() {}
 
 
-bool MouvementVertical::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
+bool MouvementVertical::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
    bool isOk = true;
    int x;
 
@@ -33,6 +33,6 @@ bool MouvementVertical::isMoveOk(Coord &dep, Coord &but, Echiquier *e){
    return isOk;
 }
 
-bool MouvementVertical::isAttackOk(Coord &dep, Coord &but, Echiquier *e) {
-   return isMoveOk(dep,but,e);
+bool MouvementVertical::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
+   return isMoveOk(dep,but,e,posInit);
 }

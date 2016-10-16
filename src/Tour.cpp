@@ -5,6 +5,7 @@
 Tour::Tour(int id, bool etat, char c) : Piece(id,etat,c) {
    mvmt_.push_back(new MouvementHorizontal(8));
    mvmt_.push_back(new MouvementVertical(8));
+   mvmt_.push_back(new MouvementRock(4));
 }
 
 Tour::~Tour() {}
@@ -18,10 +19,10 @@ bool Tour::moveTo(Coord dep, Coord but, Echiquier *e) {
    int i = 0;
 
    while(i < mvmt_.size() && !mvmtOk) {
-      mvmtOk = mvmt_[i]->isMoveOk(dep, but, e);
+      mvmtOk = mvmt_[i]->isMoveOk(dep, but, e, posInitiale_);
       ++i;
    }
-
+   if(mvmtOk) posInitiale_ = false;
    return mvmtOk;
 }
 
