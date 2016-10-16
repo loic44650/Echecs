@@ -140,3 +140,27 @@ bool Echiquier::move(Coord dep, Coord but) {
 
    return mvmtEffectue;
 }
+
+bool Echiquier::estEchec(Coord roi) {
+   bool echec = false;
+   char coulRoi = echiquier_[roi.x][roi.y]->getCouleur();
+   Coord dep;
+
+   for(int i = 0; i < 8; ++i) {
+      for(int j = 0; j < 8; ++j) {
+         if(echiquier_[i][j] && echiquier_[i][j]->getCouleur() != coulRoi) {
+            dep.x = i; dep.y = j;
+            if(echiquier_[i][j]->attaquer(dep,roi,this)) echec = true;
+         }
+      }
+   }
+
+   return echec;
+}
+
+bool Echiquier::estMat(Coord roi) {
+   // estMat si -> ne peut changer de case sans etre echec
+   //           -> aucune pièce amie ne peut manger la pièce ennemie
+   //           -> aucune pièce amie ne peut se mettre devant son roi
+   return false;
+}

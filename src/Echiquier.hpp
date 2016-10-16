@@ -39,6 +39,8 @@ class Echiquier
 		void afficher();
 		void count_ptr();
 		bool move(Coord dep, Coord but);
+		bool estEchec(Coord roi);
+		bool estMat(Coord roi);
 
 	private:
 		std::shared_ptr<Piece> echiquier_[8][8];
