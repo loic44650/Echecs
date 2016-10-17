@@ -8,22 +8,32 @@ MouvementRock::~MouvementRock() {}
 
 
 bool MouvementRock::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
-   bool isOk = true;
+   auto i = -1;
+   Coord coordRoi = e->getType(dep) == 'R' ? dep : but;
+   Coord coordTour = e->getType(dep) == 'T' ? dep : but;
 
-   if( !posInit || !(e->pieceEnPosInit(but.x,but.y)) || dep.x != but.x )
-      isOk = false;
-   else {
-      if(dep.y < but.y) {
-         for(auto i = dep.y+1; i < but.y; ++i)
-            if(e->estOccupee(dep.x,i)) isOk = false;
+   if( (e->getType(but) == 'R' || e->getType(but) == 'T') && posInit && e->pieceEnPosInit(but.x,but.y) ) {
+
+      if(coordRoi.y < coordTour.y) {
+         std::cout << "if\n ";
+         i = coordRoi.y+1;
+         auto j = i;
+         while((i < coordTour.y && !e->estOccupee(coordRoi.x,i) || (j<=coordRoi.y+2 && e->estEchec(Coord(coordRoi.x,j))))) {
+            std::cout << "i: " << i << "\n";
+            ++i; ++j;
+         }
       }
       else {
-         for(auto i = dep.y-1; i > but.y; --i)
-            if(e->estOccupee(dep.x,i)) isOk = false;
+         i = coordRoi.y-1;
+         auto j = i;
+         while((i > coordTour.y && !e->estOccupee(coordRoi.x,i) || (j>=coordRoi.y-2 && e->estEchec(Coord(coordRoi.x,j))))) {
+            --i; --j;
+            std::cout << "i: " << i << "\n";
+         }
       }
    }
-
-   return isOk;
+   std::cout << "return i=" << i << "\n";
+   return (i == coordTour.y);
 }
 
 bool MouvementRock::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
