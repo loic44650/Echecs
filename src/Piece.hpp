@@ -65,6 +65,7 @@ class Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e) = 0;
 
+		virtual bool roque(Coord dep, Coord but, Echiquier *e); 
 
 
 	protected:

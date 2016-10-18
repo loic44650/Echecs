@@ -6,7 +6,7 @@ Roi::Roi(int id, bool etat, char c) : Piece(id,etat,c), echec_(false), echecEtMa
    mvmt_.push_back(new MouvementDiagonale(1));
    mvmt_.push_back(new MouvementVertical(1));
    mvmt_.push_back(new MouvementHorizontal(1));
-   mvmt_.push_back(new MouvementRock(4));
+   roque_ = std::unique_ptr<Mouvement>(new MouvementRock(5));
 }
 
 Roi::~Roi() {}
@@ -20,13 +20,18 @@ bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) {
    int i = 0;
 
    while(i < mvmt_.size() && !mvmtOk) {
+      std::cout << "Im Roi::moveTo\n";
       mvmtOk = mvmt_[i]->isMoveOk(dep, but, e, posInitiale_);
       ++i;
    }
-   if(mvmtOk) posInitiale_ = false;
+   
    return mvmtOk;
 }
 
 bool Roi::attaquer(Coord dep, Coord but, Echiquier *e) {
    return moveTo(dep,but,e);
+}
+
+bool Roi::roque(Coord dep, Coord but, Echiquier *e) {
+   return roque_->isMoveOk(dep,but,e,posInitiale_);
 }

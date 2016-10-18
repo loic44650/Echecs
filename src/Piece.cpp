@@ -10,4 +10,6 @@ bool Piece::pieceEnPosInit() { return posInitiale_; }
 
 void Piece::setPosInitiale(bool posInit) { posInitiale_ = posInit; }
 
+bool Piece::roque(Coord dep, Coord but, Echiquier *e) { return false; } 
+
 //char Piece::afficher() {}

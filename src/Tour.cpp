@@ -22,7 +22,7 @@ bool Tour::moveTo(Coord dep, Coord but, Echiquier *e) {
       mvmtOk = mvmt_[i]->isMoveOk(dep, but, e, posInitiale_);
       ++i;
    }
-   if(mvmtOk) posInitiale_ = false;
+   
    return mvmtOk;
 }
 

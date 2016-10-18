@@ -38,13 +38,12 @@ class Echiquier
 		bool pieceEnPosInit(int x, int y);
 		char getType(Coord c);
 		void afficher();
-		void count_ptr();
 		bool move(Coord dep, Coord but);
 		bool estEchec(Coord roi);
 		bool estMat(Coord roi);
 
 	private:
-		std::shared_ptr<Piece> echiquier_[8][8];
+		std::unique_ptr<Piece> echiquier_[8][8];
 
 };
 

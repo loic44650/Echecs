@@ -49,9 +49,12 @@ class Roi : public Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
+		bool roque(Coord dep, Coord but, Echiquier *e);
+
 	private:
 		bool echec_;
 		bool echecEtMat_;
+		std::unique_ptr<Mouvement> roque_;
 };
 
 #endif
