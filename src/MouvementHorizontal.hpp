@@ -9,11 +9,6 @@
 #ifndef MouvementHorizontal_HPP
 #define MouvementHorizontal_HPP
 
-/**
- * @brief
- *
-**/
-
 #include "Mouvement.hpp"
 
 

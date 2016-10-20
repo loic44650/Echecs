@@ -9,10 +9,6 @@
 #ifndef Mouvement_HPP
 #define Mouvement_HPP
 
-/**
- * @brief
- *
-**/
 
 #include <vector>
 #include "utils.hpp" // contient struct Coord

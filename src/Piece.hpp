@@ -72,7 +72,7 @@ class Piece
 
 	protected:
 		bool posInitiale_;					// est sur position initiale (pours coups spéciaux)
-		char c_;									// couleur
+		char c_;							// couleur
 		std::vector<Mouvement*> mvmt_;
 
 };

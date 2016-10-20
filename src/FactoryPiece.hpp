@@ -5,14 +5,16 @@
  * @brief Fichier header définissant une class FactoryPiece gérant les différentes FactoryPieces de l'échiquier
 **/
 
-
-/**
- * @brief
- *
-**/
-
 #ifndef FactoryPiece_HPP
 #define FactoryPiece_HPP
+
+#include "Piece.hpp"
+#include "Roi.hpp"
+#include "Reine.hpp"
+#include "Fou.hpp"
+#include "Cavalier.hpp"
+#include "Tour.hpp"
+#include "Pion.hpp"
 
 
 class FactoryPiece
@@ -29,10 +31,15 @@ class FactoryPiece
  		 * @brief
  		 *
  		 * @complexité
+		**/		
+		creerPiece(string piece, char dir);
+
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
 		**/
 		~FactoryPiece();
-
-
 
 };
 

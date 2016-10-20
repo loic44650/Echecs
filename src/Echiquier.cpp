@@ -1,25 +1,40 @@
 #include "Echiquier.hpp"
-#include "Piece.hpp"
-#include "Pion.hpp"
-#include "Tour.hpp"
-#include "Fou.hpp"
-#include "Roi.hpp"
-#include "Reine.hpp"
-#include "Cavalier.hpp"
 
-Echiquier::Echiquier() {
+Echiquier::Echiquier(std::string nomFichier) 
+{   
+   std::ifstream fichier(nomFichier, ios::in);
+
+   if (fichier)
+   {
+      
+      std::string ligne;
+      
+      int x, y;
+      std::string nomPiece;
+      char dir;
+
+      while (getline(fichier, ligne))
+      {
+         fichier >> x >> y >> nomPiece >> dir;
+         echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
+;
+      }
+   }
+   else std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+
+   /*
    for(auto i = 0; i < 8; ++i) {
-      //echiquier_[1][i] = std::unique_ptr<Piece>(new Pion(true, 'N', 'S'));
-      //echiquier_[6][i] = std::unique_ptr<Piece>(new Pion(true, 'B', 'N'));
+      echiquier_[1][i] = std::unique_ptr<Piece>(new Pion(true, 'N', 'S'));
+      echiquier_[6][i] = std::unique_ptr<Piece>(new Pion(true, 'B', 'N'));
    }
 
    echiquier_[0][0] = std::unique_ptr<Piece>(new Tour(true, 'N'));
-   //echiquier_[0][1] = std::unique_ptr<Piece>(new Cavalier(true, 'N'));
-   //echiquier_[0][2] = std::unique_ptr<Piece>(new Fou(true, 'N'));
-   //echiquier_[0][3] = std::unique_ptr<Piece>(new Reine(true, 'N'));
+   echiquier_[0][1] = std::unique_ptr<Piece>(new Cavalier(true, 'N'));
+   echiquier_[0][2] = std::unique_ptr<Piece>(new Fou(true, 'N'));
+   echiquier_[0][3] = std::unique_ptr<Piece>(new Reine(true, 'N'));
    echiquier_[0][4] = std::unique_ptr<Piece>(new Roi(true, 'N'));
-   //echiquier_[0][5] = std::unique_ptr<Piece>(new Fou(true, 'N'));
-   //echiquier_[0][6] = std::unique_ptr<Piece>(new Cavalier(true, 'N'));
+   echiquier_[0][5] = std::unique_ptr<Piece>(new Fou(true, 'N'));
+   echiquier_[0][6] = std::unique_ptr<Piece>(new Cavalier(true, 'N'));
    echiquier_[0][7] = std::unique_ptr<Piece>(new Tour(true, 'N'));
 
    echiquier_[7][0] = std::unique_ptr<Piece>(new Tour(true, 'B'));
@@ -30,6 +45,7 @@ Echiquier::Echiquier() {
    echiquier_[7][5] = std::unique_ptr<Piece>(new Cavalier(true, 'B'));
    echiquier_[7][6] = std::unique_ptr<Piece>(new Fou(true, 'B'));
    echiquier_[7][7] = std::unique_ptr<Piece>(new Tour(true, 'B'));
+   */
 }
 
 Echiquier::~Echiquier() {
