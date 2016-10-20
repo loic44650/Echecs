@@ -31,8 +31,6 @@ int main()
       but.getCoord(strBut);
       e.move(dep,but);
       e.afficher();
-      dep.x = 0; dep.y = 4;
-      if(e.estEchec(dep)) cout << "Le roi est en echec\n";
    }
 
 

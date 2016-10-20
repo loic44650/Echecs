@@ -2,7 +2,7 @@
 #include "Reine.hpp"
 
 
-Reine::Reine(int id, bool etat, char c) : Piece(id,etat,c) {
+Reine::Reine( bool etat, char c) : Piece(etat,c) {
    mvmt_.push_back(new MouvementDiagonale(8));
    mvmt_.push_back(new MouvementVertical(8));
    mvmt_.push_back(new MouvementHorizontal(8));

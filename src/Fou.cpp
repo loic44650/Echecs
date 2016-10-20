@@ -2,7 +2,7 @@
 #include "Fou.hpp"
 
 
-Fou::Fou(int id, bool etat, char c) : Piece(id,etat,c) {
+Fou::Fou( bool etat, char c) : Piece(etat,c) {
    mvmt_.push_back(new MouvementDiagonale(8));
 }
 

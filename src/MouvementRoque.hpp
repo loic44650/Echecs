@@ -1,13 +1,13 @@
 /**
- * @file MouvementRock.hpp
+ * @file MouvementRoque.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 07 oct. 2016
- * @brief Fichier header définissant la classe MouvementRock
+ * @brief Fichier header définissant la classe MouvementRoque
 **/
 
 
-#ifndef MouvementRock_HPP
-#define MouvementRock_HPP
+#ifndef MouvementRoque_HPP
+#define MouvementRoque_HPP
 
 /**
  * @brief
@@ -17,7 +17,7 @@
 #include "Mouvement.hpp"
 
 
-class MouvementRock : public Mouvement
+class MouvementRoque : public Mouvement
 {
 	public:
 		/**
@@ -25,14 +25,14 @@ class MouvementRock : public Mouvement
  		 *
  		 * @complexité
 		**/
-		MouvementRock(int d);
+		MouvementRoque(int d);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		~MouvementRock();
+		~MouvementRoque();
 
 		/**
  		 * @brief

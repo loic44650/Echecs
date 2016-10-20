@@ -2,11 +2,11 @@
 #include "Roi.hpp"
 
 
-Roi::Roi(int id, bool etat, char c) : Piece(id,etat,c), echec_(false), echecEtMat_(false) {
+Roi::Roi(bool etat, char c) : Piece(etat,c) {
    mvmt_.push_back(new MouvementDiagonale(1));
    mvmt_.push_back(new MouvementVertical(1));
    mvmt_.push_back(new MouvementHorizontal(1));
-   mvmt_.push_back(new MouvementRock(4));
+   roque_ = std::unique_ptr<Mouvement>(new MouvementRoque(4));
 }
 
 Roi::~Roi() {}
@@ -29,4 +29,8 @@ bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) {
 
 bool Roi::attaquer(Coord dep, Coord but, Echiquier *e) {
    return moveTo(dep,but,e);
+}
+
+bool Roi::roquer(Coord dep, Coord but, Echiquier *e) {
+   return roque_->isMoveOk(dep,but,e,posInitiale_);
 }

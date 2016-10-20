@@ -23,7 +23,7 @@ class Cavalier : public Piece
  		 *
  		 * @complexité
 		**/
-		Cavalier(int id, bool etat, char c);
+		Cavalier(bool etat, char c);
 
 		/**
  		 * @brief

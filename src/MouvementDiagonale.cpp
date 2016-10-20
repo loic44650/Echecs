@@ -17,7 +17,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool pos
       x = dep.x-1;
       y = dep.y-1;
       while( x > but.x && (dep.x-x) <= distance_) {
-         if(e->estOccupee(x,y)) isOk = false;
+         if(e->estOccupee(Coord(x,y))) isOk = false;
          --x;
          --y;
       }
@@ -26,7 +26,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool pos
       x = dep.x-1;
       y = dep.y+1;
       while( x < but.x && (dep.x-x) <= distance_) {
-         if(e->estOccupee(x,y)) isOk = false;
+         if(e->estOccupee(Coord(x,y))) isOk = false;
          --x;
          ++y;
       }
@@ -35,7 +35,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool pos
       x = dep.x+1;
       y = dep.y-1;
       while( x > but.x && (x-dep.x) <= distance_) {
-         if(e->estOccupee(x,y)) isOk = false;
+         if(e->estOccupee(Coord(x,y))) isOk = false;
          ++x;
          --y;
       }
@@ -44,7 +44,7 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool pos
       x = dep.x+1;
       y = dep.y+1;
       while( x > but.x && (x-dep.x) <= distance_) {
-         if(e->estOccupee(x,y)) isOk = false;
+         if(e->estOccupee(Coord(x,y))) isOk = false;
          ++x;
          ++y;
       }

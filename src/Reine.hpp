@@ -24,7 +24,7 @@ class Reine : public Piece
  		 *
  		 * @complexité
 		**/
-		Reine(int id, bool etat, char c);
+		Reine(bool etat, char c);
 
 		/**
  		 * @brief

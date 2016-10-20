@@ -23,7 +23,7 @@ class Fou : public Piece
  		 *
  		 * @complexité
 		**/
-		Fou(int id, bool etat, char c);
+		Fou(bool etat, char c);
 
 		/**
  		 * @brief

@@ -10,7 +10,7 @@ MouvementCavalier::~MouvementCavalier() {}
 bool MouvementCavalier::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
    bool isOk = false;
 
-   if( !(e->estOccupee(but.x,but.y)) ) {
+   if( !(e->estOccupee(but)) ) {
       if(dep.x+2 == but.x && dep.y+1 == but.y) isOk = true;
       else if(dep.x+2 == but.x && dep.y-1 == but.y) isOk = true;
       else if(dep.x-2 == but.x && dep.y+1 == but.y) isOk = true;

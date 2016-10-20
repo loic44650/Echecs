@@ -23,7 +23,7 @@ class Roi : public Piece
  		 *
  		 * @complexité
 		**/
-		Roi(int id, bool etat, char c);
+		Roi(bool etat, char c);
 
 		/**
  		 * @brief
@@ -49,9 +49,10 @@ class Roi : public Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
+		bool roquer(Coord dep, Coord but, Echiquier *e);
+
 	private:
-		bool echec_;
-		bool echecEtMat_;
+		std::unique_ptr<Mouvement> roque_;
 };
 
 #endif

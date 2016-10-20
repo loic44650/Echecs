@@ -24,7 +24,7 @@ class Tour : public Piece
  		 *
  		 * @complexité
 		**/
-		Tour(int id, bool etat, char c);
+		Tour(bool etat, char c);
 
 		/**
  		 * @brief
@@ -50,6 +50,12 @@ class Tour : public Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
+		bool roquer(Coord dep, Coord but, Echiquier *e);
+
+
+	private:
+
+		std::unique_ptr<Mouvement> roque_;
 };
 
 #endif

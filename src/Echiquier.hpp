@@ -33,13 +33,14 @@ class Echiquier
 
 		Echiquier();
 		~Echiquier();
-		bool estOccupee(int x, int y);
-		int estOccupee(int x, int y, char c);
+		bool estOccupee(Coord coord);
+		int estOccupee(Coord but, char c);
 		bool pieceEnPosInit(int x, int y);
 		char getType(Coord c);
 		void afficher();
 		void count_ptr();
 		bool move(Coord dep, Coord but);
+		void movePiece(Coord deb, Coord but);
 		bool estEchec(Coord roi);
 		bool estMat(Coord roi);
 
