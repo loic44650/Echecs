@@ -26,5 +26,12 @@ bool Reine::moveTo(Coord dep, Coord but, Echiquier *e) {
 }
 
 bool Reine::attaquer(Coord dep, Coord but, Echiquier *e) {
-   return moveTo(dep,but,e);
+   bool mvmtOk = false;
+   int i = 0;
+
+   while(i < mvmt_.size() && !mvmtOk) {
+      mvmtOk = mvmt_[i]->isAttackOk(dep, but, e, posInitiale_);
+      ++i;
+   }
+   return mvmtOk;
 }

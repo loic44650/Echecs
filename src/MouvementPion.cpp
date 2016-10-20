@@ -6,7 +6,7 @@ MouvementPion::MouvementPion(int d, char dir) : Mouvement(d), direction_(dir) {}
 MouvementPion::~MouvementPion() {}
 
 
-bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
+bool MouvementPion::peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
    bool isOk = false;
 
    if(dep.y != but.y || dep.x == but.x) return false;
@@ -20,11 +20,27 @@ bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit)
       else if(direction_ == 'N' && but.x == (dep.x-1) ) isOk = true;
       else isOk = false;
    }
+
    return isOk;
 }
 
+bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
+
+   if(peutAllerEn(dep,but,e,posInit)) {
+      e->movePiece(dep,but);
+      return true;
+   }
+
+   return false;
+}
+
 bool MouvementPion::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
-   if(direction_ == 'S' && but.x == (dep.x+1) && abs(but.y-dep.y) == 1) return true;
-   else if(direction_ == 'N' && but.x == (dep.x-1) && abs(but.y-dep.y) == 1) return true;
-   else return false;
+   bool peutAttaquer = false;
+
+   if(direction_ == 'S' && but.x == (dep.x+1) && abs(but.y-dep.y) == 1) peutAttaquer = true;
+   else if(direction_ == 'N' && but.x == (dep.x-1) && abs(but.y-dep.y) == 1) peutAttaquer = true;
+
+   if(peutAttaquer) e->mangerPiece(dep,but);
+
+   return peutAttaquer;
 }

@@ -50,6 +50,8 @@ class MouvementDiagonale : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
+		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
+
 };
 
 #endif

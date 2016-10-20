@@ -39,6 +39,7 @@ struct Coord {
 	}
 
    inline bool operator==(const Coord b) { return ( this->x == b.x && this->y == b.y ); }
+   bool operator=(const Coord b) { this->x = b.x; this->y = b.y; }
 };
 
 

@@ -50,6 +50,8 @@ class MouvementRoque : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
+		void setPositionsFinales(Coord &coordRoi, Coord &coordTour); 
+
 };
 
 #endif
