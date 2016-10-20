@@ -28,8 +28,16 @@ bool Roi::moveTo(Coord dep, Coord but, Echiquier *e) {
 }
 
 bool Roi::attaquer(Coord dep, Coord but, Echiquier *e) {
-   return moveTo(dep,but,e);
+   bool mvmtOk = false;
+   int i = 0;
+
+   while(i < mvmt_.size() && !mvmtOk) {
+      mvmtOk = mvmt_[i]->isAttackOk(dep, but, e, posInitiale_);
+      ++i;
+   }
+   return mvmtOk;
 }
+
 
 bool Roi::roquer(Coord dep, Coord but, Echiquier *e) {
    return roque_->isMoveOk(dep,but,e,posInitiale_);

@@ -33,5 +33,12 @@ bool Tour::attaquer(Coord dep, Coord but, Echiquier *e) {
 
 
 bool Tour::roquer(Coord dep, Coord but, Echiquier *e) {
-   return roque_->isMoveOk(dep,but,e,posInitiale_);
+   bool mvmtOk = false;
+   int i = 0;
+
+   while(i < mvmt_.size() && !mvmtOk) {
+      mvmtOk = mvmt_[i]->isAttackOk(dep, but, e, posInitiale_);
+      ++i;
+   }
+   return mvmtOk;
 }

@@ -52,9 +52,9 @@ bool Echiquier::estOccupee(Coord coord) {
 // Renvoie -1 si case occupée par pièce de meme couleur
 // Renvoie 0 si case Vide
 // Renvoie 1 si case occupée par pièce ennemie
-int Echiquier::estOccupee(Coord but, char colDep) {
+int Echiquier::getTypeMouvement(Coord dep,Coord but) {
    if(echiquier_[but.x][but.y]) {
-      if(echiquier_[but.x][but.y]->getCouleur() == colDep) return -1;
+      if(echiquier_[but.x][but.y]->getCouleur() == echiquier_[dep.x][dep.y]->getCouleur()) return -1;
       else  return 1;
    }
    else  return 0;
@@ -99,19 +99,22 @@ void Echiquier::afficher() {
 }
 
 
-void Echiquier::movePiece(Coord deb, Coord but) {
+void Echiquier::movePiece(Coord dep, Coord but) {
+   swap(echiquier_[dep.x][dep.y],echiquier_[but.x][but.y]);
+}
+
+void Echiquier::mangerPiece(Coord dep, Coord but) {
+   echiquier_[but.x][but.y] = nullptr;
    swap(echiquier_[dep.x][dep.y],echiquier_[but.x][but.y]);
 }
 
 bool Echiquier::move(Coord dep, Coord but) {
    bool mvmtEffectue = false;
-   int typeMvmt = estOccupee(but, echiquier_[dep.x][dep.y]->getCouleur());
+   int typeMvmt = getTypeMouvement(dep,but);
    std::cout << "Typemvmt : " << typeMvmt << std::endl;
    // Case but vide
    if(typeMvmt == 0) {
       if(echiquier_[dep.x][dep.y]->moveTo(dep, but, this)) {
-         echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
-         echiquier_[dep.x][dep.y] = nullptr;
          mvmtEffectue = true;
          std::cout << "\npiece->moveTo\n";
       }
@@ -119,8 +122,6 @@ bool Echiquier::move(Coord dep, Coord but) {
    // Case but occupée par pièce ennemie
    else if(typeMvmt == 1) {
       if(echiquier_[dep.x][dep.y]->attaquer(dep,but,this)) {
-         echiquier_[but.x][but.y] = echiquier_[dep.x][dep.y];
-         echiquier_[dep.x][dep.y] = nullptr;
          std::cout << "\npiece->Attaquer\n";
          mvmtEffectue = true;
       }
@@ -128,7 +129,6 @@ bool Echiquier::move(Coord dep, Coord but) {
    // Case but occupée par pièce amie : ROCK seul mvmt possible
    else {
       if(echiquier_[dep.x][dep.y]->roquer(dep,but,this)) {
-         swap(echiquier_[dep.x][dep.y],echiquier_[but.x][but.y]);
          mvmtEffectue = true;
       }
    }

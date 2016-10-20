@@ -6,11 +6,11 @@ MouvementDiagonale::MouvementDiagonale(int d) : Mouvement(d) {}
 
 MouvementDiagonale::~MouvementDiagonale() {}
 
-
-bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
+bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e) {
    bool isOk = true;
    int x, y;
 
+   //Si la case d'arrivée et la case de départ ne sont pas sur la meme diagonale
    if(abs(dep.x-but.x) != abs(dep.y-but.y)) return false;
 
    if(but.x < dep.x && but.y < dep.y) {
@@ -53,6 +53,22 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool pos
    return isOk;
 }
 
+bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
+
+   if(peutAllerEn(dep,but,e)) {
+      e->movePiece(dep,but);
+      return true;
+   }
+
+   return false;
+}
+
 bool MouvementDiagonale::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
-   return isMoveOk(dep,but,e,posInit);
+
+   if(peutAllerEn(dep,but,e)) {
+      e->mangerPiece(dep,but);
+      return true;
+   }
+
+   return false;
 }

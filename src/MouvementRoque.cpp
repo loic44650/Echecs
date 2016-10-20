@@ -6,6 +6,20 @@ MouvementRoque::MouvementRoque(int d) : Mouvement(d) {}
 
 MouvementRoque::~MouvementRoque() {}
 
+void MouvementRoque::setPositionsFinales(Coord &coordRoi, Coord &coordTour) {
+   if(coordRoi.y < coordTour.y) {
+      coordRoi.y += 2;
+
+      if((coordTour.y - coordRoi.y) == 3) coordTour.y -= 2;
+      else coordTour.y -= 3;
+   }
+   else {
+      coordRoi.y -= 2;
+
+      if((coordRoi.y - coordTour.y) == 3) coordTour.y += 2;
+      else coordTour.y += 3;
+   }
+}
 
 bool MouvementRoque::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
    auto i = -1;
@@ -35,7 +49,17 @@ bool MouvementRoque::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit
          }
       }
    }
-   return (i == coordTour.y);
+
+   Coord coordRoiFinale = coordRoi, coordTourFinale = coordTour;
+
+   if(i == coordTour.y) {
+      setPositionsFinales(coordRoiFinale, coordTourFinale);
+      e->movePiece(coordRoi,coordRoiFinale);
+      e->movePiece(coordTour,coordTourFinale);
+      return true;
+   }
+
+   return false;
 }
 
 
