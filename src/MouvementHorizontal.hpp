@@ -6,16 +6,10 @@
 **/
 
 
-#ifndef MouvementHorizontal_HPP
-#define MouvementHorizontal_HPP
-
-/**
- * @brief
- *
-**/
+#pragma once
 
 #include "Mouvement.hpp"
-
+class Echiquier;
 
 class MouvementHorizontal : public Mouvement
 {
@@ -50,6 +44,6 @@ class MouvementHorizontal : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-};
+		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
 
-#endif
+};

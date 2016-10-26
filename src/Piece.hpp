@@ -11,15 +11,15 @@
  *
 **/
 
-#ifndef PIECE_HPP
-#define PIECE_HPP
+#pragma once
 
+#include "Mouvement.hpp"
 #include "MouvementHorizontal.hpp"
 #include "MouvementVertical.hpp"
 #include "MouvementDiagonale.hpp"
 #include "MouvementCavalier.hpp"
 #include "MouvementPion.hpp"
-#include "MouvementRock.hpp"
+#include "MouvementRoque.hpp"
 
 class Piece
 {
@@ -29,7 +29,7 @@ class Piece
  		 *
  		 * @complexité
 		**/
-		Piece(int, bool, char);
+		Piece(bool, char);
 
 		/**
  		 * @brief
@@ -65,15 +65,13 @@ class Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e) = 0;
 
-		virtual bool roque(Coord dep, Coord but, Echiquier *e); 
+		virtual bool roquer(Coord dep, Coord but, Echiquier *e);
+
 
 
 	protected:
-		int identifiant_;						// distinction des pieces
 		bool posInitiale_;					// est sur position initiale (pours coups spéciaux)
-		char c_;									// couleur
+		char c_;							// couleur
 		std::vector<Mouvement*> mvmt_;
 
 };
-
-#endif

@@ -5,8 +5,8 @@
  * @brief Fichier header définissant une class
 **/
 
-#ifndef ROI_HPP
-#define ROI_HPP
+
+#pragma once
 
 /**
  * @brief
@@ -23,7 +23,7 @@ class Roi : public Piece
  		 *
  		 * @complexité
 		**/
-		Roi(int id, bool etat, char c);
+		Roi(bool etat, char c);
 
 		/**
  		 * @brief
@@ -49,12 +49,8 @@ class Roi : public Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
-		bool roque(Coord dep, Coord but, Echiquier *e);
+		bool roquer(Coord dep, Coord but, Echiquier *e);
 
 	private:
-		bool echec_;
-		bool echecEtMat_;
 		std::unique_ptr<Mouvement> roque_;
 };
-
-#endif

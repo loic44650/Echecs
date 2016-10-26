@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef MouvementVertical_HPP
-#define MouvementVertical_HPP
+#pragma once
 
 /**
  * @brief
@@ -50,6 +49,6 @@ class MouvementVertical : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-};
+		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
 
-#endif
+};

@@ -11,8 +11,7 @@
  *
 **/
 
-#ifndef WINDOW_HPP
-#define WINDOW_HPP
+#pragma once
 
 #include <cstdlib>
 #include <SFML/Graphics.hpp>
@@ -53,5 +52,3 @@ class Window
     sf::Texture roi;
 
 };
-
-#endif

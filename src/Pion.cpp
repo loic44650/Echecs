@@ -2,7 +2,7 @@
 #include "Pion.hpp"
 
 
-Pion::Pion(int id, bool etat, char c, char dir) : Piece(id,etat,c) {
+Pion::Pion(bool etat, char c, char dir) : Piece(etat,c) {
    mvmt_.push_back(new MouvementPion(1,dir));
 }
 

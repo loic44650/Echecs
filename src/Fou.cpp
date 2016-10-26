@@ -1,8 +1,7 @@
-
 #include "Fou.hpp"
 
 
-Fou::Fou(int id, bool etat, char c) : Piece(id,etat,c) {
+Fou::Fou( bool etat, char c) : Piece(etat,c) {
    mvmt_.push_back(new MouvementDiagonale(8));
 }
 
@@ -25,5 +24,12 @@ bool Fou::moveTo(Coord dep, Coord but, Echiquier *e) {
 }
 
 bool Fou::attaquer(Coord dep, Coord but, Echiquier *e) {
-   return moveTo(dep,but,e);
+   bool mvmtOk = false;
+   int i = 0;
+
+   while(i < mvmt_.size() && !mvmtOk) {
+      mvmtOk = mvmt_[i]->isAttackOk(dep, but, e, posInitiale_);
+      ++i;
+   }
+   return mvmtOk;
 }

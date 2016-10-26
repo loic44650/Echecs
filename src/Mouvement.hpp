@@ -6,13 +6,8 @@
 **/
 
 
-#ifndef Mouvement_HPP
-#define Mouvement_HPP
+#pragma once
 
-/**
- * @brief
- *
-**/
 
 #include <vector>
 #include "utils.hpp" // contient struct Coord
@@ -56,5 +51,3 @@ class Mouvement
       int distance_;
 
 };
-
-#endif

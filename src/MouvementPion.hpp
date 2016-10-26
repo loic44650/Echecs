@@ -7,8 +7,7 @@
 **/
 
 
-#ifndef MouvementPion_HPP
-#define MouvementPion_HPP
+#pragma once
 
 /**
  * @brief
@@ -51,9 +50,9 @@ class MouvementPion : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
+		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+
    private:
       char direction_;
 
 };
-
-#endif

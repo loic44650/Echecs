@@ -15,11 +15,12 @@ using namespace std;
 int main()
 {
 
-    Echiquier e;
+    Echiquier e("echiquierDeBase.txt");
     e.afficher();
+
+
     string strDep, strBut;
     Coord dep, but;
-
 
 
    for(int i=0; i < 10; ++i) {
@@ -31,10 +32,8 @@ int main()
       but.getCoord(strBut);
       e.move(dep,but);
       e.afficher();
-      dep.x = 0; dep.y = 4;
-      if(e.estEchec(dep)) cout << "Le roi est en echec\n";
-   }
-
+    }
+    
 
     /*
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
