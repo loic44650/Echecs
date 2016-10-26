@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef MouvementVertical_HPP
-#define MouvementVertical_HPP
+#pragma once
 
 /**
  * @brief
@@ -53,5 +52,3 @@ class MouvementVertical : public Mouvement
 		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
 
 };
-
-#endif

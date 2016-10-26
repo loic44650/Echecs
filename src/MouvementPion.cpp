@@ -36,11 +36,13 @@ bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit)
 
 bool MouvementPion::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
    bool peutAttaquer = false;
+   bool colonneOk = (but.y - dep.y == 1 || dep.y-but.y) ? true : false;
 
-   if(direction_ == 'S' && but.x == (dep.x+1) && abs(but.y-dep.y) == 1) peutAttaquer = true;
-   else if(direction_ == 'N' && but.x == (dep.x-1) && abs(but.y-dep.y) == 1) peutAttaquer = true;
+   if(direction_ == 'S' && but.x == (dep.x+1) && colonneOk) peutAttaquer = true;
+   else if(direction_ == 'N' && but.x == (dep.x-1) && colonneOk) peutAttaquer = true;
 
-   if(peutAttaquer) e->mangerPiece(dep,but);
+   if(peutAttaquer) 
+      e->mangerPiece(dep,but);
 
    return peutAttaquer;
 }

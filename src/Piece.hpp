@@ -11,9 +11,9 @@
  *
 **/
 
-#ifndef PIECE_HPP
-#define PIECE_HPP
+#pragma once
 
+#include "Mouvement.hpp"
 #include "MouvementHorizontal.hpp"
 #include "MouvementVertical.hpp"
 #include "MouvementDiagonale.hpp"
@@ -76,5 +76,3 @@ class Piece
 		std::vector<Mouvement*> mvmt_;
 
 };
-
-#endif

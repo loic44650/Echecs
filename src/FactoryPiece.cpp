@@ -2,34 +2,18 @@
 
 FactoryPiece::FactoryPiece() {}
 
-FactoryPiece::creerPiece(string piece, char dir)
+std::unique_ptr<Piece> FactoryPiece::creerPiece(std::string piece, char dir)
 {
-	switch (piece)
-	{
-		case 'roiN':	std::unique_ptr<Piece>(new Roi(true, 'N'));
-
-		case 'roiB':	std::unique_ptr<Piece>(new Roi(true, 'B'));
-		
-		case 'reineN':	std::unique_ptr<Piece>(new Reine(true, 'N'));
-		
-		case 'reineB':	std::unique_ptr<Piece>(new Reine(true, 'B'));
-		
-		case 'FouN':	std::unique_ptr<Piece>(new Fou(true, 'N'));
-		
-		case 'FouB':	std::unique_ptr<Piece>(new Fou(true, 'B'));
-		
-		case 'cavalierN':	std::unique_ptr<Piece>(new Cavalier(true, 'N'));
-		
-		case 'cavalierB':	std::unique_ptr<Piece>(new Cavalier(true, 'B'));
-		
-		case 'tourN':	std::unique_ptr<Piece>(new Tour(true, 'N'));
-		
-		case 'tourB':	std::unique_ptr<Piece>(new Tour(true, 'B'));   
-		
-		case 'pionN':	if (dir == 'S' || dir == 'N') std::unique_ptr<Piece>(new Pion(true, 'N', dir));
-
-		case 'pionB':	if (dir == 'S' || dir == 'N') std::unique_ptr<Piece>(new Pion(true, 'B', dir));
-	}
+	if(piece == "roiN" ) return std::unique_ptr<Piece>(new Roi(true, 'N'));
+	else if(piece == "roiB") return std::unique_ptr<Piece>(new Roi(true, 'B'));
+	else if(piece == "reineN") return std::unique_ptr<Piece>(new Reine(true, 'N'));
+	else if(piece == "reineB") return std::unique_ptr<Piece>(new Reine(true, 'B'));
+	else if(piece == "fouN") return std::unique_ptr<Piece>(new Fou(true, 'N'));
+	else if(piece == "fouB") return std::unique_ptr<Piece>(new Fou(true, 'B'));
+	else if(piece == "cavalierN") return std::unique_ptr<Piece>(new Cavalier(true, 'N'));
+	else if(piece == "cavalierB") return std::unique_ptr<Piece>(new Cavalier(true, 'B'));
+	else if(piece == "tourN") return std::unique_ptr<Piece>(new Tour(true, 'N'));
+	else if(piece == "tourB") return std::unique_ptr<Piece>(new Tour(true, 'B'));
+	else if(piece == "pionN") return std::unique_ptr<Piece>(new Pion(true, 'N',dir));
+	else if(piece == "pionB") return std::unique_ptr<Piece>(new Pion(true, 'B',dir));
 }
-
-FactoryPiece::~FactoryPiece() {}

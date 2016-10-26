@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef MouvementRoque_HPP
-#define MouvementRoque_HPP
+#pragma once
 
 /**
  * @brief
@@ -50,8 +49,6 @@ class MouvementRoque : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-		void setPositionsFinales(Coord &coordRoi, Coord &coordTour); 
+		void setPositionsFinales(Coord &coordRoi, Coord &coordTour);
 
 };
-
-#endif

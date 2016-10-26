@@ -1,23 +1,25 @@
 #include "Echiquier.hpp"
+#include "FactoryPiece.hpp"
+#include "Piece.hpp"
 
-Echiquier::Echiquier(std::string nomFichier) 
-{   
-   std::ifstream fichier(nomFichier, ios::in);
+Echiquier::Echiquier(const std::string &nomFichier)
+{
+   FactoryPiece fp;
+   std::ifstream fichier(nomFichier, std::ifstream::in);
 
-   if (fichier)
+   if (fichier.is_open())
    {
-      
-      std::string ligne;
-      
       int x, y;
       std::string nomPiece;
       char dir;
+      
+      fichier >> x >> y >> nomPiece >> dir;
+      echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
 
-      while (getline(fichier, ligne))
+      while (fichier.good())
       {
          fichier >> x >> y >> nomPiece >> dir;
          echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
-;
       }
    }
    else std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;

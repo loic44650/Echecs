@@ -11,8 +11,7 @@
  *
 **/
 
-#ifndef PION_HPP
-#define PION_HPP
+#pragma once
 
 #include "Piece.hpp"
 
@@ -51,5 +50,3 @@ class Pion: public Piece
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
 };
-
-#endif

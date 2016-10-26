@@ -5,8 +5,7 @@
  * @brief Fichier header définissant une class
 **/
 
-#ifndef FOU_HPP
-#define FOU_HPP
+#pragma once
 
 /**
  * @brief
@@ -49,5 +48,3 @@ class Fou : public Piece
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
 };
-
-#endif

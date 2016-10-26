@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef Mouvement_HPP
-#define Mouvement_HPP
+#pragma once
 
 
 #include <vector>
@@ -52,5 +51,3 @@ class Mouvement
       int distance_;
 
 };
-
-#endif

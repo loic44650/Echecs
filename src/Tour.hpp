@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef TOUR_HPP
-#define TOUR_HPP
+#pragma once
 
 /**
  * @brief
@@ -57,5 +56,3 @@ class Tour : public Piece
 
 		std::unique_ptr<Mouvement> roque_;
 };
-
-#endif

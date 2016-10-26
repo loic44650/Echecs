@@ -5,8 +5,7 @@
  * @brief Fichier header définissant une class
 **/
 
-#ifndef CAVALIER_HPP
-#define CAVALIER_HPP
+#pragma once
 
 /**
  * @brief
@@ -49,5 +48,3 @@ class Cavalier : public Piece
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
 };
-
-#endif

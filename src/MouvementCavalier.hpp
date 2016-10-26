@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef MouvementCavalier_HPP
-#define MouvementCavalier_HPP
+#pragma once
 
 /**
  * @brief
@@ -52,5 +51,3 @@ class MouvementCavalier : public Mouvement
 
 		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
 };
-
-#endif

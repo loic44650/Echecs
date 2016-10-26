@@ -5,9 +5,9 @@
  * @brief Fichier header définissant une class FactoryPiece gérant les différentes FactoryPieces de l'échiquier
 **/
 
-#ifndef FactoryPiece_HPP
-#define FactoryPiece_HPP
+#pragma once
 
+#include <memory>
 #include "Piece.hpp"
 #include "Roi.hpp"
 #include "Reine.hpp"
@@ -31,16 +31,8 @@ class FactoryPiece
  		 * @brief
  		 *
  		 * @complexité
-		**/		
-		creerPiece(string piece, char dir);
-
-		/**
- 		 * @brief
- 		 *
- 		 * @complexité
 		**/
-		~FactoryPiece();
+		std::unique_ptr<Piece> creerPiece(std::string piece, char dir);
+
 
 };
-
-#endif

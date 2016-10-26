@@ -7,8 +7,7 @@
 **/
 
 
-#ifndef MouvementPion_HPP
-#define MouvementPion_HPP
+#pragma once
 
 /**
  * @brief
@@ -57,5 +56,3 @@ class MouvementPion : public Mouvement
       char direction_;
 
 };
-
-#endif

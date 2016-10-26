@@ -15,14 +15,14 @@ using namespace std;
 int main()
 {
 
-    Echiquier e = new Echiquier(echiquierDeBase.txt);
+    Echiquier e("echiquierDeBase.txt");
     e.afficher();
-    
 
-    //string strDep, strBut;
-    //Coord dep, but;
 
-    /*
+    string strDep, strBut;
+    Coord dep, but;
+
+
    for(int i=0; i < 10; ++i) {
       cout << "Selectionne la pièce à déplacer : ";
       cin >> strDep;
@@ -33,7 +33,7 @@ int main()
       e.move(dep,but);
       e.afficher();
     }
-    */
+    
 
     /*
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);

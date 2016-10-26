@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef REINE_HPP
-#define REINE_HPP
+#pragma once
 
 /**
  * @brief
@@ -50,5 +49,3 @@ class Reine : public Piece
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
 };
-
-#endif

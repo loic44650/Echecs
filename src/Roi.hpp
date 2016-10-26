@@ -5,8 +5,8 @@
  * @brief Fichier header définissant une class
 **/
 
-#ifndef ROI_HPP
-#define ROI_HPP
+
+#pragma once
 
 /**
  * @brief
@@ -54,5 +54,3 @@ class Roi : public Piece
 	private:
 		std::unique_ptr<Mouvement> roque_;
 };
-
-#endif

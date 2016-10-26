@@ -5,19 +5,17 @@
  * @brief Fichier header définissant une class
 **/
 
-#ifndef Echiquier_HPP
-#define Echiquier_HPP
+#pragma once
 
 #include <iostream>
 #include <memory>
 #include <fstream>
 #include <string>
-#include "FactoryPiece.hpp"
-#include "Piece.hpp"
 #include "Colormod.hpp"
 #include "utils.hpp"
 
 class Piece;
+class FactoryPiece;
 
 class Echiquier
 {
@@ -28,7 +26,7 @@ class Echiquier
  		 * @complexité
 		**/
 
-		Echiquier(std::string nomFichier);
+		Echiquier(const std::string &nomFichier);
 		~Echiquier();
 		bool estOccupee(Coord coord);
 		int getTypeMouvement(Coord dep,Coord but);
@@ -43,7 +41,4 @@ class Echiquier
 
 	private:
 		std::shared_ptr<Piece> echiquier_[8][8];
-		FactoryPiece fp;
 };
-
-#endif

@@ -6,8 +6,7 @@
 **/
 
 
-#ifndef MouvementHDiagonale_HPP
-#define MouvementHDiagonale_HPP
+#pragma once
 
 /**
  * @brief
@@ -53,5 +52,3 @@ class MouvementDiagonale : public Mouvement
 		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
 
 };
-
-#endif
