@@ -139,6 +139,8 @@ void Echiquier::afficher() {
 }
 
 void Echiquier::movePiece(Coord dep, Coord but) {
+   std::cout << "dep :" << dep.x << "," << dep.y << std::endl;
+   std::cout << "but :" << but.x << "," << but.y << std::endl;
    swap(echiquier_[dep.x][dep.y],echiquier_[but.x][but.y]);
 }
 
@@ -167,12 +169,14 @@ bool Echiquier::move(Coord dep, Coord but) {
    }
    // Case but occupée par pièce amie : ROCK seul mvmt possible
    else {
+      std::cout << "ROCKKKKKKKKKK\n";
       if(echiquier_[dep.x][dep.y]->roquer(dep,but,this)) {
          mvmtEffectue = true;
       }
    }
-   if(mvmtEffectue)
-      echiquier_[but.x][but.y]->setPosInitiale(false);
+   std::cout << "roque effectue" << std::endl;
+   
+   std::cout << "fin fonction echiquier::move" << std::endl;
    return mvmtEffectue;
 }
 
