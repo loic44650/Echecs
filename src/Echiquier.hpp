@@ -32,6 +32,7 @@ class Echiquier
 		int getTypeMouvement(Coord dep,Coord but);
 		bool pieceEnPosInit(int x, int y);
 		char getType(Coord c);
+		char getCouleur(Coord c);
 		void afficher();
 		bool move(Coord dep, Coord but);
 		void movePiece(Coord deb, Coord but);

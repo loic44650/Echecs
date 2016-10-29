@@ -13,7 +13,7 @@ Window::Window()
 
 Window::~Window() {}
 
-void Window::drawPlateauInitial(sf::RenderTarget& app)
+void Window::drawPlateau(sf::RenderTarget& app, Echiquier& e)
 {
 	sf::Sprite spritePlateau;
     spritePlateau.setTexture(plateau);
@@ -24,96 +24,104 @@ void Window::drawPlateauInitial(sf::RenderTarget& app)
 
     app.draw(spritePlateau);
 
-    	for (int x = 0; x < 8; ++x)
+    Coord dep;
+
+    for (int x = 0; x < 8; ++x)
+    {
+    	for (int y = 0; y < 8; ++y)
     	{
-    		for (int y = 0; y < 8; ++y)
-    		{
-    			if ( (x == 0 && y == 0) || (x == 7 && y == 0)) // tours noirs
-    			{
-    				spritePiece.setTexture(tour);
-    				spritePiece.setColor(sf::Color(0, 0, 0));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+               
+            dep = Coord(x, y);
 
-    			if ( (x == 1 && y == 0) || (x == 6 && y == 0)) // fous noirs
-    			{
-    				spritePiece.setTexture(fou);
-                    spritePiece.setColor(sf::Color(0, 0, 0));
-                    spritePiece.setPosition(x * 75, y * 75);
-    			}
+            // Pieces blanches
 
-   				if (( x == 2 && y == 0) || (x == 5 && y == 0)) // cavaliers noirs
-    			{
-    				spritePiece.setTexture(cavalier);
-                    spritePiece.setColor(sf::Color(0, 0, 0));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+   			if ((e.getType(dep) == 'T') && (e.getCouleur(dep) == 'N')) // tours noirs
+   			{
+   				spritePiece.setTexture(tour);
+   				spritePiece.setColor(sf::Color(0, 0, 0));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-   				if ( x == 3 && y == 0 ) // reine noirs
-    			{
-    				spritePiece.setTexture(reine);
-                    spritePiece.setColor(sf::Color(0, 0, 0));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+   			if ((e.getType(dep) == 'F') && (e.getCouleur(dep) == 'N')) // fous noirs
+   			{
+   				spritePiece.setTexture(fou);
+                spritePiece.setColor(sf::Color(0, 0, 0));
+                spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-   				if ( x == 4 && y == 0 ) // roi noirs
-  				{
-    				spritePiece.setTexture(roi);
-                    spritePiece.setColor(sf::Color(0, 0, 0));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+			if ((e.getType(dep) == 'C') && (e.getCouleur(dep) == 'N')) // cavaliers noirs
+   			{
+   				spritePiece.setTexture(cavalier);
+                spritePiece.setColor(sf::Color(0, 0, 0));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-    			if ( y == 1 ) // pions noirs
-    			{
-    				spritePiece.setTexture(pion);
-                    spritePiece.setColor(sf::Color(0, 0, 0));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+			if ((e.getType(dep) == 'D') && (e.getCouleur(dep) == 'N')) // reine noirs
+   			{
+   				spritePiece.setTexture(reine);
+                spritePiece.setColor(sf::Color(0, 0, 0));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-    			// Pieces blanches
+			if ((e.getType(dep) == 'R') && (e.getCouleur(dep) == 'N')) // roi noirs
+            { 				
+   				spritePiece.setTexture(roi);
+                spritePiece.setColor(sf::Color(0, 0, 0));
+  				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-    			if ( (x == 0 && y == 7) || (x == 7 && y == 7)) // tours blancs
-    			{
-    				spritePiece.setTexture(tour);
-    				spritePiece.setColor(sf::Color(255, 255, 255));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+   			if ((e.getType(dep) == 'P') && (e.getCouleur(dep) == 'N')) // pions noirs
+   			{
+   				spritePiece.setTexture(pion);
+                spritePiece.setColor(sf::Color(0, 0, 0));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-   				if ( (x == 1 && y == 7) || (x == 6 && y == 7)) // fous blancs
-    			{
-    				spritePiece.setTexture(fou);
-    				spritePiece.setColor(sf::Color(255, 255, 255));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+   			// Pieces blanches
 
-   				if ( (x == 2 && y == 7) || (x == 5 && y == 7)) // cavaliers blancs
-    			{
-    				spritePiece.setTexture(cavalier);
-    				spritePiece.setColor(sf::Color(255, 255, 255));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+   			if ((e.getType(dep) == 'T') && (e.getCouleur(dep) == 'B')) // tours blancs
+   			{
+   				spritePiece.setTexture(tour);
+   				spritePiece.setColor(sf::Color(255, 255, 255));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-   				if ( x == 3 && y == 7 ) // reine blanche
-    			{
-    				spritePiece.setTexture(reine);
-    				spritePiece.setColor(sf::Color(255, 255, 255));
-					spritePiece.setPosition(x * 75, y * 75);
-    			}
+			if ((e.getType(dep) == 'F') && (e.getCouleur(dep) == 'B')) // fous blancs
+   			{
+   				spritePiece.setTexture(fou);
+   				spritePiece.setColor(sf::Color(255, 255, 255));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-   				if ( x == 4 && y == 7 ) // roi blanche
-  				{
-    				spritePiece.setTexture(roi);
-    				spritePiece.setColor(sf::Color(255, 255, 255));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}
+			if ((e.getType(dep) == 'C') && (e.getCouleur(dep) == 'B')) // cavaliers blancs
+   			{
+ 				spritePiece.setTexture(cavalier);
+   				spritePiece.setColor(sf::Color(255, 255, 255));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
 
-    			if ( y == 6 ) // pions blancs
-    			{
-    				spritePiece.setTexture(pion);
-    				spritePiece.setColor(sf::Color(255, 255, 255));
-    				spritePiece.setPosition(x * 75, y * 75);
-    			}	
-    			app.draw(spritePiece);
-    		}
-    	}   
+			if ((e.getType(dep) == 'D') && (e.getCouleur(dep) == 'B')) // reine blanche
+   			{
+   				spritePiece.setTexture(reine);
+   				spritePiece.setColor(sf::Color(255, 255, 255));
+				spritePiece.setPosition(x * 75, y * 75);
+   			}
+
+			if ((e.getType(dep) == 'R') && (e.getCouleur(dep) == 'B')) // roi blanche
+			{
+   				spritePiece.setTexture(roi);
+   				spritePiece.setColor(sf::Color(255, 255, 255));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}
+
+   			if ((e.getType(dep) == 'P') && (e.getCouleur(dep) == 'B')) // pions blancs
+   			{
+   				spritePiece.setTexture(pion);
+   				spritePiece.setColor(sf::Color(255, 255, 255));
+   				spritePiece.setPosition(x * 75, y * 75);
+   			}	
+
+   			app.draw(spritePiece);
+   		}
+   	}   
 }

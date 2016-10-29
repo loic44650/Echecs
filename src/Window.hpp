@@ -16,6 +16,8 @@
 #include <cstdlib>
 #include <SFML/Graphics.hpp>
 
+#include "Echiquier.hpp"
+
 
 class Window
 {
@@ -39,7 +41,7 @@ class Window
  		 *
  		 * @complexité
 		**/
-		void drawPlateauInitial(sf::RenderTarget& app);
+		void drawPlateau(sf::RenderTarget& app, Echiquier& e);
 
 
 	private:
