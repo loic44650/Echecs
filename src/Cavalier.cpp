@@ -33,3 +33,15 @@ bool Cavalier::attaquer(Coord dep, Coord but, Echiquier *e) {
    }
    return mvmtOk;
 }
+
+std::vector<Coord> Cavalier::mouvementPossible(Coord dep, Echiquier *e) {
+   std::vector<Coord> tousLesMouvements;
+   std::vector<Coord> tmp;
+
+   for(auto m : mvmt_) {
+      tmp = m->mouvementPossible(dep, e, c_, posInitiale_);
+      tousLesMouvements.insert(tousLesMouvements.end(), tmp.begin(), tmp.end());
+   }
+
+   return tousLesMouvements;
+}

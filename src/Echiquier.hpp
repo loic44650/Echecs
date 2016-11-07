@@ -11,6 +11,7 @@
 #include <memory>
 #include <fstream>
 #include <string>
+#include <vector>
 #include "Colormod.hpp"
 #include "utils.hpp"
 
@@ -39,8 +40,10 @@ class Echiquier
 		void mangerPiece(Coord deb, Coord but);
 		bool estEchec(Coord roi);
 		bool estMat(Coord roi);
+		Coord findPiece(char piece, char coul);
+		std::vector<Coord> mouvementPossible(Coord dep);
 
 	private:
-		std::shared_ptr<Piece> echiquier_[8][8];
+		std::unique_ptr<Piece> echiquier_[8][8];
 
 };

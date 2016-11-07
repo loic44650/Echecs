@@ -51,6 +51,7 @@ class Tour : public Piece
 
 		bool roquer(Coord dep, Coord but, Echiquier *e);
 
+		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e);
 
 	private:
 

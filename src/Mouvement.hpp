@@ -46,6 +46,8 @@ class Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
 
+		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) = 0;
+
    protected:
 
       int distance_;

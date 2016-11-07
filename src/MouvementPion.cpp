@@ -24,6 +24,19 @@ bool MouvementPion::peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posIn
    return isOk;
 }
 
+
+std::vector<Coord> MouvementPion::mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) {
+   std::vector<Coord> tousLesMouvements;
+   Coord tmp = (direction_ == 'S') ? Coord(dep.x+2, dep.y) : Coord(dep.x-2, dep.y);
+
+   if(posInit && !e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+
+   tmp.x = (direction_ == 'S') ? dep.x+1 : dep.x-1;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+
+   return tousLesMouvements;
+}
+
 bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
 
    if(peutAllerEn(dep,but,e,posInit)) {
@@ -41,7 +54,7 @@ bool MouvementPion::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posIni
    if(direction_ == 'S' && but.x == (dep.x+1) && colonneOk) peutAttaquer = true;
    else if(direction_ == 'N' && but.x == (dep.x-1) && colonneOk) peutAttaquer = true;
 
-   if(peutAttaquer) 
+   if(peutAttaquer)
       e->mangerPiece(dep,but);
 
    return peutAttaquer;
