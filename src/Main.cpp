@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+#include <QApplication>
 
 #include "Partie.hpp"
 #include "Joueur.hpp"
