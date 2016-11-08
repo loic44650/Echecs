@@ -50,7 +50,7 @@ std::vector<Coord> MouvementVertical::mouvementPossible(Coord dep, Echiquier *e,
       tousLesMouvements.push_back(tmp);
       --tmp.x;
    }
-
+   
    return tousLesMouvements;
 }
 
