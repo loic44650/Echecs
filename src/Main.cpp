@@ -16,7 +16,6 @@ using namespace std;
 int main()
 {
 
-    /*
     string nom, prenom;
     char col;
 
@@ -31,7 +30,6 @@ int main()
 
     if (joueur1.getCouleur() == 'N') Echiquier e("echiquierDeBaseN.txt");
     else if (joueur1.getCouleur() == 'B') Echiquier e("echiquierDeBaseB.txt");
-    */
 
 
     /*string strDep, strBut;
@@ -66,9 +64,10 @@ int main()
     }
    */
 
+    /*
     Echiquier e("echiquierDeBaseN.txt");
 
-    sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar /*| sf::Style::Resize*/);
+    sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Echecs", sf::Style::Close | sf::Style::Titlebar | sf::Style::Resize);
 
     sf::Image logo;
     logo.loadFromFile("picture/logo.png");
@@ -99,5 +98,5 @@ int main()
     	window.drawPlateau(app, e);
         app.display();
     }
-
+    */
 }
