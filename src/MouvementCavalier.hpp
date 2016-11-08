@@ -49,5 +49,7 @@ class MouvementCavalier : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
+		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
+
 		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
 };

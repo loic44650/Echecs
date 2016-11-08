@@ -48,4 +48,6 @@ class Reine : public Piece
 
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
+		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e);
+
 };

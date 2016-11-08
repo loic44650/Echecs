@@ -67,7 +67,7 @@ class Piece
 
 		virtual bool roquer(Coord dep, Coord but, Echiquier *e);
 
-
+		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e) = 0;
 
 	protected:
 		bool posInitiale_;					// est sur position initiale (pours coups spéciaux)

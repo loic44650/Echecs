@@ -49,6 +49,10 @@ class MouvementRoque : public Mouvement
 
 		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
+		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
+
+		bool isOk(Coord &but, Coord& coordRoi, Coord& coordTour, Echiquier *e, bool posInit);
+
 		void setPositionsFinales(Coord &coordRoi, Coord &coordTour);
 
 };

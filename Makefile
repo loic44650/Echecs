@@ -7,13 +7,12 @@ IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
 LIBDIR=lib
 LIBDIRFLAG =$(foreach libdir, $(LIBDIR), -L$(libdir))
 CXXFLAGS=-std=c++11 -c -g $(IDIRFLAG)
-SFMLFLAG= -lX11 -lGLEW -lopenal -lsfml-window -lsfml-system -lsfml-graphics -lsfml-audio $(LIBDIRFLAG)
 
 # Linker
 LFLAGS=$(IDIRFLAG) $(LIBDIRFLAG)
 
 # Directories
-SRCDIR=src src/AbstractFactory src/Dir src/StateVideo src/StateAudio src/Observer
+SRCDIR=src
 OBJDIR=obj
 BINDIR=bin
 
@@ -62,7 +61,7 @@ clang-debug: CXXFLAGS += -g -stdlib=libc++
 clang-debug: $(BINDIR)/$(EXEC)
 
 $(BINDIR)/$(EXEC): $(OBJECTS)
-	@$(LINKER) $@ $(LFLAGS) $^ $(SFMLFLAG)
+	@$(LINKER) $@ $(LFLAGS) $^
 
 $(OBJDIR)/%.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@

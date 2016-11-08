@@ -35,3 +35,27 @@ bool MouvementCavalier::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool po
       e->mangerPiece(dep,but);
    }
 }
+
+
+std::vector<Coord> MouvementCavalier::mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) {
+   std::vector<Coord> tousLesMouvements;
+   Coord tmp(dep.x+2,dep.y+1);
+
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   tmp.y -= 2;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   tmp.x -= 4;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   tmp.y += 2;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   ++tmp.y; ++tmp.x;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   tmp.x += 2;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   tmp.y -= 4;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+   tmp.x -= 2;
+   if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
+
+   return tousLesMouvements;
+}

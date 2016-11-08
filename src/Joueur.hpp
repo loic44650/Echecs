@@ -14,6 +14,8 @@ class Piece;
 class Joueur
 {
 	public:
+
+		Joueur();
 		/**
  		 * @brief
  		 *
@@ -27,6 +29,8 @@ class Joueur
  		 * @complexité
 		**/
 		~Joueur();
+
+		std::string sePresenter();
 
 		char getCouleur();
 
