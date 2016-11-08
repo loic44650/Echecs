@@ -26,23 +26,26 @@ class Partie
 {
 	public:
 
-      Partie(const std::string& filename, const Joueur& j1, const Joueur& j2);
+      Partie();
+
+      Partie(const std::string& filename);
 
       void lancer();
 
       void jouer(const int numJoueur);
 
-		Coord selectionnerPiece(std::string msg);
+	Coord selectionnerPiece(std::string msg);
 
-		void afficherMouvementPiece(const int numJoueur);
+      void afficherMouvementPiece(const int numJoueur);
 
-		int menu();
+	int menu();
+
+      void setJoueur(Joueur j, int i);
 
 	private:
       Joueur joueur_[NB_JOUEURS];
       Echiquier e_;
       bool estEchec_;
       Coord roiDe_[NB_JOUEURS];
-
 
 };

@@ -35,6 +35,7 @@ class Joueur
 		char getCouleur();
 
 		//bool colIsOk(Piece p);
+		void setJoueur(Joueur j);
 
 	private:
 		std::string nom_;

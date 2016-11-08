@@ -1,5 +1,4 @@
-#ifndef DEF_FENETRE
-#define DEF_FENETRE
+#pragma once
 
 #include <iostream>
 #include <QApplication>
@@ -13,6 +12,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QImage>
+#include "Controleur.hpp"
 
 
 class Fenetre : public QWidget
@@ -21,7 +21,7 @@ class Fenetre : public QWidget
 	Q_OBJECT
 
     public:
-    	Fenetre();
+    	Fenetre(Controleur controleur);
 
     public slots:
    		void ouvrirDialogueNewGameVSIA();
@@ -34,7 +34,6 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
+      Controleur controleur_;
 
 };
-
-#endif
