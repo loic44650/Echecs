@@ -1,12 +1,13 @@
 #include "Controleur.hpp"
 
-Controleur::Controleur(Partie* p) 
+Controleur::Controleur(std::shared_ptr<Partie> p)
 {
 	//std::unique_ptr<Partie> partie_(new Partie);
-	partie_ = std::shared_ptr<Partie>(p);
+	partie_ = p;
 }
 
-void Controleur::setJoueur(Joueur j, int i) 
+
+void Controleur::setJoueur(Joueur j, int i)
 {
 	partie_->setJoueur(j,i);
 }

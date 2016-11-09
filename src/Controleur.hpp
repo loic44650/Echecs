@@ -2,15 +2,17 @@
 
 #include <memory>
 #include "Partie.hpp"
+#include "Piece.hpp"
 
 class Controleur
 {
 
     public:
-    	Controleur(Partie *p);
+    	Controleur(std::shared_ptr<Partie> p);
+
 
       	void setJoueur(Joueur, int );
-  
+
     private:
     	std::shared_ptr<Partie> partie_;
 

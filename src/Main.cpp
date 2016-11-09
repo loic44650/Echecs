@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-
+#include <memory>
 #include "Fenetre.hpp"
 #include "Partie.hpp"
 #include "Joueur.hpp"
@@ -16,13 +16,14 @@ int main(int argc, char* argv[])
 {
 
 	QApplication app(argc, argv);
-   
-   	Partie p;
-   	Controleur c(&p);
-   	Fenetre fenetre(&c);
-   	fenetre.show();
-   	
+
+   	shared_ptr<Partie> p = shared_ptr<Partie>(new Partie());
+   	shared_ptr<Controleur> c = shared_ptr<Controleur>(new Controleur(p));
+   	Fenetre fenetre(c);
+   	//fenetre.show();
+
    	return app.exec();
+		//return 0;
 }
 
 

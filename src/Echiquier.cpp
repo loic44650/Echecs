@@ -2,7 +2,9 @@
 #include "FactoryPiece.hpp"
 #include "Piece.hpp"
 
-Echiquier::Echiquier() {}
+Echiquier::Echiquier() {
+
+}
 
 Echiquier::Echiquier(const std::string &nomFichier)
 {
@@ -23,16 +25,12 @@ Echiquier::Echiquier(const std::string &nomFichier)
          fichier >> x >> y >> nomPiece >> dir;
          echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
       }
+      fichier.close();
    }
    else std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
 }
 
-Echiquier::~Echiquier() {
-   for(auto i = 0; i < 8; ++i) {
-      for(auto j = 0; j < 8; ++j)
-         echiquier_[i][j].reset();
-   }
-}
+Echiquier::~Echiquier() {}
 
 
 bool Echiquier::pieceEnPosInit(int x, int y) {
