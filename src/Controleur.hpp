@@ -9,7 +9,7 @@ class Controleur
     public:
     	Controleur(Partie *p);
 
-      	void setJoueur(Joueur, int );
+    	Controler()
   
     private:
     	std::shared_ptr<Partie> partie_;
