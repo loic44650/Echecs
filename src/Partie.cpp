@@ -77,5 +77,5 @@ void Partie::afficherMouvementPiece(int numJoueur) {
 }
 
 void Partie::setJoueur(Joueur j, int i) {
-   joueur_[i] = j;
+   joueur_[i].setJoueur(j);
 }

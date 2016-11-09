@@ -19,7 +19,8 @@ int main(int argc, char* argv[])
    
    	Partie p;
    	Controleur c(&p);
-   	Fenetre fenetre(c);
+   	Fenetre fenetre(&c);
+   	fenetre.show();
    	
    	return app.exec();
 }

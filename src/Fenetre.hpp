@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 #include <QApplication>
 #include <QWidget>
 #include <QPushButton>
@@ -21,7 +22,7 @@ class Fenetre : public QWidget
 	Q_OBJECT
 
     public:
-    	Fenetre(Controleur controleur);
+    	Fenetre(Controleur *controleur);
 
     public slots:
    		void ouvrirDialogueNewGameVSIA();
@@ -34,6 +35,6 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
-      	std::unique_ptr<Controleur> controleur_;
+      	std::shared_ptr<Controleur> controleur_;
 
 };

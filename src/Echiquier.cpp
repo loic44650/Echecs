@@ -2,6 +2,8 @@
 #include "FactoryPiece.hpp"
 #include "Piece.hpp"
 
+Echiquier::Echiquier() {}
+
 Echiquier::Echiquier(const std::string &nomFichier)
 {
    FactoryPiece fp;

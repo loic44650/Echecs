@@ -1,9 +1,9 @@
 #include "Controleur.hpp"
 
-Controleur::Controleur(std::unique_ptr<Partie> p) 
+Controleur::Controleur(Partie* p) 
 {
 	//std::unique_ptr<Partie> partie_(new Partie);
-	std::unique_ptr<Partie> partie_(std::move(p));
+	partie_ = std::shared_ptr<Partie>(p);
 }
 
 void Controleur::setJoueur(Joueur j, int i) 

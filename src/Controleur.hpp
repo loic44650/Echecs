@@ -7,11 +7,11 @@ class Controleur
 {
 
     public:
-    	Controleur(std::unique_ptr<Partie> p);
+    	Controleur(Partie *p);
 
       	void setJoueur(Joueur, int );
   
     private:
-    	std::unique_ptr<Partie> partie_;
+    	std::shared_ptr<Partie> partie_;
 
 };

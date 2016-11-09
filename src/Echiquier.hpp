@@ -26,7 +26,7 @@ class Echiquier
  		 *
  		 * @complexité
 		**/
-
+		Echiquier();
 		Echiquier(const std::string &nomFichier);
 		~Echiquier();
 		bool estOccupee(Coord coord);

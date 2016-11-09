@@ -1,12 +1,12 @@
 #include "Fenetre.hpp"
 
-Fenetre::Fenetre(Controleur controleur) : QWidget()
+Fenetre::Fenetre(Controleur *controleur) : QWidget()
 {
     setFixedSize(800, 800);
  	setWindowIcon(QIcon("picture/logo.png"));
  	setWindowTitle("Echecs");
  	
- 	controleur_ = controleur;
+ 	controleur_ = std::shared_ptr<Controleur>(controleur);
 
     boutonNewGame_ = new QPushButton("New Game vs IA", this);
     boutonNewGame_->setCursor(Qt::PointingHandCursor);
