@@ -11,3 +11,9 @@ std::string Joueur::sePresenter() {
 }
 
 char Joueur::getCouleur() { return col_; }
+
+void Joueur::setJoueur(Joueur j) { 
+	nom_ = j.nom_;
+	prenom_ = j.prenom_;
+	col_ = j.col_;
+}

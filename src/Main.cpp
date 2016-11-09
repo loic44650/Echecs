@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <QApplication>
 
 #include "Fenetre.hpp"
 #include "Partie.hpp"
@@ -17,21 +16,15 @@ int main(int argc, char* argv[])
 {
 
 	QApplication app(argc, argv);
-
-	Fenetre fenetre;
-    fenetre.show();
-    
-
-    /*
-    Joueur j1 = creerJoueur('B');
-    Joueur j2 = creerJoueur('N');
-
-    Partie partie("echiquierDeBase.txt",j1,j2);
-    partie.lancer();
-	*/
+   
+   	Partie p;
+   	Controleur c(&p);
+   	Fenetre fenetre(c);
    	
    	return app.exec();
 }
+
+
 
 Joueur creerJoueur(char col)
 {
