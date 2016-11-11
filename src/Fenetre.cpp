@@ -31,6 +31,7 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
 	QLineEdit *nom = new QLineEdit;
 	QLineEdit *prenom = new QLineEdit;
 	QComboBox *liste = new QComboBox;
+   liste->addItem("");
 	liste->addItem("Blanc");
 	liste->addItem("Noir");
 
@@ -167,7 +168,7 @@ void Fenetre::startGameVSPlayer()
 	label->show();
 
 	std::cout << "bob selectionne couleurs" << std::endl;
-	
+
 	if (joueurs_[2].toStdString() == "Blanc")
 	{
 		std::cout << "bob blanc" << std::endl;
@@ -201,7 +202,7 @@ void Fenetre::affichageInitialEchiquier()
 	QPixmap reineN("picture/reineN.svg");
 	QPixmap roiN("picture/roiN.svg");
 
-	Echiquier& echiquier = controleur_->getEchiquier();
+	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
 	char type, col;
 
 	std::cout << "bob dans l'affichage" << std::endl;
@@ -212,10 +213,10 @@ void Fenetre::affichageInitialEchiquier()
 		{
 			std::cout << "bob dans les for" << std::endl;
 
-			if (echiquier.estOccupee(Coord(i, j)))
+			if (echiquier->estOccupee(Coord(i, j)))
 			{
-				type = echiquier.getType(Coord(i, j));
-				col = echiquier.getCouleur(Coord(i, j));
+				type = echiquier->getType(Coord(i, j));
+				col = echiquier->getCouleur(Coord(i, j));
 				QLabel *label = new QLabel(this);
 
 				std::cout << "bob est occupé" << std::endl;
@@ -258,11 +259,9 @@ void Fenetre::affichageInitialEchiquier()
 						else
 							label->setPixmap(roiN);
 				}
-			}
-			
-			label->setGeometry(i*80, 30 + j*80, 64, 64);
-			label->show();			
-		
+		         label->setGeometry(i*80, 30 + j*80, 64, 64);
+			            label->show();
+         }
 		}
 	}
 }
@@ -274,35 +273,35 @@ void Fenetre::ouvrirMessageAbout()
 }
 
 
-void Fenetre::ecrireNom(QString n) 
+void Fenetre::ecrireNom(QString n)
 {
 	joueurs_[0] = n;
 	std::cerr << joueurs_[0].toStdString() << std::endl;
 }
 
 
-void Fenetre::ecrirePrenom(QString p) 
+void Fenetre::ecrirePrenom(QString p)
 {
 	joueurs_[1] = p;
 	std::cerr << joueurs_[1].toStdString() << std::endl;
 }
 
 
-void Fenetre::ecrireCol(QString c) 
+void Fenetre::ecrireCol(QString c)
 {
 	joueurs_[2] = c;
 	std::cerr << joueurs_[2].toStdString() << std::endl;
 }
 
 
-void Fenetre::ecrireNom2(QString n) 
+void Fenetre::ecrireNom2(QString n)
 {
 	joueurs_[3] = n;
 	std::cerr << joueurs_[3].toStdString() << std::endl;
 }
 
 
-void Fenetre::ecrirePrenom2(QString p) 
+void Fenetre::ecrirePrenom2(QString p)
 {
 	joueurs_[4] = p;
 	std::cerr << joueurs_[4].toStdString() << std::endl;

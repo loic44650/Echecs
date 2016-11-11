@@ -16,7 +16,7 @@ class Controleur
 
       	void setJoueur(Joueur, int );
 
-      	Echiquier& getEchiquier();
+      	std::shared_ptr<Echiquier> getEchiquier();
 
       	void setPartie(const std::string& filename);
 

@@ -40,13 +40,13 @@ class Partie
 
 		int menu();
 
-		Echiquier& getEchiquier();
-		
+		std::shared_ptr<Echiquier> getEchiquier();
+
 		void setJoueur(Joueur j, int i);
 
 	private:
       	Joueur joueur_[NB_JOUEURS];
-      	Echiquier e_;
+      	std::shared_ptr<Echiquier> e_;
       	bool estEchec_;
       	Coord roiDe_[NB_JOUEURS];
 

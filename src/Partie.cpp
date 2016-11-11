@@ -5,10 +5,10 @@ Partie::Partie() {}
 
 void Partie::setPartie(const std::string& filename)
 {
-   e_.setEchiquier(filename);
+   e_->setEchiquier(filename);
    estEchec_ = false;
-   roiDe_[0] = e_.findPiece('R',joueur_[0].getCouleur());
-   roiDe_[1] = e_.findPiece('R',joueur_[1].getCouleur());
+   roiDe_[0] = e_->findPiece('R',joueur_[0].getCouleur());
+   roiDe_[1] = e_->findPiece('R',joueur_[1].getCouleur());
 }
 
 void Partie::lancer() {
@@ -16,7 +16,7 @@ void Partie::lancer() {
    int numJoueur = (joueur_[0].getCouleur() == 'B') ? 0 : 1;
 
    while(!estEchec_) {
-      e_.afficher();
+      e_->afficher();
 
       std::cout << "Tour de " << joueur_[numJoueur].sePresenter() << "\n";
 
@@ -33,16 +33,16 @@ void Partie::jouer(int numJoueur) {
 
    do {
       dep = selectionnerPiece("Selectionne la pièce à déplacer : ");
-   } while(!e_.estOccupee(dep) || (e_.getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
+   } while(!e_->estOccupee(dep) || (e_->getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
 
    but = selectionnerPiece("Sélectionne la case d'arrivée : ");
 
-   if(e_.move(dep,but)) {
+   if(e_->move(dep,but)) {
       // Si c'est le roi qui a été déplacé, mettre a jour ses coordonnées
-      if(e_.estOccupee(roiDe_[numJoueur])) roiDe_[numJoueur] = e_.findPiece('R',joueur_[numJoueur].getCouleur());
+      if(e_->estOccupee(roiDe_[numJoueur])) roiDe_[numJoueur] = e_->findPiece('R',joueur_[numJoueur].getCouleur());
    }
 
-   estEchec_ = e_.estEchec(roiDe_[numJoueur]);
+   estEchec_ = e_->estEchec(roiDe_[numJoueur]);
 }
 
 Coord Partie::selectionnerPiece(std::string msg) {
@@ -69,9 +69,9 @@ void Partie::afficherMouvementPiece(int numJoueur) {
 
    do {
       dep = selectionnerPiece("Selectionne la pièce dont vous souhaitez voir les mouvements possibles : ");
-   } while(!e_.estOccupee(dep) || (e_.getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
+   } while(!e_->estOccupee(dep) || (e_->getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
 
-   std::vector<Coord> tousLesMouvements = e_.mouvementPossible(dep);
+   std::vector<Coord> tousLesMouvements = e_->mouvementPossible(dep);
    if(!tousLesMouvements.empty())
       for(auto c : tousLesMouvements) std::cout << c.toString() << " ";
    else
@@ -83,4 +83,4 @@ void Partie::setJoueur(Joueur j, int i) {
    joueur_[i].setJoueur(j);
 }
 
-Echiquier& Partie::getEchiquier() { return e_; }
+std::shared_ptr<Echiquier> Partie::getEchiquier() { return e_; }
