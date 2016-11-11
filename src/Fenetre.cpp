@@ -125,6 +125,7 @@ void Fenetre::startGameVSIA()
 	// création de la partie
 	controleur_->jouerContreIA(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString());
 
+	std::cout << "bob dans startGameVSIA" << std::endl;
 
 	// Affichage de l'échiquier
 	QLabel *label = new QLabel(this);
@@ -132,6 +133,23 @@ void Fenetre::startGameVSIA()
 	label->setPixmap(plateau);
 	label->setGeometry(0, 30, 640, 640);
 	label->show();
+
+	std::cout << "bob selectionne couleurs" << std::endl;
+
+	if (joueurs_[2].toStdString() == "Blanc")
+	{
+		std::cout << "bob blanc" << std::endl;
+		controleur_->setPartie("echiquierDeBaseB.txt");
+	}
+	else
+	{
+		std::cout << "bob noir" << std::endl;
+		controleur_->setPartie("echiquierDeBaseN.txt");
+	}
+
+	std::cout << "bob s affiche" << std::endl;
+
+	affichageInitialEchiquier();
 }
 
 void Fenetre::startGameVSPlayer()
@@ -139,6 +157,7 @@ void Fenetre::startGameVSPlayer()
 	// création de la partie
 	controleur_->jouerContrePlayer(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString(), joueurs_[3].toStdString(), joueurs_[4].toStdString());
 
+	std::cout << "bob dans startGameVSPlayer" << std::endl;
 
 	// Affichage de l'échiquier
 	QLabel *label = new QLabel(this);
@@ -146,6 +165,106 @@ void Fenetre::startGameVSPlayer()
 	label->setPixmap(plateau);
 	label->setGeometry(0, 30, 640, 640);
 	label->show();
+
+	std::cout << "bob selectionne couleurs" << std::endl;
+	
+	if (joueurs_[2].toStdString() == "Blanc")
+	{
+		std::cout << "bob blanc" << std::endl;
+		controleur_->setPartie("echiquierDeBaseB.txt");
+	}
+	else
+	{
+		std::cout << "bob noir" << std::endl;
+		controleur_->setPartie("echiquierDeBaseN.txt");
+	}
+
+	std::cout << "bob s affiche" << std::endl;
+
+	affichageInitialEchiquier();
+}
+
+
+void Fenetre::affichageInitialEchiquier()
+{
+	QPixmap pionB("picture/pionB.svg");
+	QPixmap tourB("picture/tourB.svg");
+	QPixmap cavalierB("picture/cavalierB.svg");
+	QPixmap fouB("picture/fouB.svg");
+	QPixmap reineB("picture/reineB.svg");
+	QPixmap roiB("picture/roiB.svg");
+
+	QPixmap pionN("picture/pionN.svg");
+	QPixmap tourN("picture/tourN.svg");
+	QPixmap cavalierN("picture/cavalierN.svg");
+	QPixmap fouN("picture/fouN.svg");
+	QPixmap reineN("picture/reineN.svg");
+	QPixmap roiN("picture/roiN.svg");
+
+	Echiquier& echiquier = controleur_->getEchiquier();
+	char type, col;
+
+	std::cout << "bob dans l'affichage" << std::endl;
+
+	for (int i = 0; i < 8; ++i)
+	{
+		for (int j = 0; j < 8; ++j)
+		{
+			std::cout << "bob dans les for" << std::endl;
+
+			if (echiquier.estOccupee(Coord(i, j)))
+			{
+				type = echiquier.getType(Coord(i, j));
+				col = echiquier.getCouleur(Coord(i, j));
+				QLabel *label = new QLabel(this);
+
+				std::cout << "bob est occupé" << std::endl;
+
+				switch (type)
+				{
+					case 'P':
+						if (col == 'B')
+							label->setPixmap(pionB);
+						else
+							label->setPixmap(pionN);
+
+					case 'T':
+						if (col == 'B')
+							label->setPixmap(tourB);
+						else
+							label->setPixmap(tourN);
+
+					case 'C':
+						if (col == 'B')
+							label->setPixmap(cavalierB);
+						else
+							label->setPixmap(cavalierN);
+
+					case 'F':
+						if (col == 'B')
+							label->setPixmap(fouB);
+						else
+							label->setPixmap(fouN);
+
+					case 'D':
+						if (col == 'B')
+							label->setPixmap(reineB);
+						else
+							label->setPixmap(reineN);
+
+					case 'R':
+						if (col == 'B')
+							label->setPixmap(roiB);
+						else
+							label->setPixmap(roiN);
+				}
+			}
+			
+			label->setGeometry(i*80, 30 + j*80, 64, 64);
+			label->show();			
+		
+		}
+	}
 }
 
 

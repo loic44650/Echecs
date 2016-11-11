@@ -16,6 +16,10 @@ class Controleur
 
       	void setJoueur(Joueur, int );
 
+      	Echiquier& getEchiquier();
+
+      	void setPartie(const std::string& filename);
+
     private:
     	std::shared_ptr<Partie> partie_;
 

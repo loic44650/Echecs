@@ -32,6 +32,29 @@ Echiquier::Echiquier(const std::string &nomFichier)
 
 Echiquier::~Echiquier() {}
 
+void Echiquier::setEchiquier(const std::string &nomFichier)
+{
+   FactoryPiece fp;
+   std::ifstream fichier(nomFichier, std::ifstream::in);
+
+   if (fichier.is_open())
+   {
+      int x, y;
+      std::string nomPiece;
+      char dir;
+
+      fichier >> x >> y >> nomPiece >> dir;
+      echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
+
+      while (fichier.good())
+      {
+         fichier >> x >> y >> nomPiece >> dir;
+         echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
+      }
+      fichier.close();
+   }
+   else std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+}
 
 bool Echiquier::pieceEnPosInit(int x, int y) {
    return echiquier_[x][y]->pieceEnPosInit();

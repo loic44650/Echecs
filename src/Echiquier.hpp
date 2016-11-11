@@ -29,6 +29,7 @@ class Echiquier
 		Echiquier();
 		Echiquier(const std::string &nomFichier);
 		~Echiquier();
+		void setEchiquier(const std::string &nomFichier);
 		bool estOccupee(Coord coord);
 		int getTypeMouvement(Coord dep,Coord but);
 		bool pieceEnPosInit(int x, int y);

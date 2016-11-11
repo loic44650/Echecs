@@ -17,6 +17,7 @@
 #include <QObject>
 #include "Controleur.hpp"
 
+
 #define NB 5
 
 class Fenetre : public QWidget
@@ -42,6 +43,7 @@ class Fenetre : public QWidget
         void startGameVSIA();
         void startGameVSPlayer();
 
+        void affichageInitialEchiquier();
 
     private:
     	QPushButton *boutonNewGame_;
@@ -49,4 +51,6 @@ class Fenetre : public QWidget
     	QPushButton *boutonAbout_;
         std::shared_ptr<Controleur> controleur_;
 		QString joueurs_[NB];
+
+        QPixmap plateau;
 };

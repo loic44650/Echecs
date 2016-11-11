@@ -3,7 +3,10 @@
 
 Partie::Partie() {}
 
-Partie::Partie(const std::string& filename) : e_(filename), estEchec_(false) {
+void Partie::setPartie(const std::string& filename)
+{
+   e_.setEchiquier(filename);
+   estEchec_ = false;
    roiDe_[0] = e_.findPiece('R',joueur_[0].getCouleur());
    roiDe_[1] = e_.findPiece('R',joueur_[1].getCouleur());
 }
@@ -79,3 +82,5 @@ void Partie::afficherMouvementPiece(int numJoueur) {
 void Partie::setJoueur(Joueur j, int i) {
    joueur_[i].setJoueur(j);
 }
+
+Echiquier& Partie::getEchiquier() { return e_; }

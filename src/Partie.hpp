@@ -28,9 +28,7 @@ class Partie
 
 		Partie();
 
-    	Partie(const std::string& filename, const Joueur& j1, const Joueur& j2);
-
-	    Partie(const std::string& filename);
+	    void setPartie(const std::string& filename);
 
 	    void lancer();
 
@@ -42,6 +40,8 @@ class Partie
 
 		int menu();
 
+		Echiquier& getEchiquier();
+		
 		void setJoueur(Joueur j, int i);
 
 	private:

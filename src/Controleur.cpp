@@ -46,3 +46,10 @@ void Controleur::setJoueur(Joueur j, int i)
 {
 	partie_->setJoueur(j,i);
 }
+
+Echiquier& Controleur::getEchiquier() { return partie_->getEchiquier(); }
+
+void Controleur::setPartie(const std::string& filename) 
+{
+	partie_->setPartie(filename);
+}
