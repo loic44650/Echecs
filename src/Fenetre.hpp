@@ -13,6 +13,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QImage>
+#include <QString>
 #include "Controleur.hpp"
 
 
@@ -24,18 +25,20 @@ class Fenetre : public QWidget
     public:
     	Fenetre(std::shared_ptr<Controleur> controleur);
 
+    signals:
+        void sendText(QString name, QString firstname, QString col);
 
     public slots:
-   		void ouvrirDialogueNewGameVSIA();
-   		void ouvrirDialogueNewGameVSPlayer();
-   		void ouvrirDialogueNewGameVSPlayerSuivant();
-   		void ouvrirMessageAbout();
-   		void startGame();
+        void ouvrirDialogueNewGameVSIA();
+        void ouvrirDialogueNewGameVSPlayer();
+        void ouvrirDialogueNewGameVSPlayerSuivant();
+        void ouvrirMessageAbout();
+        void startGame(QString name, QString firstname, QString col);
 
     private:
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
-      	std::shared_ptr<Controleur> controleur_;
+        std::shared_ptr<Controleur> controleur_;
 
 };

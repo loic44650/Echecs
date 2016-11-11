@@ -24,7 +24,6 @@ Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget()
 }
 
 
-
 void Fenetre::ouvrirDialogueNewGameVSIA()
 {
 	QWidget *sousFenetre = new QWidget;
@@ -50,16 +49,20 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
 
 	sousFenetre->show();
 
-	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
-/*
-	Joueur j;
-	if(liste->itemText(liste->currentIndex())->toStdString() == "Noir" )
-		j(nom->text()->toStdString(), prenom->text()->toStdString(), 'N');
-	else
-		j(nom->text()->toStdString(), prenom->text()->toStdString(), 'B');
-*/
+
+	QString name = nom->text();
+	QString firstname = nom->text();
+	QString col = liste->itemText(liste->currentIndex());
+
+
+	QObject::connect(nom, SIGNAL(sendText(QString, QString, QString)), this, SLOT(startGame(name, firstname, col)));
+
+   	//std::cerr << "Does that exist ?" << nom->text().toStdString()<< "\n";
+   	//controleur_->jouerContreIA(nom->text().toStdString(), prenom->text().toStdString(), liste->itemText(liste->currentIndex()).toStdString());
+	
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
+
 
 void Fenetre::ouvrirDialogueNewGameVSPlayer()
 {
@@ -90,6 +93,7 @@ void Fenetre::ouvrirDialogueNewGameVSPlayer()
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
 
+
 void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()
 {
 	QWidget *sousFenetre = new QWidget;
@@ -115,13 +119,17 @@ void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
 
+
 void Fenetre::ouvrirMessageAbout()
 {
 	QMessageBox::about(this, "A propos", "Voici notre jeu d'Echecs.");
 }
 
-void Fenetre::startGame()
+
+void Fenetre::startGame(QString name, QString firstname, QString col)
 {
+	std::cout << name.toStdString() << std::endl;
+
 	QLabel *label = new QLabel(this);
 	QPixmap plateau("picture/plateau.png");
 	label->setPixmap(plateau);
