@@ -1,12 +1,12 @@
 #include "Fenetre.hpp"
 
-Fenetre::Fenetre(Controleur *controleur) : QWidget()
+Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget()
 {
     setFixedSize(800, 800);
  	setWindowIcon(QIcon("picture/logo.png"));
  	setWindowTitle("Echecs");
- 	
- 	controleur_ = std::shared_ptr<Controleur>(controleur);
+
+ 	controleur_ = controleur;
 
     boutonNewGame_ = new QPushButton("New Game vs IA", this);
     boutonNewGame_->setCursor(Qt::PointingHandCursor);
@@ -19,9 +19,11 @@ Fenetre::Fenetre(Controleur *controleur) : QWidget()
 
     boutonAbout_ = new QPushButton("A propos", this);
     boutonAbout_->setCursor(Qt::PointingHandCursor);
-    boutonAbout_->move(280, 0);
+    boutonAbout_->move(277, 0);
     QObject::connect(boutonAbout_, SIGNAL(clicked()), this, SLOT(ouvrirMessageAbout()));
 }
+
+
 
 void Fenetre::ouvrirDialogueNewGameVSIA()
 {
@@ -43,15 +45,15 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
 
 	QPushButton *boutonStart = new QPushButton("Lancer");
 	layout->addWidget(boutonStart);
-	
+
 	sousFenetre->setLayout(layout);
-	
+
 	sousFenetre->show();
 
 	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
 /*
 	Joueur j;
-	if(liste->itemText(liste->currentIndex())->toStdString() == "Noir" )  
+	if(liste->itemText(liste->currentIndex())->toStdString() == "Noir" )
 		j(nom->text()->toStdString(), prenom->text()->toStdString(), 'N');
 	else
 		j(nom->text()->toStdString(), prenom->text()->toStdString(), 'B');
@@ -79,9 +81,9 @@ void Fenetre::ouvrirDialogueNewGameVSPlayer()
 
 	QPushButton *boutonSuivant = new QPushButton("Suivant");
 	layout->addWidget(boutonSuivant);
-	
+
 	sousFenetre->setLayout(layout);
-	
+
 	sousFenetre->show();
 
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), this, SLOT(ouvrirDialogueNewGameVSPlayerSuivant()));
@@ -104,9 +106,9 @@ void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()
 
 	QPushButton *boutonStart = new QPushButton("Lancer");
 	layout->addWidget(boutonStart);
-	
+
 	sousFenetre->setLayout(layout);
-	
+
 	sousFenetre->show();
 
 	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));

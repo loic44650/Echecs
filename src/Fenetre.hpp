@@ -22,7 +22,8 @@ class Fenetre : public QWidget
 	Q_OBJECT
 
     public:
-    	Fenetre(Controleur *controleur);
+    	Fenetre(std::shared_ptr<Controleur> controleur);
+
 
     public slots:
    		void ouvrirDialogueNewGameVSIA();
@@ -30,7 +31,7 @@ class Fenetre : public QWidget
    		void ouvrirDialogueNewGameVSPlayerSuivant();
    		void ouvrirMessageAbout();
    		void startGame();
- 	
+
     private:
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
