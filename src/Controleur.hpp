@@ -11,7 +11,9 @@ class Controleur
     	Controleur(std::shared_ptr<Partie> p);
 
 
-      	void setJoueur(Joueur, int );
+      void jouerContreIA(std::string, std::string, std::string);
+
+      void setJoueur(Joueur, int );
 
     private:
     	std::shared_ptr<Partie> partie_;

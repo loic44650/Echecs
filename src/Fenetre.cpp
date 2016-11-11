@@ -51,13 +51,8 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
 	sousFenetre->show();
 
 	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
-/*
-	Joueur j;
-	if(liste->itemText(liste->currentIndex())->toStdString() == "Noir" )
-		j(nom->text()->toStdString(), prenom->text()->toStdString(), 'N');
-	else
-		j(nom->text()->toStdString(), prenom->text()->toStdString(), 'B');
-*/
+   std::cerr << "Does that exist ?" << nom->text().toStdString()<< "\n";
+   controleur_->jouerContreIA(nom->text().toStdString(), prenom->text().toStdString(), liste->itemText(liste->currentIndex()).toStdString());
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
 

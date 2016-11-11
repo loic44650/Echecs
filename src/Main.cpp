@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
    	shared_ptr<Partie> p = shared_ptr<Partie>(new Partie());
    	shared_ptr<Controleur> c = shared_ptr<Controleur>(new Controleur(p));
    	Fenetre fenetre(c);
-   	//fenetre.show();
+   	fenetre.show();
 
    	return app.exec();
 		//return 0;

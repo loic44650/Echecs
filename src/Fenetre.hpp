@@ -36,6 +36,6 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
-      	std::shared_ptr<Controleur> controleur_;
+      std::shared_ptr<Controleur> controleur_;
 
 };
