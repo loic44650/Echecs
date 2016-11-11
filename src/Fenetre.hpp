@@ -14,8 +14,10 @@
 #include <QLabel>
 #include <QImage>
 #include <QString>
+#include <QObject>
 #include "Controleur.hpp"
 
+#define NB 3
 
 class Fenetre : public QWidget
 {
@@ -25,20 +27,20 @@ class Fenetre : public QWidget
     public:
     	Fenetre(std::shared_ptr<Controleur> controleur);
 
-    signals:
-        void sendText(QString name, QString firstname, QString col);
-
     public slots:
-        void ouvrirDialogueNewGameVSIA();
-        void ouvrirDialogueNewGameVSPlayer();
-        void ouvrirDialogueNewGameVSPlayerSuivant();
-        void ouvrirMessageAbout();
-        void startGame(QString name, QString firstname, QString col);
+   		void ouvrirDialogueNewGameVSIA();
+   		void ouvrirDialogueNewGameVSPlayer();
+   		void ouvrirDialogueNewGameVSPlayerSuivant();
+   		void ouvrirMessageAbout();
+		void ecrireNom(QString);
+        void ecrirePrenom(QString);
+        void ecrireCol(QString);
+   		void startGame();
 
     private:
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
         std::shared_ptr<Controleur> controleur_;
-
+		QString joueurs_[NB];
 };

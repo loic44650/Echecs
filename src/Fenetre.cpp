@@ -49,17 +49,11 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
 
 	sousFenetre->show();
 
+   	QObject::connect(nom, SIGNAL(textChanged(QString)), this, SLOT(ecrireNom(QString)));
+   	QObject::connect(prenom, SIGNAL(textChanged(QString)), this, SLOT(ecrirePrenom(QString)));
+   	QObject::connect(liste, SIGNAL(currentTextChanged(QString)), this, SLOT(ecrireCol(QString)));
 
-	QString name = nom->text();
-	QString firstname = nom->text();
-	QString col = liste->itemText(liste->currentIndex());
-
-
-	QObject::connect(nom, SIGNAL(sendText(QString, QString, QString)), this, SLOT(startGame(name, firstname, col)));
-
-   	//std::cerr << "Does that exist ?" << nom->text().toStdString()<< "\n";
-   	//controleur_->jouerContreIA(nom->text().toStdString(), prenom->text().toStdString(), liste->itemText(liste->currentIndex()).toStdString());
-	
+	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
 
@@ -91,6 +85,27 @@ void Fenetre::ouvrirDialogueNewGameVSPlayer()
 
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), this, SLOT(ouvrirDialogueNewGameVSPlayerSuivant()));
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
+}
+
+
+void Fenetre::ecrireNom(QString n) 
+{
+	joueurs_[0] = n;
+	std::cerr << joueurs_[0].toStdString() << std::endl;
+}
+
+
+void Fenetre::ecrirePrenom(QString p) 
+{
+	joueurs_[1] = p;
+	std::cerr << joueurs_[1].toStdString() << std::endl;
+}
+
+
+void Fenetre::ecrireCol(QString c) 
+{
+	joueurs_[2] = c;
+	std::cerr << joueurs_[2].toStdString() << std::endl;
 }
 
 
@@ -126,10 +141,8 @@ void Fenetre::ouvrirMessageAbout()
 }
 
 
-void Fenetre::startGame(QString name, QString firstname, QString col)
+void Fenetre::startGame()
 {
-	std::cout << name.toStdString() << std::endl;
-
 	QLabel *label = new QLabel(this);
 	QPixmap plateau("picture/plateau.png");
 	label->setPixmap(plateau);
