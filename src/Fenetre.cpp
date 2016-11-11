@@ -53,7 +53,7 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
    	QObject::connect(prenom, SIGNAL(textChanged(QString)), this, SLOT(ecrirePrenom(QString)));
    	QObject::connect(liste, SIGNAL(currentTextChanged(QString)), this, SLOT(ecrireCol(QString)));
 
-	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
+	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGameVSIA()));
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
 
@@ -83,29 +83,12 @@ void Fenetre::ouvrirDialogueNewGameVSPlayer()
 
 	sousFenetre->show();
 
+   	QObject::connect(nom, SIGNAL(textChanged(QString)), this, SLOT(ecrireNom(QString)));
+   	QObject::connect(prenom, SIGNAL(textChanged(QString)), this, SLOT(ecrirePrenom(QString)));
+   	QObject::connect(liste, SIGNAL(currentTextChanged(QString)), this, SLOT(ecrireCol(QString)));
+
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), this, SLOT(ouvrirDialogueNewGameVSPlayerSuivant()));
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
-}
-
-
-void Fenetre::ecrireNom(QString n) 
-{
-	joueurs_[0] = n;
-	std::cerr << joueurs_[0].toStdString() << std::endl;
-}
-
-
-void Fenetre::ecrirePrenom(QString p) 
-{
-	joueurs_[1] = p;
-	std::cerr << joueurs_[1].toStdString() << std::endl;
-}
-
-
-void Fenetre::ecrireCol(QString c) 
-{
-	joueurs_[2] = c;
-	std::cerr << joueurs_[2].toStdString() << std::endl;
 }
 
 
@@ -130,8 +113,39 @@ void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()
 
 	sousFenetre->show();
 
-	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
+   	QObject::connect(nom, SIGNAL(textChanged(QString)), this, SLOT(ecrireNom2(QString)));
+   	QObject::connect(prenom, SIGNAL(textChanged(QString)), this, SLOT(ecrirePrenom2(QString)));
+
+	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGameVSPlayer()));
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
+}
+
+void Fenetre::startGameVSIA()
+{
+	// création de la partie
+	controleur_->jouerContreIA(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString());
+
+
+	// Affichage de l'échiquier
+	QLabel *label = new QLabel(this);
+	QPixmap plateau("picture/plateau.png");
+	label->setPixmap(plateau);
+	label->setGeometry(0, 30, 640, 640);
+	label->show();
+}
+
+void Fenetre::startGameVSPlayer()
+{
+	// création de la partie
+	controleur_->jouerContrePlayer(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString(), joueurs_[3].toStdString(), joueurs_[4].toStdString());
+
+
+	// Affichage de l'échiquier
+	QLabel *label = new QLabel(this);
+	QPixmap plateau("picture/plateau.png");
+	label->setPixmap(plateau);
+	label->setGeometry(0, 30, 640, 640);
+	label->show();
 }
 
 
@@ -141,11 +155,36 @@ void Fenetre::ouvrirMessageAbout()
 }
 
 
-void Fenetre::startGame()
+void Fenetre::ecrireNom(QString n) 
 {
-	QLabel *label = new QLabel(this);
-	QPixmap plateau("picture/plateau.png");
-	label->setPixmap(plateau);
-	label->setGeometry(0, 30, 640, 640);
-	label->show();
+	joueurs_[0] = n;
+	std::cerr << joueurs_[0].toStdString() << std::endl;
+}
+
+
+void Fenetre::ecrirePrenom(QString p) 
+{
+	joueurs_[1] = p;
+	std::cerr << joueurs_[1].toStdString() << std::endl;
+}
+
+
+void Fenetre::ecrireCol(QString c) 
+{
+	joueurs_[2] = c;
+	std::cerr << joueurs_[2].toStdString() << std::endl;
+}
+
+
+void Fenetre::ecrireNom2(QString n) 
+{
+	joueurs_[3] = n;
+	std::cerr << joueurs_[3].toStdString() << std::endl;
+}
+
+
+void Fenetre::ecrirePrenom2(QString p) 
+{
+	joueurs_[4] = p;
+	std::cerr << joueurs_[4].toStdString() << std::endl;
 }

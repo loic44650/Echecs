@@ -17,7 +17,7 @@
 #include <QObject>
 #include "Controleur.hpp"
 
-#define NB 3
+#define NB 5
 
 class Fenetre : public QWidget
 {
@@ -32,10 +32,16 @@ class Fenetre : public QWidget
    		void ouvrirDialogueNewGameVSPlayer();
    		void ouvrirDialogueNewGameVSPlayerSuivant();
    		void ouvrirMessageAbout();
-		void ecrireNom(QString);
+		
+        void ecrireNom(QString);
         void ecrirePrenom(QString);
         void ecrireCol(QString);
-   		void startGame();
+        void ecrireNom2(QString);
+        void ecrirePrenom2(QString);
+   		
+        void startGameVSIA();
+        void startGameVSPlayer();
+
 
     private:
     	QPushButton *boutonNewGame_;
