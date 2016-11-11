@@ -50,9 +50,10 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
 
 	sousFenetre->show();
 
+   QString n;
+   QObject::connect(nom, SIGNAL(textChanged(QString)), this, SLOT(ecrireDonnees(QString)));
+   std::cerr << n.toStdString() << std::endl;
 	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGame()));
-   std::cerr << "Does that exist ?" << nom->text().toStdString()<< "\n";
-   controleur_->jouerContreIA(nom->text().toStdString(), prenom->text().toStdString(), liste->itemText(liste->currentIndex()).toStdString());
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
 
@@ -83,6 +84,10 @@ void Fenetre::ouvrirDialogueNewGameVSPlayer()
 
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), this, SLOT(ouvrirDialogueNewGameVSPlayerSuivant()));
 	QObject::connect(boutonSuivant, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
+}
+
+void Fenetre::ecrireDonnees(QString n) {
+   std::cerr << "nom : " << n.toStdString() << std::endl;
 }
 
 void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()

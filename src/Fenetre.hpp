@@ -13,8 +13,10 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QImage>
+#include <QString>
 #include "Controleur.hpp"
 
+#define NB_JOUEURS 2
 
 class Fenetre : public QWidget
 {
@@ -30,6 +32,7 @@ class Fenetre : public QWidget
    		void ouvrirDialogueNewGameVSPlayer();
    		void ouvrirDialogueNewGameVSPlayerSuivant();
    		void ouvrirMessageAbout();
+			void ecrireDonnees(QString);
    		void startGame();
 
     private:
@@ -37,5 +40,6 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
       std::shared_ptr<Controleur> controleur_;
+		QString joueurs_[NB_JOUEURS];
 
 };
