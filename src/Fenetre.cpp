@@ -21,6 +21,9 @@ Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget()
     boutonAbout_->setCursor(Qt::PointingHandCursor);
     boutonAbout_->move(277, 0);
     QObject::connect(boutonAbout_, SIGNAL(clicked()), this, SLOT(ouvrirMessageAbout()));
+
+
+    QObject::connect(this, SIGNAL(mouvementEffectue()), this, SLOT(afficherEchiquier()));
 }
 
 
@@ -53,7 +56,6 @@ void Fenetre::ouvrirDialogueNewGameVSIA()
    	QObject::connect(nom, SIGNAL(textChanged(QString)), this, SLOT(ecrireNom(QString)));
    	QObject::connect(prenom, SIGNAL(textChanged(QString)), this, SLOT(ecrirePrenom(QString)));
    	QObject::connect(liste, SIGNAL(currentTextChanged(QString)), this, SLOT(ecrireCol(QString)));
-
 	QObject::connect(boutonStart, SIGNAL(clicked()), this, SLOT(startGameVSIA()));
 	QObject::connect(boutonStart, SIGNAL(clicked()), sousFenetre, SLOT(hide()));
 }
@@ -130,8 +132,8 @@ void Fenetre::startGameVSIA()
 
 	// Affichage de l'échiquier
 	QLabel *label = new QLabel(this);
-	QPixmap plateau("picture/plateau.png");
-	label->setPixmap(plateau);
+	QPixmap plateau_("picture/plateau.png");
+	label->setPixmap(plateau_);
 	label->setGeometry(0, 30, 640, 640);
 	label->show();
 
@@ -162,8 +164,8 @@ void Fenetre::startGameVSPlayer()
 
 	// Affichage de l'échiquier
 	QLabel *label = new QLabel(this);
-	QPixmap plateau("picture/plateau.png");
-	label->setPixmap(plateau);
+	QPixmap plateau_("picture/plateau.png");
+	label->setPixmap(plateau_);
 	label->setGeometry(0, 30, 640, 640);
 	label->show();
 
@@ -188,19 +190,19 @@ void Fenetre::startGameVSPlayer()
 
 void Fenetre::affichageInitialEchiquier()
 {
-	QPixmap pionB("picture/pionB.png");
-	QPixmap tourB("picture/tourB.png");
-	QPixmap cavalierB("picture/cavalierB.png");
-	QPixmap fouB("picture/fouB.png");
-	QPixmap reineB("picture/reineB.png");
-	QPixmap roiB("picture/roiB.png");
+	pionB_ = QPixmap("picture/pionB.png");
+	tourB_ = QPixmap("picture/tourB.png");
+	cavalierB_ = QPixmap("picture/cavalierB.png");
+	fouB_ = QPixmap("picture/fouB.png");
+	reineB_ = QPixmap("picture/reineB.png");
+	roiB_ = QPixmap("picture/roiB.png");
 
-	QPixmap pionN("picture/pionN.png");
-	QPixmap tourN("picture/tourN.png");
-	QPixmap cavalierN("picture/cavalierN.png");
-	QPixmap fouN("picture/fouN.png");
-	QPixmap reineN("picture/reineN.png");
-	QPixmap roiN("picture/roiN.png");
+	pionN_ = QPixmap("picture/pionN.png");
+	tourN_ = QPixmap("picture/tourN.png");
+	cavalierN_ = QPixmap("picture/cavalierN.png");
+	fouN_ = QPixmap("picture/fouN.png");
+	reineN_ = QPixmap("picture/reineN.png");
+	roiN_ = QPixmap("picture/roiN.png");
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
 	char type, col;
@@ -225,44 +227,44 @@ void Fenetre::affichageInitialEchiquier()
 				{
 					case 'P':
 						if (col == 'B')
-							label->setPixmap(pionB);
+							label->setPixmap(pionB_);
 						else
-							label->setPixmap(pionN);
+							label->setPixmap(pionN_);
                   break;
 
 					case 'T':
 						if (col == 'B')
-							label->setPixmap(tourB);
+							label->setPixmap(tourB_);
 						else
-							label->setPixmap(tourN);
+							label->setPixmap(tourN_);
                   break;
 
 					case 'C':
 						if (col == 'B')
-							label->setPixmap(cavalierB);
+							label->setPixmap(cavalierB_);
 						else
-							label->setPixmap(cavalierN);
+							label->setPixmap(cavalierN_);
                   break;
 
 					case 'F':
 						if (col == 'B')
-							label->setPixmap(fouB);
+							label->setPixmap(fouB_);
 						else
-							label->setPixmap(fouN);
+							label->setPixmap(fouN_);
                   break;
 
 					case 'D':
 						if (col == 'B')
-							label->setPixmap(reineB);
+							label->setPixmap(reineB_);
 						else
-							label->setPixmap(reineN);
+							label->setPixmap(reineN_);
                   break;
 
 					case 'R':
 						if (col == 'B')
-							label->setPixmap(roiB);
+							label->setPixmap(roiB_);
 						else
-							label->setPixmap(roiN);
+							label->setPixmap(roiN_);
                   break;
             }
 		      //label->setGeometry(30 + j*8, i*80, 64, 64);
@@ -273,6 +275,78 @@ void Fenetre::affichageInitialEchiquier()
 		}
       x += 80;
 	}
+}
+
+void Fenetre::afficherEchiquier() {
+   std::cerr << "Fenetre::afficherEchiquier()" << std::endl;
+   std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
+   char type, col;
+      int x = 32;
+      int y = 17;
+   	for (int i = 0; i < 8; ++i)
+   	{
+         y = 17;
+   		for (int j = 0; j < 8; ++j)
+   		{
+   			if (echiquier->estOccupee(Coord(i, j)))
+   			{
+   				type = echiquier->getType(Coord(i, j));
+   				col = echiquier->getCouleur(Coord(i, j));
+   				QLabel *label = new QLabel(this);
+
+               std::cerr << "En (" << i << "," << j << ") : " << type << " de couleur " << col << std::endl;
+   				switch (type)
+   				{
+   					case 'P':
+   						if (col == 'B')
+   							label->setPixmap(pionB_);
+   						else
+   							label->setPixmap(pionN_);
+                     break;
+
+   					case 'T':
+   						if (col == 'B')
+   							label->setPixmap(tourB_);
+   						else
+   							label->setPixmap(tourN_);
+                     break;
+
+   					case 'C':
+   						if (col == 'B')
+   							label->setPixmap(cavalierB_);
+   						else
+   							label->setPixmap(cavalierN_);
+                     break;
+
+   					case 'F':
+   						if (col == 'B')
+   							label->setPixmap(fouB_);
+   						else
+   							label->setPixmap(fouN_);
+                     break;
+
+   					case 'D':
+   						if (col == 'B')
+   							label->setPixmap(reineB_);
+   						else
+   							label->setPixmap(reineN_);
+                     break;
+
+   					case 'R':
+   						if (col == 'B')
+   							label->setPixmap(roiB_);
+   						else
+   							label->setPixmap(roiN_);
+                     break;
+               }
+   		      //label->setGeometry(30 + j*8, i*80, 64, 64);
+               label->setGeometry(y, x, 64, 64);
+   			   label->show();
+               y += 80;
+            }
+   		}
+         x += 80;
+   	}
 }
 
 
@@ -323,5 +397,7 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
    int y = p.x() / 80;
    int x = (p.y() - 34) / 80;
    std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
-   controleur_->estCliqueOk(Coord(x,y));
+   if(controleur_->gererClique(Coord(x,y)) )
+      emit mouvementEffectue();
+
 }

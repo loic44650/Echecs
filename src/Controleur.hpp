@@ -5,6 +5,7 @@
 #include "Piece.hpp"
 #include "utils.hpp"
 
+
 class Controleur
 {
 
@@ -21,9 +22,11 @@ class Controleur
 
       	void setPartie(const std::string& filename);
 
-         void estCliqueOk(const Coord &c);
+         bool gererClique(const Coord &c);
 
     private:
     	std::shared_ptr<Partie> partie_;
+      Coord clique1_;
+      Coord clique2_;
 
 };

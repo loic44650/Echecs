@@ -29,6 +29,9 @@ class Fenetre : public QWidget
     public:
     	Fenetre(std::shared_ptr<Controleur> controleur);
 
+	signals:
+		void mouvementEffectue();
+
     public slots:
    		void ouvrirDialogueNewGameVSIA();
    		void ouvrirDialogueNewGameVSPlayer();
@@ -45,6 +48,7 @@ class Fenetre : public QWidget
         void startGameVSPlayer();
 
         void affichageInitialEchiquier();
+		  void afficherEchiquier();
 
 	protected:
 		void mouseReleaseEvent(QMouseEvent *qevent);
@@ -53,8 +57,21 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
-        std::shared_ptr<Controleur> controleur_;
+      std::shared_ptr<Controleur> controleur_;
 		QString joueurs_[NB];
 
-        QPixmap plateau;
+      QPixmap plateau_;
+		QLabel pionB_;
+		QLabel tourB_;
+		QLabel cavalierB_;
+		QLabel fouB_;
+		QLabel reineB_;
+		QLabel roiB_;
+		QLabel pionN_;
+		QLabel tourN_;
+		QLabel cavalierN_;
+		QLabel fouN_;
+		QLabel reineN_;
+		QLabel roiN_;
+
 };
