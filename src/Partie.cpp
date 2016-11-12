@@ -1,7 +1,9 @@
 #include "Partie.hpp"
 
 
-Partie::Partie() {}
+Partie::Partie() {
+      e_ = std::shared_ptr<Echiquier>(new Echiquier());
+}
 
 void Partie::setPartie(const std::string& filename)
 {

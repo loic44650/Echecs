@@ -2,9 +2,7 @@
 #include "FactoryPiece.hpp"
 #include "Piece.hpp"
 
-Echiquier::Echiquier() {
-
-}
+Echiquier::Echiquier() {}
 
 Echiquier::Echiquier(const std::string &nomFichier)
 {
@@ -44,8 +42,9 @@ void Echiquier::setEchiquier(const std::string &nomFichier)
       char dir;
 
       fichier >> x >> y >> nomPiece >> dir;
+      std::cerr << x << y << " " << nomPiece << " ,dir :" << dir << std::endl;
       echiquier_[x][y] = fp.creerPiece(nomPiece, dir);
-
+      std::cerr << echiquier_[x][y]->getCouleur() << std::endl;
       while (fichier.good())
       {
          fichier >> x >> y >> nomPiece >> dir;

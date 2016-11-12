@@ -137,15 +137,15 @@ void Fenetre::startGameVSIA()
 
 	std::cout << "bob selectionne couleurs" << std::endl;
 
-	if (joueurs_[2].toStdString() == "Blanc")
-	{
-		std::cout << "bob blanc" << std::endl;
-		controleur_->setPartie("echiquierDeBaseB.txt");
-	}
-	else
+	if (joueurs_[2].toStdString() == "" || joueurs_[2].toStdString() == "Noir")
 	{
 		std::cout << "bob noir" << std::endl;
 		controleur_->setPartie("echiquierDeBaseN.txt");
+	}
+	else
+	{
+		std::cout << "bob blanc" << std::endl;
+		controleur_->setPartie("echiquierDeBaseB.txt");
 	}
 
 	std::cout << "bob s affiche" << std::endl;
