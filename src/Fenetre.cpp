@@ -188,19 +188,19 @@ void Fenetre::startGameVSPlayer()
 
 void Fenetre::affichageInitialEchiquier()
 {
-	QPixmap pionB("picture/pionB.svg");
-	QPixmap tourB("picture/tourB.svg");
-	QPixmap cavalierB("picture/cavalierB.svg");
-	QPixmap fouB("picture/fouB.svg");
-	QPixmap reineB("picture/reineB.svg");
-	QPixmap roiB("picture/roiB.svg");
+	QPixmap pionB("picture/pionB.png");
+	QPixmap tourB("picture/tourB.png");
+	QPixmap cavalierB("picture/cavalierB.png");
+	QPixmap fouB("picture/fouB.png");
+	QPixmap reineB("picture/reineB.png");
+	QPixmap roiB("picture/roiB.png");
 
-	QPixmap pionN("picture/pionN.svg");
-	QPixmap tourN("picture/tourN.svg");
-	QPixmap cavalierN("picture/cavalierN.svg");
-	QPixmap fouN("picture/fouN.svg");
-	QPixmap reineN("picture/reineN.svg");
-	QPixmap roiN("picture/roiN.svg");
+	QPixmap pionN("picture/pionN.png");
+	QPixmap tourN("picture/tourN.png");
+	QPixmap cavalierN("picture/cavalierN.png");
+	QPixmap fouN("picture/fouN.png");
+	QPixmap reineN("picture/reineN.png");
+	QPixmap roiN("picture/roiN.png");
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
 	char type, col;
@@ -211,7 +211,6 @@ void Fenetre::affichageInitialEchiquier()
 	{
 		for (int j = 0; j < 8; ++j)
 		{
-			std::cout << "bob dans les for" << std::endl;
 
 			if (echiquier->estOccupee(Coord(i, j)))
 			{
@@ -219,8 +218,7 @@ void Fenetre::affichageInitialEchiquier()
 				col = echiquier->getCouleur(Coord(i, j));
 				QLabel *label = new QLabel(this);
 
-				std::cout << "bob est occupé" << std::endl;
-
+            std::cerr << "En (" << i << "," << j << ") : " << type << " de couleur " << col << std::endl;
 				switch (type)
 				{
 					case 'P':
@@ -228,39 +226,45 @@ void Fenetre::affichageInitialEchiquier()
 							label->setPixmap(pionB);
 						else
 							label->setPixmap(pionN);
+                  break;
 
 					case 'T':
 						if (col == 'B')
 							label->setPixmap(tourB);
 						else
 							label->setPixmap(tourN);
+                  break;
 
 					case 'C':
 						if (col == 'B')
 							label->setPixmap(cavalierB);
 						else
 							label->setPixmap(cavalierN);
+                  break;
 
 					case 'F':
 						if (col == 'B')
 							label->setPixmap(fouB);
 						else
 							label->setPixmap(fouN);
+                  break;
 
 					case 'D':
 						if (col == 'B')
 							label->setPixmap(reineB);
 						else
 							label->setPixmap(reineN);
+                  break;
 
 					case 'R':
 						if (col == 'B')
 							label->setPixmap(roiB);
 						else
 							label->setPixmap(roiN);
-				}
-		         label->setGeometry(i*80, 30 + j*80, 64, 64);
-			            label->show();
+                  break;
+            }
+		      label->setGeometry(30 + j*80, i*80, 64, 64);
+			   label->show();
          }
 		}
 	}

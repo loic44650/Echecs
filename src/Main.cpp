@@ -9,9 +9,6 @@
 using namespace std;
 
 
-Joueur creerJoueur(char col);
-
-
 int main(int argc, char* argv[])
 {
 
@@ -23,18 +20,4 @@ int main(int argc, char* argv[])
    	fenetre.show();
 
    	return app.exec();
-}
-
-
-
-Joueur creerJoueur(char col)
-{
-   string nom, prenom;
-
-   cout << "Entrez votre nom : " << endl;
-   cin >> nom;
-   cout << "Entrez votre prenom : " << endl;
-   cin >> prenom;
-
-   return Joueur(nom, prenom, col);
 }
