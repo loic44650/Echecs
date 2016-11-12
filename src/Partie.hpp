@@ -36,7 +36,7 @@ class Partie
 
 		Coord selectionnerPiece(std::string msg);
 
-      	void afficherMouvementPiece(const int numJoueur);
+      void afficherMouvementPiece(const int numJoueur);
 
 		int menu();
 

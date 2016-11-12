@@ -15,6 +15,7 @@
 #include <QImage>
 #include <QString>
 #include <QObject>
+#include <QtGui>
 #include "Controleur.hpp"
 
 
@@ -33,17 +34,20 @@ class Fenetre : public QWidget
    		void ouvrirDialogueNewGameVSPlayer();
    		void ouvrirDialogueNewGameVSPlayerSuivant();
    		void ouvrirMessageAbout();
-		
+
         void ecrireNom(QString);
         void ecrirePrenom(QString);
         void ecrireCol(QString);
         void ecrireNom2(QString);
         void ecrirePrenom2(QString);
-   		
+
         void startGameVSIA();
         void startGameVSPlayer();
 
         void affichageInitialEchiquier();
+
+	protected:
+		void mouseReleaseEvent(QMouseEvent *qevent);
 
     private:
     	QPushButton *boutonNewGame_;

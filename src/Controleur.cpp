@@ -53,3 +53,11 @@ void Controleur::setPartie(const std::string& filename)
 {
 	partie_->setPartie(filename);
 }
+
+void Controleur::estCliqueOk(const Coord &c) {
+	if(c.x < 8 && c.x >= 0 && c.y < 8 && c.y >= 0 ) {
+		if(partie_->getEchiquier()->estOccupee(c))
+			std::cerr << "piece choisie : " << partie_->getEchiquier()->getType(c) << std::endl;
+	}
+
+}

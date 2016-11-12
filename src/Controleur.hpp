@@ -3,6 +3,7 @@
 #include <memory>
 #include "Partie.hpp"
 #include "Piece.hpp"
+#include "utils.hpp"
 
 class Controleur
 {
@@ -19,6 +20,8 @@ class Controleur
       	std::shared_ptr<Echiquier> getEchiquier();
 
       	void setPartie(const std::string& filename);
+
+         void estCliqueOk(const Coord &c);
 
     private:
     	std::shared_ptr<Partie> partie_;

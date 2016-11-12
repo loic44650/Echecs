@@ -207,11 +207,13 @@ void Fenetre::affichageInitialEchiquier()
 
 	std::cout << "bob dans l'affichage" << std::endl;
 
+   int x = 32;
+   int y = 17;
 	for (int i = 0; i < 8; ++i)
 	{
+      y = 17;
 		for (int j = 0; j < 8; ++j)
 		{
-
 			if (echiquier->estOccupee(Coord(i, j)))
 			{
 				type = echiquier->getType(Coord(i, j));
@@ -263,10 +265,13 @@ void Fenetre::affichageInitialEchiquier()
 							label->setPixmap(roiN);
                   break;
             }
-		      label->setGeometry(30 + j*80, i*80, 64, 64);
+		      //label->setGeometry(30 + j*8, i*80, 64, 64);
+            label->setGeometry(y, x, 64, 64);
 			   label->show();
+            y += 80;
          }
 		}
+      x += 80;
 	}
 }
 
@@ -309,4 +314,14 @@ void Fenetre::ecrirePrenom2(QString p)
 {
 	joueurs_[4] = p;
 	std::cerr << joueurs_[4].toStdString() << std::endl;
+}
+
+void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
+{
+   QPoint p = qevent->pos();
+   std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
+   int y = p.x() / 80;
+   int x = (p.y() - 34) / 80;
+   std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
+   controleur_->estCliqueOk(Coord(x,y));
 }
