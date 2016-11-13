@@ -190,19 +190,36 @@ void Fenetre::startGameVSPlayer()
 
 void Fenetre::affichageInitialEchiquier()
 {
-	pionB_ = QPixmap("picture/pionB.png");
-	tourB_ = QPixmap("picture/tourB.png");
-	cavalierB_ = QPixmap("picture/cavalierB.png");
-	fouB_ = QPixmap("picture/fouB.png");
-	reineB_ = QPixmap("picture/reineB.png");
-	roiB_ = QPixmap("picture/roiB.png");
+   for(int i = 0; i < 8; ++i) {
+      pionB_[i] = new PieceCliquable(this);
+      pionB_[i]->setPixmap(QPixmap("picture/pionB.png"));
+      pionN_[i] = new PieceCliquable(this);
+      pionN_[i]->setPixmap(QPixmap("picture/pionN.png"));
+   }
 
-	pionN_ = QPixmap("picture/pionN.png");
-	tourN_ = QPixmap("picture/tourN.png");
-	cavalierN_ = QPixmap("picture/cavalierN.png");
-	fouN_ = QPixmap("picture/fouN.png");
-	reineN_ = QPixmap("picture/reineN.png");
-	roiN_ = QPixmap("picture/roiN.png");
+   for(int i = 0; i < 2; ++i) {
+      tourB_[i] = new PieceCliquable(this);
+	   tourB_[i]->setPixmap(QPixmap("picture/tourB.png"));
+      tourN_[i] = new PieceCliquable(this);
+      tourN_[i]->setPixmap(QPixmap("picture/tourN.png"));
+      cavalierN_[i] = new PieceCliquable(this);
+      cavalierN_[i]->setPixmap(QPixmap("picture/cavalierN.png"));
+      cavalierB_[i] = new PieceCliquable(this);
+	   cavalierB_[i]->setPixmap(QPixmap("picture/cavalierB.png"));
+      fouB_[i] = new PieceCliquable(this);
+	   fouB_[i]->setPixmap(QPixmap("picture/fouB.png"));
+      fouN_[i] = new PieceCliquable(this);
+      fouN_[i]->setPixmap(QPixmap("picture/fouN.png"));
+   }
+   reineB_ = new PieceCliquable(this);
+	reineB_->setPixmap(QPixmap("picture/reineB.png"));
+   roiB_ = new PieceCliquable(this);
+	roiB_->setPixmap(QPixmap("picture/roiB.png"));
+
+   reineN_ = new PieceCliquable(this);
+   reineN_->setPixmap(QPixmap("picture/reineN.png"));
+   roiN_ = new PieceCliquable(this);
+   roiN_->setPixmap(QPixmap("picture/roiN.png"));
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
 	char type, col;
@@ -227,44 +244,44 @@ void Fenetre::affichageInitialEchiquier()
 				{
 					case 'P':
 						if (col == 'B')
-							label->setPixmap(pionB_);
+							label = (pionB_[j]);
 						else
-							label->setPixmap(pionN_);
+							label = (pionN_[j]);
                   break;
 
 					case 'T':
 						if (col == 'B')
-							label->setPixmap(tourB_);
+							label = (tourB_[j/7]);
 						else
-							label->setPixmap(tourN_);
+							label = (tourN_[j/7]);
                   break;
 
 					case 'C':
 						if (col == 'B')
-							label->setPixmap(cavalierB_);
+							label = (cavalierB_[j/6]);
 						else
-							label->setPixmap(cavalierN_);
+							label = (cavalierN_[j/6]);
                   break;
 
 					case 'F':
 						if (col == 'B')
-							label->setPixmap(fouB_);
+							label = (fouB_[j/5]);
 						else
-							label->setPixmap(fouN_);
+							label = (fouN_[j/5]);
                   break;
 
 					case 'D':
 						if (col == 'B')
-							label->setPixmap(reineB_);
+							label = (reineB_);
 						else
-							label->setPixmap(reineN_);
+							label = (reineN_);
                   break;
 
 					case 'R':
 						if (col == 'B')
-							label->setPixmap(roiB_);
+							label = (roiB_);
 						else
-							label->setPixmap(roiN_);
+							label = (roiN_);
                   break;
             }
 		      //label->setGeometry(30 + j*8, i*80, 64, 64);
@@ -292,51 +309,50 @@ void Fenetre::afficherEchiquier() {
    			{
    				type = echiquier->getType(Coord(i, j));
    				col = echiquier->getCouleur(Coord(i, j));
-   				QLabel *label = new QLabel(this);
+   				PieceCliquable *label = new PieceCliquable(this);
 
-               std::cerr << "En (" << i << "," << j << ") : " << type << " de couleur " << col << std::endl;
    				switch (type)
    				{
    					case 'P':
    						if (col == 'B')
-   							label->setPixmap(pionB_);
+   							label = (pionB_[j]);
    						else
-   							label->setPixmap(pionN_);
+   							label = (pionN_[j]);
                      break;
 
    					case 'T':
    						if (col == 'B')
-   							label->setPixmap(tourB_);
+   							label = (tourB_[j/7]);
    						else
-   							label->setPixmap(tourN_);
+   							label = (tourN_[j/7]);
                      break;
 
    					case 'C':
    						if (col == 'B')
-   							label->setPixmap(cavalierB_);
+   							label = (cavalierB_[j/6]);
    						else
-   							label->setPixmap(cavalierN_);
+   							label = (cavalierN_[j/6]);
                      break;
 
    					case 'F':
    						if (col == 'B')
-   							label->setPixmap(fouB_);
+   							label = (fouB_[j/5]);
    						else
-   							label->setPixmap(fouN_);
+   							label = (fouN_[j/5]);
                      break;
 
    					case 'D':
    						if (col == 'B')
-   							label->setPixmap(reineB_);
+   							label = (reineB_);
    						else
-   							label->setPixmap(reineN_);
+   							label = (reineN_);
                      break;
 
    					case 'R':
    						if (col == 'B')
-   							label->setPixmap(roiB_);
+   							label = (roiB_);
    						else
-   							label->setPixmap(roiN_);
+   							label = (roiN_);
                      break;
                }
    		      //label->setGeometry(30 + j*8, i*80, 64, 64);

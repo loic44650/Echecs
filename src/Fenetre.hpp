@@ -17,9 +17,12 @@
 #include <QObject>
 #include <QtGui>
 #include "Controleur.hpp"
+#include "pieceCliquable.hpp"
 
 
 #define NB 5
+#define NB_PIONS 8
+#define NB_ATOUTS 2
 
 class Fenetre : public QWidget
 {
@@ -61,17 +64,17 @@ class Fenetre : public QWidget
 		QString joueurs_[NB];
 
       QPixmap plateau_;
-		QLabel pionB_;
-		QLabel tourB_;
-		QLabel cavalierB_;
-		QLabel fouB_;
-		QLabel reineB_;
-		QLabel roiB_;
-		QLabel pionN_;
-		QLabel tourN_;
-		QLabel cavalierN_;
-		QLabel fouN_;
-		QLabel reineN_;
-		QLabel roiN_;
+		PieceCliquable* pionB_[NB_PIONS];
+		PieceCliquable* tourB_[NB_ATOUTS];
+		PieceCliquable* cavalierB_[NB_ATOUTS];
+		PieceCliquable* fouB_[NB_ATOUTS];
+		PieceCliquable* reineB_;
+		PieceCliquable* roiB_;
+		PieceCliquable* pionN_[NB_PIONS];
+		PieceCliquable* tourN_[NB_ATOUTS];
+		PieceCliquable* cavalierN_[NB_ATOUTS];
+		PieceCliquable* fouN_[NB_ATOUTS];
+		PieceCliquable* reineN_;
+		PieceCliquable* roiN_;
 
 };
