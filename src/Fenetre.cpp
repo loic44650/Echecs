@@ -226,11 +226,11 @@ void Fenetre::affichageInitialEchiquier()
 
 	std::cout << "bob dans l'affichage" << std::endl;
 
-   int x = 32;
-   int y = 17;
+   int x = 30;
+   int y = 5;
 	for (int i = 0; i < 8; ++i)
 	{
-      y = 17;
+      y = 5;
 		for (int j = 0; j < 8; ++j)
 		{
 			if (echiquier->estOccupee(Coord(i, j)))

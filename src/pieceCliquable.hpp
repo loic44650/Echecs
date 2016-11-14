@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <iostream>
 
 class PieceCliquable : public QLabel
 {
