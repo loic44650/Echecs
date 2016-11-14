@@ -5,6 +5,7 @@
 #include "Piece.hpp"
 #include "pieceCliquable.hpp"
 #include "utils.hpp"
+#include <QPoint>
 
 
 class Controleur
@@ -23,7 +24,7 @@ class Controleur
 
       	void setPartie(const std::string& filename);
 
-         bool gererClique(const std::shared_ptr<PieceCliquable> piece);
+         bool gererClique(const std::shared_ptr<PieceCliquable> piece, QPoint);
 
     private:
     	std::shared_ptr<Partie> partie_;

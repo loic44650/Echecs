@@ -13,6 +13,7 @@ PieceCliquable::~PieceCliquable()
 
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
-   //controleur_->gererClique(this);
+   std::cerr << "clique sur piece" << std::endl;
+   controleur_->gererClique(std::shared_ptr<PieceCliquable>(this), this->pos());
    emit clicked();
 }

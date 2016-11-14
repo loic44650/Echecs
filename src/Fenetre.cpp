@@ -413,5 +413,6 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
    int y = p.x() / 80;
    int x = (p.y() - 34) / 80;
    std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
-
+   if(x < 8 && x >= 0 && y < 8 && y >= 0 && !controleur_->getEchiquier()->estOccupee(Coord(x,y)))
+      controleur_->gererClique(nullptr, p);
 }
