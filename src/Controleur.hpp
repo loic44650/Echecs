@@ -3,6 +3,7 @@
 #include <memory>
 #include "Partie.hpp"
 #include "Piece.hpp"
+#include "pieceCliquable.hpp"
 #include "utils.hpp"
 
 
@@ -22,11 +23,9 @@ class Controleur
 
       	void setPartie(const std::string& filename);
 
-         bool gererClique(const Coord &c);
+         bool gererClique(const std::shared_ptr<PieceCliquable> piece);
 
     private:
     	std::shared_ptr<Partie> partie_;
-      Coord clique1_;
-      Coord clique2_;
-
+      std::shared_ptr<PieceCliquable> cliquePrecedent_;
 };
