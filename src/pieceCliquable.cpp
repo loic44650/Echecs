@@ -15,5 +15,6 @@ void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
    std::cerr << "clique sur piece" << std::endl;
    controleur_->gererClique(std::shared_ptr<PieceCliquable>(this), this->pos());
-   emit clicked();
+    std::cerr << "bob a cliqué" << std::endl;
+    emit clicked();
 }

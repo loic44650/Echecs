@@ -1,4 +1,5 @@
 #include "Controleur.hpp"
+#include "utils.hpp"
 
 Controleur::Controleur(std::shared_ptr<Partie> p) : cliquePrecedent_(nullptr)
 {

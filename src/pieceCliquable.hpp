@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <iostream>
 #include <memory>
 
 class Controleur;

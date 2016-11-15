@@ -4,7 +4,6 @@
 #include "Partie.hpp"
 #include "Piece.hpp"
 #include "pieceCliquable.hpp"
-#include "utils.hpp"
 #include <QPoint>
 
 
