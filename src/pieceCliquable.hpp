@@ -2,13 +2,10 @@
 
 #include <QWidget>
 #include <QLabel>
-<<<<<<< HEAD
 #include <iostream>
-=======
 #include <memory>
 
 class Controleur;
->>>>>>> 81e0d8aa11e69a3307d310fcdd13cfe9dc955398
 
 class PieceCliquable : public QLabel
 {

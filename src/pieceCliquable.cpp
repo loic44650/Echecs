@@ -13,11 +13,6 @@ PieceCliquable::~PieceCliquable()
 
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
-<<<<<<< HEAD
-    std::cerr << "bob a cliqué" << std::endl;
-    emit clicked();
-=======
    //controleur_->gererClique(this);
    emit clicked();
->>>>>>> 81e0d8aa11e69a3307d310fcdd13cfe9dc955398
 }
