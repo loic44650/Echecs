@@ -5,20 +5,14 @@
  * @brief Fichier header définissant la classe MouvementRoque
 **/
 
-
 #pragma once
 
-/**
- * @brief
- *
-**/
-
 #include "Mouvement.hpp"
-
 
 class MouvementRoque : public Mouvement
 {
 	public:
+
 		/**
  		 * @brief
  		 *
@@ -38,21 +32,33 @@ class MouvementRoque : public Mouvement
  		 *
  		 * @complexité
 		**/
-
+		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
-
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
 
-		bool isOk(Coord &but, Coord& coordRoi, Coord& coordTour, Echiquier *e, bool posInit);
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
+		bool isMoveOk(Coord &but, Coord& coordRoi, Coord& coordTour, Echiquier *e, bool posInit);
 
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		void setPositionsFinales(Coord &coordRoi, Coord &coordTour);
-
 };

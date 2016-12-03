@@ -1,10 +1,19 @@
 #include "Partie.hpp"
 
-
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 Partie::Partie() {
       e_ = std::shared_ptr<Echiquier>(new Echiquier());
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 void Partie::setPartie(const std::string& filename)
 {
    e_->setEchiquier(filename);
@@ -13,6 +22,11 @@ void Partie::setPartie(const std::string& filename)
    roiDe_[1] = e_->findPiece('R',joueur_[1].getCouleur());
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 void Partie::lancer() {
    //on commence par le joueur qui a pris les blancs
    int numJoueur = (joueur_[0].getCouleur() == 'B') ? 0 : 1;
@@ -30,6 +44,11 @@ void Partie::lancer() {
    }
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 void Partie::jouer(int numJoueur) {
    Coord dep, but;
 
@@ -47,6 +66,11 @@ void Partie::jouer(int numJoueur) {
    estEchec_ = e_->estEchec(roiDe_[numJoueur]);
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 Coord Partie::selectionnerPiece(std::string msg) {
    std::string strDep;
    std::cout << msg;
@@ -54,6 +78,11 @@ Coord Partie::selectionnerPiece(std::string msg) {
    return Coord(strDep);
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 int Partie::menu() {
    int choix = 0;
 
@@ -66,6 +95,11 @@ int Partie::menu() {
    return choix;
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 void Partie::afficherMouvementPiece(int numJoueur) {
    Coord dep;
 
@@ -81,6 +115,11 @@ void Partie::afficherMouvementPiece(int numJoueur) {
    std::cout << std::endl;
 }
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 void Partie::setJoueur(Joueur j, int i) {
    joueur_[i].setJoueur(j);
 }

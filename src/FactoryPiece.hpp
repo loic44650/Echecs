@@ -2,7 +2,7 @@
  * @file FactoryPiece.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class FactoryPiece gérant les différentes FactoryPieces de l'échiquier
+ * @brief Fichier header définissant une classe FactoryPiece créant les différentes pièces concrètes
 **/
 
 #pragma once
@@ -20,19 +20,18 @@
 class FactoryPiece
 {
 	public:
+
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		constructeur 
+ 		 * @entrées 	aucunes
+ 		 * @sorties 	aucunes
 		**/
 		FactoryPiece();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		fonction créant un pointeur sur pièce	
+ 		 * @entrées 	une string indiquant quelle pièce doit être créée et un char indiquant dans le cas d'un pion sa direcion
+ 		 * @sorties 	retourne un pointeur sur pièce
 		**/
 		std::unique_ptr<Piece> creerPiece(std::string piece, char dir);
-
-
 };

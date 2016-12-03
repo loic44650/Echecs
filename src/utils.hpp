@@ -1,17 +1,16 @@
 /**
- * @file utils.hpp
+ * @file Piece.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
- * @since 5 oct. 2016
- * @brief Fichier header contenant des facilities
+ * @since 24 sept. 2016
+ * @brief Fichier header utils gérant les coordonnées
 **/
-
 
 #pragma once
 
-
 #include <string>
 
-struct Coord {
+struct Coord 
+{
    int x;
    int y;
 
@@ -39,7 +38,7 @@ struct Coord {
 		}
 	}
 
-   void getCoord(std::string str)
+    void getCoord(std::string str)
 	{
 		if ((8 - (str[0] - '0')) >= 0 && (8 - (str[0] - '0')) <= 7)
 		{
@@ -65,11 +64,13 @@ struct Coord {
    }
 
    inline bool operator==(const Coord b) { return ( this->x == b.x && this->y == b.y ); }
+
    void operator=(const Coord b) { this->x = b.x; this->y = b.y; }
 };
 
 
-struct Coup {
+struct Coup 
+{
    Coord dep;
    Coord but;
 

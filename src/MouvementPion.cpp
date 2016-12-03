@@ -1,21 +1,37 @@
 #include "MouvementPion.hpp"
 
-
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 MouvementPion::MouvementPion(int d, char dir) : Mouvement(d), direction_(dir) {}
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 MouvementPion::~MouvementPion() {}
 
-
-bool MouvementPion::peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+bool MouvementPion::peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit) 
+{
    bool isOk = false;
 
    if(dep.y != but.y || dep.x == but.x) return false;
-   else if(posInit) {
+   else if(posInit) 
+   {
       if(direction_ == 'S' && but.x <= dep.x+2 ) isOk = true;
       else if(direction_ == 'N' && dep.x <= but.x+2) isOk = true;
       else isOk = false;
    }
-   else {
+   else 
+   {
       if(direction_ == 'S' && but.x == (dep.x+1) ) isOk = true;
       else if(direction_ == 'N' && but.x == (dep.x-1) ) isOk = true;
       else isOk = false;
@@ -24,22 +40,34 @@ bool MouvementPion::peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posIn
    return isOk;
 }
 
-
-std::vector<Coord> MouvementPion::mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+std::vector<Coord> MouvementPion::mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) 
+{
    std::vector<Coord> tousLesMouvements;
    Coord tmp = (direction_ == 'S') ? Coord(dep.x+2, dep.y) : Coord(dep.x-2, dep.y);
 
    if(posInit && !e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
 
    tmp.x = (direction_ == 'S') ? dep.x+1 : dep.x-1;
+
    if(!e->estOccupee(tmp)) tousLesMouvements.push_back(tmp);
 
    return tousLesMouvements;
 }
 
-bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
-
-   if(peutAllerEn(dep,but,e,posInit)) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+bool MouvementPion::makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit)
+{
+   if(peutAllerEn(dep,but,e,posInit)) 
+   {
       e->movePiece(dep,but);
       return true;
    }
@@ -47,7 +75,13 @@ bool MouvementPion::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit)
    return false;
 }
 
-bool MouvementPion::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+bool MouvementPion::makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit) 
+{
    bool peutAttaquer = false;
    bool colonneOk = (but.y - dep.y == 1 || dep.y-but.y) ? true : false;
 

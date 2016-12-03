@@ -21,30 +21,47 @@ class FactoryPiece;
 class Echiquier
 {
 	public:
+		
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
 		Echiquier();
+
 		Echiquier(const std::string &nomFichier);
+		
 		~Echiquier();
+		
 		void setEchiquier(const std::string &nomFichier);
+		
 		bool estOccupee(Coord coord);
+		
 		int getTypeMouvement(Coord dep,Coord but);
+		
 		bool pieceEnPosInit(int x, int y);
+		
 		char getType(Coord c);
+		
 		char getCouleur(Coord c);
+		
 		void afficher();
+		
 		bool move(Coord dep, Coord but);
+		
 		void movePiece(Coord deb, Coord but);
+		
 		void mangerPiece(Coord deb, Coord but);
+		
 		bool estEchec(Coord roi);
+		
 		bool estMat(Coord roi);
+		
 		Coord findPiece(char piece, char coul);
+		
 		std::vector<Coord> mouvementPossible(Coord dep);
 
 	private:
+		
 		std::unique_ptr<Piece> echiquier_[8][8];
-
 };

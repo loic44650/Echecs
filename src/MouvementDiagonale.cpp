@@ -1,51 +1,79 @@
-
 #include "MouvementDiagonale.hpp"
 #include <cstdlib>
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 MouvementDiagonale::MouvementDiagonale(int d) : Mouvement(d) {}
 
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
 MouvementDiagonale::~MouvementDiagonale() {}
 
-bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e) 
+{
    bool isOk = true;
-
    int dx = abs(dep.x-but.x), dy = abs(dep.y-but.y);
+   
    //Si la case d'arrivée et la case de départ ne sont pas sur la meme diagonale
    if(dx != dy || dx > distance_ || dy > distance_) return false;
 
    int x,y;
-   if(but.x < dep.x && but.y < dep.y) {
+   
+   if (but.x < dep.x && but.y < dep.y) 
+   {
       x = dep.x-1;
       y = dep.y-1;
-      while( x > but.x) {
-         if(e->estOccupee(Coord(x,y))) isOk = false;
+   
+      while (x > but.x) 
+      {
+         if (e->estOccupee(Coord(x,y))) isOk = false;
          --x;
          --y;
       }
    }
-   else if(but.x < dep.x && but.y > dep.y) {
+   else if (but.x < dep.x && but.y > dep.y) 
+   {
       x = dep.x-1;
       y = dep.y+1;
-      while( x < but.x) {
-         if(e->estOccupee(Coord(x,y))) isOk = false;
+   
+      while (x < but.x) 
+      {
+         if (e->estOccupee(Coord(x,y))) isOk = false;
          --x;
          ++y;
       }
    }
-   else if(but.x > dep.x && but.y < dep.y) {
+   else if (but.x > dep.x && but.y < dep.y) 
+   {
       x = dep.x+1;
       y = dep.y-1;
-      while( x > but.x) {
-         if(e->estOccupee(Coord(x,y))) isOk = false;
+   
+      while (x > but.x) 
+      {
+         if (e->estOccupee(Coord(x,y))) isOk = false;
          ++x;
          --y;
       }
    }
-   else if(but.x > dep.x && but.y > dep.y) {
+   else if (but.x > dep.x && but.y > dep.y) 
+   {
       x = dep.x+1;
       y = dep.y+1;
-      while( x > but.x) {
-         if(e->estOccupee(Coord(x,y))) isOk = false;
+   
+      while (x > but.x) 
+      {
+         if (e->estOccupee(Coord(x,y))) isOk = false;
          ++x;
          ++y;
       }
@@ -54,11 +82,18 @@ bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e) {
    return isOk;
 }
 
-std::vector<Coord> MouvementDiagonale::mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+std::vector<Coord> MouvementDiagonale::mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) 
+{
    std::vector<Coord> tousLesMouvements;
-
    Coord tmp(dep.x+1,dep.y+1);
-   while( tmp.x < 8 && tmp.y < 8 && tmp.x-dep.x <= distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col) ) {
+   
+   while (tmp.x < 8 && tmp.y < 8 && tmp.x-dep.x <= distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col)) 
+   {
       tousLesMouvements.push_back(tmp);
       std::cout << "(" << tmp.x << "," << tmp.y <<")" << std::endl;
       ++tmp.x;
@@ -66,7 +101,9 @@ std::vector<Coord> MouvementDiagonale::mouvementPossible(Coord dep, Echiquier *e
    }
 
    tmp.x = dep.x+1; tmp.y = dep.y-1;
-   while( tmp.x < 8 && tmp.y >= 0 && tmp.x-dep.x > distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col) ) {
+   
+   while (tmp.x < 8 && tmp.y >= 0 && tmp.x-dep.x > distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col)) 
+   {
       tousLesMouvements.push_back(tmp);
 
       std::cout << "(" << tmp.x << "," << tmp.y <<")" << std::endl;
@@ -75,7 +112,9 @@ std::vector<Coord> MouvementDiagonale::mouvementPossible(Coord dep, Echiquier *e
    }
 
    tmp.x = dep.x-1; tmp.y = dep.y+1;
-   while( tmp.x >= 0 && tmp.y < 8 && dep.x-tmp.x > distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col) ) {
+   
+   while (tmp.x >= 0 && tmp.y < 8 && dep.x-tmp.x > distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col)) 
+   {
       tousLesMouvements.push_back(tmp);
       std::cout << "(" << tmp.x << "," << tmp.y <<")" << std::endl;
       --tmp.x;
@@ -83,7 +122,9 @@ std::vector<Coord> MouvementDiagonale::mouvementPossible(Coord dep, Echiquier *e
    }
 
    tmp.x = dep.x-1; tmp.y = dep.y-1;
-   while( tmp.x >= 0 && tmp.y >= 0 && dep.x-tmp.x > distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col) ) {
+   
+   while (tmp.x >= 0 && tmp.y >= 0 && dep.x-tmp.x > distance_ && (!e->estOccupee(tmp) || e->getCouleur(tmp)!=col)) 
+   {
       tousLesMouvements.push_back(tmp);
       std::cout << "(" << tmp.x << "," << tmp.y <<")" << std::endl;
       --tmp.x;
@@ -93,9 +134,15 @@ std::vector<Coord> MouvementDiagonale::mouvementPossible(Coord dep, Echiquier *e
    return tousLesMouvements;
 }
 
-bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit){
-
-   if(peutAllerEn(dep,but,e)) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+bool MouvementDiagonale::makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit)
+{
+   if (peutAllerEn(dep,but,e)) 
+   {
       e->movePiece(dep,but);
       return true;
    }
@@ -103,9 +150,15 @@ bool MouvementDiagonale::isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool pos
    return false;
 }
 
-bool MouvementDiagonale::isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) {
-
-   if(peutAllerEn(dep,but,e)) {
+      /**
+       * @brief
+       *
+       * @complexité
+      **/
+bool MouvementDiagonale::makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit) 
+{
+   if (peutAllerEn(dep,but,e)) 
+   {
       e->mangerPiece(dep,but);
       return true;
    }

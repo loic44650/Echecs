@@ -1,58 +1,68 @@
 /**
- * @file Roi.hpp
+ * @file Piece.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
  * @since 24 sept. 2016
- * @brief Fichier header définissant une class
+ * @brief Fichier header de la classe Roi héritant de la classe Piece
 **/
-
 
 #pragma once
-
-/**
- * @brief
- *
-**/
 
 #include "Piece.hpp"
 
 class Roi : public Piece
 {
 	public:
+
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		constructeur 
+ 		 * @entrées 	un booléen pour l'état de la pièce et un char pour sa couleur
+ 		 * @sorties 	aucunes
 		**/
 		Roi(bool etat, char c);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+  		 * @brief 		destructeur 
+ 		 * @entrées 	aucunes
+ 		 * @sorties 	aucunes
 		**/
 		~Roi();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		fonction affichant une pièce 
+ 		 * @entrées 	aucunes
+ 		 * @sorties 	retourne un caractère correspondant à la pièce, 'R' respectivement pour un roi
 		**/
 		char afficher();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		fonction virtuelle effectuant le mouvement d'un roi	
+ 		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
+ 		 * @sorties 	retourne un booléen indiquant si le déplacement a été effectué
 		**/
-
 		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
 
+		/**
+ 		 * @brief 		fonction virtuelle effectuant le mouvement d'attaque d'un roi sur une autre piece	
+ 		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
+ 		 * @sorties 	retourne un booléen indiquant si le mouvement d'attaque a été effectué
+		**/
 		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
 
+		/**
+ 		 * @brief 		fonction virtuelle effectuant le mouvement roque	
+ 		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
+ 		 * @sorties 	retourne un booléen indiquant si le mouvement roque a été effectué
+		**/
 		bool roquer(Coord dep, Coord but, Echiquier *e);
 
+		/**
+ 		 * @brief 		fonction virtuelle indiquant les mouvements réalisablent par un roi	
+ 		 * @entrées 	la coordonnée de départ de la pièce ainsi qu'un échuiquier
+ 		 * @sorties 	retourne un vector de coordonnées
+		**/
 		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e);
 
 	private:
-		std::unique_ptr<Mouvement> roque_;
+
+		std::unique_ptr<Mouvement> roque_;		// définit le mouvement roque pour le roi
 };

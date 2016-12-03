@@ -5,20 +5,14 @@
  * @brief Fichier header définissant la classe MouvementVertical
 **/
 
-
 #pragma once
 
-/**
- * @brief
- *
-**/
-
 #include "Mouvement.hpp"
-
 
 class MouvementVertical : public Mouvement
 {
 	public:
+
 		/**
  		 * @brief
  		 *
@@ -38,19 +32,26 @@ class MouvementVertical : public Mouvement
  		 *
  		 * @complexité
 		**/
-
+		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
-
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
 
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e);
-
 };

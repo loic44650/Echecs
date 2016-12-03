@@ -1,4 +1,3 @@
-
 /**
  * @file MouvementPion.hpp
  * @author MAHIER Loïc	&& COUILLEROT Carol
@@ -6,20 +5,14 @@
  * @brief Fichier header définissant la classe MouvementPion
 **/
 
-
 #pragma once
 
-/**
- * @brief
- *
-**/
-
 #include "Mouvement.hpp"
-
 
 class MouvementPion : public Mouvement
 {
 	public:
+
 		/**
  		 * @brief
  		 *
@@ -39,22 +32,30 @@ class MouvementPion : public Mouvement
  		 *
  		 * @complexité
 		**/
-
+		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
 		/**
  		 * @brief
  		 *
  		 * @complexité
 		**/
-		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit);
-
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
 
+		/**
+ 		 * @brief
+ 		 *
+ 		 * @complexité
+		**/
 		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit);
 
-   private:
-      char direction_;
+   	private:
 
+    	char direction_;
 };

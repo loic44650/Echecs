@@ -5,9 +5,7 @@
  * @brief Fichier header définissant la classe Mouvement
 **/
 
-
 #pragma once
-
 
 #include <vector>
 #include "utils.hpp" // contient struct Coord
@@ -16,6 +14,7 @@
 class Mouvement
 {
 	public:
+
 		/**
  		 * @brief
  		 *
@@ -42,14 +41,13 @@ class Mouvement
  		 *
  		 * @complexité
 		**/
-		virtual bool isMoveOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
+		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
 
-		virtual bool isAttackOk(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
+		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
 
 		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) = 0;
 
    protected:
 
       int distance_;
-
 };
