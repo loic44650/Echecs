@@ -1,7 +1,7 @@
 #include "Controleur.hpp"
 #include "utils.hpp"
 
-Controleur::Controleur(std::shared_ptr<Partie> p) : cliquePrecedent_(nullptr)
+Controleur::Controleur(std::shared_ptr<Partie> p) : cliquePrecedent_(Coord(-1,-1))
 {
 	partie_ = p;
 }
@@ -54,76 +54,19 @@ void Controleur::setPartie(const std::string& filename)
 	partie_->setPartie(filename);
 }
 
-bool Controleur::cliqueSurPiece(const std::shared_ptr<PieceCliquable> piece) {
+
+
+bool Controleur::gererClique(const Coord& coord) {
 	bool moveDone = false;
-	if(!cliquePrecedent_) {
-		cliquePrecedent_ = piece;
-		std::cerr << "Controleur::cliqueSurPiece : sélection pièce" << std::endl;
+
+	if(cliquePrecedent_.x < 0) {
+		cliquePrecedent_ = coord;
 	}
 	else {
-		std::cerr << "Controleur::cliqueSurPiece : sélection destination : ";
-		QPoint dep = cliquePrecedent_->pos();
-		Coord cdep((dep.y()) / 80, dep.x() / 80);
-		Coord cbut((piece->pos().y()) / 80, piece->pos().x() / 80);
-
-		std::cerr << "de " << cdep.toString() << " en " << cbut.toString() << std::endl;
-		if(partie_->getEchiquier()->move(cdep,cbut)) {
-			std::cerr << "mouvement possible " << std::endl;
-			cliquePrecedent_->setGeometry(cbut.x,cbut.y,64,64);
-			cliquePrecedent_->show();
+		if(partie_->getEchiquier()->move(cliquePrecedent_, coord))
 			moveDone = true;
-		}
-		cliquePrecedent_ = nullptr;
-	}
-	return moveDone;
-}
-
-bool Controleur::cliqueSurCaseVide(QPoint qcoord) {
-	bool moveDone = false;
-
-	if(cliquePrecedent_) {
-		std::cerr << "Controleur::cliqueSurCaseVide : selection destination : ";
-		QPoint dep = cliquePrecedent_->pos();
-		Coord cdep((dep.y()) / 80, dep.x() / 80);
-		Coord cbut(((qcoord.y() - 34) / 80), qcoord.x() / 80);
-		std::cerr << "de " << cdep.toString() << " en " << cbut.toString() << std::endl;
-		if(partie_->getEchiquier()->move(cdep,cbut)) {
-			std::cerr << "mouvement possible " << std::endl;
-			cliquePrecedent_->setGeometry(cbut.x,cbut.y,64,64);
-			cliquePrecedent_->show();
-			moveDone = true;
-		}
-		cliquePrecedent_ = nullptr;
+		cliquePrecedent_.x = -1;
 	}
 
 	return moveDone;
-}
-
-bool Controleur::gererClique(const std::shared_ptr<PieceCliquable> piece, QPoint qcoord) {
-	if(!cliquePrecedent_) {
-		cliquePrecedent_ = piece;
-		std::cerr << "selection piece" << std::endl;
-	}
-	else {
-		std::cerr << "selection destination : ";
-		QPoint dep = cliquePrecedent_->pos();
-		Coord cdep((dep.y()) / 80, dep.x() / 80);
-		Coord cbut = Coord();
-		if(piece) {
-			QPoint but = piece->pos();
-			cbut = Coord((but.y()) / 80, but.x() / 80);
-		}
-		else {
-			cbut = Coord(((qcoord.y() - 34) / 80), qcoord.x() / 80);
-		}
-		std::cerr << "de " << cdep.toString() << " en " << cbut.toString() << std::endl;
-		if(partie_->getEchiquier()->move(cdep,cbut)) {
-			std::cerr << "mouvement possible " << std::endl;
-			cliquePrecedent_->setGeometry(cbut.x,cbut.y,64,64);
-			cliquePrecedent_->show();
-		}
-		cliquePrecedent_ = nullptr;
-	}
-
-	return false;
 }

@@ -5,7 +5,9 @@
 #include <iostream>
 #include <memory>
 
+
 class Controleur;
+class Fenetre;
 
 class PieceCliquable : public QLabel
 {
@@ -13,7 +15,7 @@ class PieceCliquable : public QLabel
 Q_OBJECT
 
 public:
-    explicit PieceCliquable(QWidget* parent, std::shared_ptr<Controleur> controleur);
+    explicit PieceCliquable(QWidget* parent, Fenetre*);
     ~PieceCliquable();
 
 signals:
@@ -23,5 +25,5 @@ protected:
     void mousePressEvent(QMouseEvent* event);
 
 private:
-   std::shared_ptr<Controleur> controleur_;
+   std::shared_ptr<Fenetre> fenetre_;
 };

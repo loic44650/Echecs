@@ -1,12 +1,10 @@
 #include "Fenetre.hpp"
 
-Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget()
+Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), clicDepart_(nullptr), clicArrivee_(nullptr), controleur_(controleur)
 {
     setFixedSize(800, 800);
  	setWindowIcon(QIcon("picture/logo.png"));
  	setWindowTitle("Echecs");
-
- 	controleur_ = controleur;
 
     boutonNewGame_ = new QPushButton("New Game vs IA", this);
     boutonNewGame_->setCursor(Qt::PointingHandCursor);
@@ -191,34 +189,34 @@ void Fenetre::startGameVSPlayer()
 void Fenetre::affichageInitialEchiquier()
 {
    for(int i = 0; i < 8; ++i) {
-      pionB_[i] = new PieceCliquable(this, controleur_);
+      pionB_[i] = new PieceCliquable(this,this);
       pionB_[i]->setPixmap(QPixmap("picture/pionB.png"));
-      pionN_[i] = new PieceCliquable(this, controleur_);
+      pionN_[i] = new PieceCliquable(this,this);
       pionN_[i]->setPixmap(QPixmap("picture/pionN.png"));
    }
 
    for(int i = 0; i < 2; ++i) {
-      tourB_[i] = new PieceCliquable(this, controleur_);
+      tourB_[i] = new PieceCliquable(this,this);
 	   tourB_[i]->setPixmap(QPixmap("picture/tourB.png"));
-      tourN_[i] = new PieceCliquable(this, controleur_);
+      tourN_[i] = new PieceCliquable(this,this);
       tourN_[i]->setPixmap(QPixmap("picture/tourN.png"));
-      cavalierN_[i] = new PieceCliquable(this, controleur_);
+      cavalierN_[i] = new PieceCliquable(this,this);
       cavalierN_[i]->setPixmap(QPixmap("picture/cavalierN.png"));
-      cavalierB_[i] = new PieceCliquable(this, controleur_);
+      cavalierB_[i] = new PieceCliquable(this,this);
 	   cavalierB_[i]->setPixmap(QPixmap("picture/cavalierB.png"));
-      fouB_[i] = new PieceCliquable(this, controleur_);
+      fouB_[i] = new PieceCliquable(this,this);
 	   fouB_[i]->setPixmap(QPixmap("picture/fouB.png"));
-      fouN_[i] = new PieceCliquable(this, controleur_);
+      fouN_[i] = new PieceCliquable(this,this);
       fouN_[i]->setPixmap(QPixmap("picture/fouN.png"));
    }
-   reineB_ = new PieceCliquable(this, controleur_);
+   reineB_ = new PieceCliquable(this,this);
 	reineB_->setPixmap(QPixmap("picture/reineB.png"));
-   roiB_ = new PieceCliquable(this, controleur_);
+   roiB_ = new PieceCliquable(this,this);
 	roiB_->setPixmap(QPixmap("picture/roiB.png"));
 
-   reineN_ = new PieceCliquable(this, controleur_);
+   reineN_ = new PieceCliquable(this,this);
    reineN_->setPixmap(QPixmap("picture/reineN.png"));
-   roiN_ = new PieceCliquable(this, controleur_);
+   roiN_ = new PieceCliquable(this,this);
    roiN_->setPixmap(QPixmap("picture/roiN.png"));
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
@@ -309,7 +307,7 @@ void Fenetre::afficherEchiquier() {
    			{
    				type = echiquier->getType(Coord(i, j));
    				col = echiquier->getCouleur(Coord(i, j));
-   				PieceCliquable *label = new PieceCliquable(this, controleur_);
+   				PieceCliquable *label = new PieceCliquable(this,this);
 
    				switch (type)
    				{
@@ -410,9 +408,21 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
 {
    QPoint p = qevent->pos();
    std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
-   int y = p.x() / 80;
-   int x = (p.y() - 34) / 80;
-   std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
-   if(x < 8 && x >= 0 && y < 8 && y >= 0 && !controleur_->getEchiquier()->estOccupee(Coord(x,y)))
-      controleur_->cliqueSurCaseVide(p);
+   Coord coord( (p.y()-34)/80, p.x()/80 );
+      //std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
+   if(coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
+      if ( controleur_->gererClique(coord))
+         clicDepart_->setGeometry(coord.x*80,coord.y*80,60,60);
+   }
+}
+
+void Fenetre::cliqueSurPiece(const std::shared_ptr<PieceCliquable> piece) {
+	if(!clicDepart_) {
+		clicDepart_ = piece;
+		std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ" << std::endl;
+	}
+	else {
+		std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
+      clicArrivee_ = piece;
+	}
 }

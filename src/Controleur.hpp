@@ -23,12 +23,9 @@ class Controleur
 
       	void setPartie(const std::string& filename);
 
-         bool gererClique(const std::shared_ptr<PieceCliquable> piece, QPoint);
-         bool cliqueSurPiece(const std::shared_ptr<PieceCliquable> piece);
-
-         bool cliqueSurCaseVide(QPoint qcoord);
-
+         bool gererClique(const Coord& coord);
+      
     private:
     	std::shared_ptr<Partie> partie_;
-      std::shared_ptr<PieceCliquable> cliquePrecedent_;
+      Coord cliquePrecedent_;
 };
