@@ -26,11 +26,12 @@
 
 class Fenetre : public QWidget
 {
-
 	Q_OBJECT
 
     public:
     	Fenetre(std::shared_ptr<Controleur> controleur);
+		~Fenetre();
+		void cliqueSurPiece(PieceCliquable* piece);
 
 	signals:
 		void mouvementEffectue();
@@ -53,7 +54,6 @@ class Fenetre : public QWidget
         void affichageInitialEchiquier();
 		  void afficherEchiquier();
 
-		  void cliqueSurPiece(const std::shared_ptr<PieceCliquable> piece);
 
 	protected:
 		void mouseReleaseEvent(QMouseEvent *qevent);
@@ -79,6 +79,6 @@ class Fenetre : public QWidget
 		PieceCliquable* reineN_;
 		PieceCliquable* roiN_;
 
-		std::shared_ptr<PieceCliquable> clicDepart_;
-		std::shared_ptr<PieceCliquable> clicArrivee_;
+		PieceCliquable* clicDepart_;
+		PieceCliquable* clicArrivee_;
 };

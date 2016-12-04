@@ -24,7 +24,24 @@ Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), clicDepart
     QObject::connect(this, SIGNAL(mouvementEffectue()), this, SLOT(afficherEchiquier()));
 }
 
-
+Fenetre::~Fenetre() {
+   for(int i = 0; i < NB_PIONS; ++i) {
+      delete pionB_[i];
+      delete pionN_[i];
+   }
+   for(int i = 0; i < NB_ATOUTS; ++i) {
+      delete cavalierB_[i];
+      delete cavalierN_[i];
+      delete fouB_[i];
+      delete fouN_[i];
+      delete tourB_[i];
+      delete tourN_[i];
+   }
+   delete roiB_;
+   delete roiN_;
+   delete reineB_;
+   delete reineN_;
+}
 void Fenetre::ouvrirDialogueNewGameVSIA()
 {
 	QWidget *sousFenetre = new QWidget;
@@ -411,12 +428,14 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
    Coord coord( (p.y()-34)/80, p.x()/80 );
       //std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
    if(coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
-      if ( controleur_->gererClique(coord))
-         clicDepart_->setGeometry(coord.x*80,coord.y*80,60,60);
+      if ( controleur_->gererClique(coord)) {
+         clicDepart_->setGeometry(coord.y*80+5,coord.x*80+34,60,60);
+         clicDepart_ = nullptr;
+      }
    }
 }
 
-void Fenetre::cliqueSurPiece(const std::shared_ptr<PieceCliquable> piece) {
+void Fenetre::cliqueSurPiece(PieceCliquable* piece) {
 	if(!clicDepart_) {
 		clicDepart_ = piece;
 		std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ" << std::endl;

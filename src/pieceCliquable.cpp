@@ -15,6 +15,6 @@ PieceCliquable::~PieceCliquable()
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
    std::cerr << "clique sur piece" << std::endl;
-   fenetre_->cliqueSurPiece(std::shared_ptr<PieceCliquable>(this));
+   fenetre_->cliqueSurPiece(this);
     emit clicked();
 }
