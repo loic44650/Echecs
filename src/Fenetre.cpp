@@ -237,7 +237,7 @@ void Fenetre::affichageInitialEchiquier()
    roiN_->setPixmap(QPixmap("picture/roiN.png"));
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
-	char type, col;
+   char type, col;
 
 	std::cout << "bob dans l'affichage" << std::endl;
 
@@ -307,6 +307,8 @@ void Fenetre::affichageInitialEchiquier()
 		}
       x += 80;
 	}
+   clicDepart_ = nullptr;
+   clicArrivee_ = nullptr;
 }
 
 void Fenetre::afficherEchiquier() {
@@ -428,18 +430,20 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
    std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
    Coord coord( (p.y()-34)/80, p.x()/80 );
       //std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
-   if(clicDepart_ && coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
+   if( coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
+      std::cerr << "case correcte, clic à gérer\n";
       if ( controleur_->gererClique(coord, clicDepart_->col())) {
+         std::cerr << "clic géré et mouvement fait\n";
          clicDepart_->setGeometry(coord.y*80+5,coord.x*80+34,60,60);
          clicDepart_ = nullptr;
-         clicArrivee_ = nullptr;
       }
    }
 }
 
 
 void Fenetre::cliqueSurPiece(PieceCliquable* piece) {
-	if(!clicDepart_) {
+   if(piece) {
+   if(!clicDepart_) {
 		clicDepart_ = piece;
 		std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ" << std::endl;
 	}
@@ -447,4 +451,5 @@ void Fenetre::cliqueSurPiece(PieceCliquable* piece) {
 		std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
       clicArrivee_ = piece;
 	}
+}
 }
