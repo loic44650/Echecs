@@ -85,8 +85,7 @@ class Partie
 		void init();
 
 	private:
-
-			int joueurActuel_;
+		int joueurActuel_;
       	Joueur joueur_[NB_JOUEURS];
       	std::shared_ptr<Echiquier> e_;
       	bool estEchec_;

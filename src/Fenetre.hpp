@@ -62,10 +62,10 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
-      std::shared_ptr<Controleur> controleur_;
+      	std::shared_ptr<Controleur> controleur_;
 		QString joueurs_[NB];
 
-      QPixmap plateau_;
+     	 QPixmap plateau_;
 		PieceCliquable* pionB_[NB_PIONS];
 		PieceCliquable* tourB_[NB_ATOUTS];
 		PieceCliquable* cavalierB_[NB_ATOUTS];

@@ -428,8 +428,11 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
    std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
    Coord coord( (p.y()-34)/80, p.x()/80 );
       //std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
-   if(clicDepart_ && coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
-      if ( controleur_->gererClique(coord, clicDepart_->col())) {
+   
+   if(clicDepart_ && coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) 
+   {
+      if (controleur_->gererClique(coord, clicDepart_->col())) 
+      {
          clicDepart_->setGeometry(coord.y*80+5,coord.x*80+34,60,60);
          clicDepart_ = nullptr;
          clicArrivee_ = nullptr;
@@ -438,13 +441,16 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
 }
 
 
-void Fenetre::cliqueSurPiece(PieceCliquable* piece) {
-	if(!clicDepart_) {
+void Fenetre::cliqueSurPiece(PieceCliquable* piece) 
+{
+	if(!clicDepart_) 
+	{
 		clicDepart_ = piece;
 		std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ" << std::endl;
 	}
-	else {
+	else 
+	{
 		std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
-      clicArrivee_ = piece;
+      	clicArrivee_ = piece;
 	}
 }

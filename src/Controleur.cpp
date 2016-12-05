@@ -57,7 +57,7 @@ void Controleur::setPartie(const std::string& filename)
 
 
 
-bool Controleur::gererClique(const Coord& coord,const char col) {
+bool Controleur::gererClique(const Coord& coord, const char col) {
 	bool moveDone = false;
 
 	if(cliquePrecedent_.x < 0) {
