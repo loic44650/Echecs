@@ -206,34 +206,34 @@ void Fenetre::startGameVSPlayer()
 void Fenetre::affichageInitialEchiquier()
 {
    for(int i = 0; i < 8; ++i) {
-      pionB_[i] = new PieceCliquable(this,this);
+      pionB_[i] = new PieceCliquable(this,this,'B');
       pionB_[i]->setPixmap(QPixmap("picture/pionB.png"));
-      pionN_[i] = new PieceCliquable(this,this);
+      pionN_[i] = new PieceCliquable(this,this,'N');
       pionN_[i]->setPixmap(QPixmap("picture/pionN.png"));
    }
 
    for(int i = 0; i < 2; ++i) {
-      tourB_[i] = new PieceCliquable(this,this);
+      tourB_[i] = new PieceCliquable(this,this,'B');
 	   tourB_[i]->setPixmap(QPixmap("picture/tourB.png"));
-      tourN_[i] = new PieceCliquable(this,this);
+      tourN_[i] = new PieceCliquable(this,this,'N');
       tourN_[i]->setPixmap(QPixmap("picture/tourN.png"));
-      cavalierN_[i] = new PieceCliquable(this,this);
+      cavalierN_[i] = new PieceCliquable(this,this,'N');
       cavalierN_[i]->setPixmap(QPixmap("picture/cavalierN.png"));
-      cavalierB_[i] = new PieceCliquable(this,this);
+      cavalierB_[i] = new PieceCliquable(this,this,'B');
 	   cavalierB_[i]->setPixmap(QPixmap("picture/cavalierB.png"));
-      fouB_[i] = new PieceCliquable(this,this);
+      fouB_[i] = new PieceCliquable(this,this,'B');
 	   fouB_[i]->setPixmap(QPixmap("picture/fouB.png"));
-      fouN_[i] = new PieceCliquable(this,this);
+      fouN_[i] = new PieceCliquable(this,this,'N');
       fouN_[i]->setPixmap(QPixmap("picture/fouN.png"));
    }
-   reineB_ = new PieceCliquable(this,this);
+   reineB_ = new PieceCliquable(this,this,'B');
 	reineB_->setPixmap(QPixmap("picture/reineB.png"));
-   roiB_ = new PieceCliquable(this,this);
+   roiB_ = new PieceCliquable(this,this,'B');
 	roiB_->setPixmap(QPixmap("picture/roiB.png"));
 
-   reineN_ = new PieceCliquable(this,this);
+   reineN_ = new PieceCliquable(this,this,'N');
    reineN_->setPixmap(QPixmap("picture/reineN.png"));
-   roiN_ = new PieceCliquable(this,this);
+   roiN_ = new PieceCliquable(this,this,'N');
    roiN_->setPixmap(QPixmap("picture/roiN.png"));
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
@@ -315,6 +315,7 @@ void Fenetre::afficherEchiquier() {
    char type, col;
       int x = 32;
       int y = 17;
+      QLabel *label = new QLabel(this);
    	for (int i = 0; i < 8; ++i)
    	{
          y = 17;
@@ -324,7 +325,6 @@ void Fenetre::afficherEchiquier() {
    			{
    				type = echiquier->getType(Coord(i, j));
    				col = echiquier->getCouleur(Coord(i, j));
-   				PieceCliquable *label = new PieceCliquable(this,this);
 
    				switch (type)
    				{
@@ -421,19 +421,22 @@ void Fenetre::ecrirePrenom2(QString p)
 	std::cerr << joueurs_[4].toStdString() << std::endl;
 }
 
+
 void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
 {
    QPoint p = qevent->pos();
    std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
    Coord coord( (p.y()-34)/80, p.x()/80 );
       //std::cerr << "Correspond a la case : (" << x  << "," << y << ")" << std::endl;
-   if(coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
-      if ( controleur_->gererClique(coord)) {
+   if(clicDepart_ && coord.x < 8 && coord.x >= 0 && coord.y < 8 && coord.y >= 0) {
+      if ( controleur_->gererClique(coord, clicDepart_->col())) {
          clicDepart_->setGeometry(coord.y*80+5,coord.x*80+34,60,60);
          clicDepart_ = nullptr;
+         clicArrivee_ = nullptr;
       }
    }
 }
+
 
 void Fenetre::cliqueSurPiece(PieceCliquable* piece) {
 	if(!clicDepart_) {

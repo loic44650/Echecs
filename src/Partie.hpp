@@ -45,7 +45,7 @@ class Partie
  		 *
  		 * @complexité
 		**/
-	    void jouer(const int numJoueur);
+	    bool jouer(const Coord& dep, const Coord& arrivee, const char joueur);
 
 		/**
  		 * @brief
@@ -82,8 +82,11 @@ class Partie
 		**/
 		void setJoueur(Joueur j, int i);
 
+		void init();
+
 	private:
-		
+
+			int joueurActuel_;
       	Joueur joueur_[NB_JOUEURS];
       	std::shared_ptr<Echiquier> e_;
       	bool estEchec_;

@@ -39,7 +39,6 @@ void Partie::lancer() {
       int choix = menu();
 
       if(choix == 1) afficherMouvementPiece(numJoueur);
-      else  jouer(numJoueur);
       numJoueur = (numJoueur+1) % NB_JOUEURS;
    }
 }
@@ -49,21 +48,17 @@ void Partie::lancer() {
        *
        * @complexité
       **/
-void Partie::jouer(int numJoueur) {
-   Coord dep, but;
+bool Partie::jouer(const Coord& dep, const Coord& arrivee, const char joueur) {
+   bool moveDone = false;
 
-   do {
-      dep = selectionnerPiece("Selectionne la pièce à déplacer : ");
-   } while(!e_->estOccupee(dep) || (e_->getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
-
-   but = selectionnerPiece("Sélectionne la case d'arrivée : ");
-
-   if(e_->move(dep,but)) {
-      // Si c'est le roi qui a été déplacé, mettre a jour ses coordonnées
-      if(e_->estOccupee(roiDe_[numJoueur])) roiDe_[numJoueur] = e_->findPiece('R',joueur_[numJoueur].getCouleur());
+   if(joueur == joueur_[joueurActuel_].getCouleur()) {
+      if(e_->move(dep, arrivee)) {
+         joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
+         moveDone = true;
+      }
    }
 
-   estEchec_ = e_->estEchec(roiDe_[numJoueur]);
+   return moveDone;
 }
 
       /**
@@ -122,6 +117,13 @@ void Partie::afficherMouvementPiece(int numJoueur) {
       **/
 void Partie::setJoueur(Joueur j, int i) {
    joueur_[i].setJoueur(j);
+}
+
+void Partie::init() {
+   if( joueur_[0].getCouleur() == 'B' )
+      joueurActuel_ = 0;
+   else
+      joueurActuel_ = 1;
 }
 
 std::shared_ptr<Echiquier> Partie::getEchiquier() { return e_; }

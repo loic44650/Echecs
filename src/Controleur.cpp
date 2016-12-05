@@ -37,6 +37,7 @@ void Controleur::jouerContrePlayer(std::string nom, std::string prenom, std::str
 		partie_->setJoueur(Joueur(nom2, prenom2, col), 1);
 
 		std::cerr << "Joueurs créés" << std::endl;
+		partie_->init();
 	}
 	else
 		std::cerr << "Ca ne marche pas!!!!!!!!!!F**$!" << std::endl;
@@ -56,17 +57,19 @@ void Controleur::setPartie(const std::string& filename)
 
 
 
-bool Controleur::gererClique(const Coord& coord) {
+bool Controleur::gererClique(const Coord& coord,const char col) {
 	bool moveDone = false;
 
 	if(cliquePrecedent_.x < 0) {
 		cliquePrecedent_ = coord;
+		colDepart_ = col;
 	}
 	else {
-		if(partie_->getEchiquier()->move(cliquePrecedent_, coord))
-			moveDone = true;
-		cliquePrecedent_.x = -1;
+		if(cliquePrecedent_.x != coord.x || cliquePrecedent_.y != coord.y){
+			if(partie_->jouer(cliquePrecedent_, coord, colDepart_))
+				moveDone = true;
+			cliquePrecedent_.x = -1;
+		}
 	}
-
 	return moveDone;
 }

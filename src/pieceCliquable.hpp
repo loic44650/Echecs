@@ -15,8 +15,9 @@ class PieceCliquable : public QLabel
 Q_OBJECT
 
 public:
-    explicit PieceCliquable(QWidget* parent, Fenetre*);
+    explicit PieceCliquable(QWidget* parent, Fenetre*, char col);
     ~PieceCliquable();
+    char col();
 
 signals:
     void clicked();
@@ -26,4 +27,5 @@ protected:
 
 private:
    std::shared_ptr<Fenetre> fenetre_;
+   char col_;
 };
