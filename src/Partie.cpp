@@ -48,13 +48,19 @@ void Partie::lancer() {
        *
        * @complexité
       **/
-bool Partie::jouer(const Coord& dep, const Coord& arrivee, const char joueur) {
+bool Partie::jouer(const Coord& dep, const Coord& arrivee, const char joueur) 
+{
    bool moveDone = false;
 
-   if(joueur == joueur_[joueurActuel_].getCouleur()) {
-      if(e_->move(dep, arrivee)) {
+   if (joueur == joueur_[joueurActuel_].getCouleur()) 
+   {
+      std::cerr << "tour du joueur " << joueurActuel_ << std::endl;
+      
+      if (e_->move(dep, arrivee)) 
+      {
          joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
          moveDone = true;
+         std::cerr << "deplacement ok, joueur suivant" << std::endl;
       }
    }
 
@@ -119,8 +125,9 @@ void Partie::setJoueur(Joueur j, int i) {
    joueur_[i].setJoueur(j);
 }
 
-void Partie::init() {
-   if( joueur_[0].getCouleur() == 'B' )
+void Partie::init() 
+{
+   if (joueur_[0].getCouleur() == 'B')
       joueurActuel_ = 0;
    else
       joueurActuel_ = 1;

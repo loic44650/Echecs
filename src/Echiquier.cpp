@@ -75,10 +75,23 @@ int Echiquier::getTypeMouvement(Coord dep,Coord but)
 {
    if(echiquier_[but.x][but.y]) 
    {
-      if(echiquier_[but.x][but.y]->getCouleur() == echiquier_[dep.x][dep.y]->getCouleur()) return -1;
-      else  return 1;
+      std::cerr << "getype mouvement if occupé " << std::endl;
+      if(echiquier_[but.x][but.y]->getCouleur() == echiquier_[dep.x][dep.y]->getCouleur()) 
+         {
+            std::cerr << "getype mouvement if occupé meme couleur " << std::endl;
+            return -1;
+         }
+      else  
+      {
+         std::cerr << "getype mouvement if occupé pas meme couleur " << std::endl;
+         return 1;
+      }
    }
-   else  return 0;
+   else  
+   {
+      std::cerr << "getype mouvement if non occupé " << std::endl;
+      return 0;
+   }
 }
 
 char Echiquier::getType(Coord c) 
