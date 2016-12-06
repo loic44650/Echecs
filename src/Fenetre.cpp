@@ -1,6 +1,6 @@
 #include "Fenetre.hpp"
 
-Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), clicDepart_(nullptr), clicArrivee_(nullptr), controleur_(controleur)
+Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), controleur_(controleur), clicPlateau_(Coord(1,1)), clicDepart_(nullptr), clicArrivee_(nullptr)
 {
     setFixedSize(800, 800);
  	setWindowIcon(QIcon("picture/logo.png"));
@@ -41,6 +41,10 @@ Fenetre::~Fenetre() {
    delete roiN_;
    delete reineB_;
    delete reineN_;
+
+   delete plat_;
+   delete clicDepart_;
+   delete clicArrivee_;
 }
 void Fenetre::ouvrirDialogueNewGameVSIA()
 {
@@ -145,12 +149,12 @@ void Fenetre::startGameVSIA()
 
 	std::cout << "bob dans startGameVSIA" << std::endl;
 
-	// Affichage de l'échiquier
-	QLabel *label = new QLabel(this);
+   // Affichage de l'échiquier
+   plat_ = new PieceCliquable(this,this,'v');
 	QPixmap plateau_("picture/plateau.png");
-	label->setPixmap(plateau_);
-	label->setGeometry(0, 30, 640, 640);
-	label->show();
+	plat_->setPixmap(plateau_);
+	plat_->setGeometry(0, 30, 640, 640);
+	plat_->show();
 
 	std::cout << "bob selectionne couleurs" << std::endl;
 
@@ -178,11 +182,11 @@ void Fenetre::startGameVSPlayer()
 	std::cout << "bob dans startGameVSPlayer" << std::endl;
 
 	// Affichage de l'échiquier
-	QLabel *label = new QLabel(this);
+	plat_ = new PieceCliquable(this,this,'v');
 	QPixmap plateau_("picture/plateau.png");
-	label->setPixmap(plateau_);
-	label->setGeometry(0, 30, 640, 640);
-	label->show();
+	plat_->setPixmap(plateau_);
+	plat_->setGeometry(0, 30, 640, 640);
+	plat_->show();
 
 	std::cout << "bob selectionne couleurs" << std::endl;
 
@@ -423,7 +427,7 @@ void Fenetre::ecrirePrenom2(QString p)
 	std::cerr << joueurs_[4].toStdString() << std::endl;
 }
 
-
+/*
 void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
 {
    QPoint p = qevent->pos();
@@ -439,17 +443,35 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
       }
    }
 }
+*/
 
-
-void Fenetre::cliqueSurPiece(PieceCliquable* piece) {
+void Fenetre::cliqueSurPiece(QMouseEvent *qevent, PieceCliquable* piece) {
    if(piece) {
-   if(!clicDepart_) {
-		clicDepart_ = piece;
-		std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ" << std::endl;
-	}
-	else {
-		std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
-      clicArrivee_ = piece;
-	}
-}
+      if(piece->col() == 'v') {
+         QPoint p = qevent->pos();
+         std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
+         clicPlateau_ = Coord( (p.y()-34)/80, p.x()/80 );
+      }
+      std::cerr << "Correspond a la case : (" << (piece->y()-34)/80  << "," << piece->x()/80 << ")" << std::endl;
+
+      if(!clicDepart_) {
+         std::cerr << "fenetre::cliqueSurPiece : plateau";
+         if(piece->col() != 'v') {
+   	        clicDepart_ = piece;
+		         std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ couleur " << piece->col() << std::endl;
+               controleur_->gererClique(clicPlateau_, piece->col());
+         }
+      }
+	   else {
+	      std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
+         if(piece->col() != 'v') clicArrivee_ = piece;
+         std::cerr <<  "gererClique " << clicPlateau_.x << ", " << clicPlateau_.y << " colDepart_ = " << clicDepart_->col() << std::endl;
+         if ( controleur_->gererClique(clicPlateau_, clicDepart_->col())) {
+            std::cerr << "Bob set la geometry" << std::endl;
+            clicDepart_->setGeometry(clicPlateau_.y*80+5,clicPlateau_.x*80+34,60,60);
+         }
+         clicDepart_ = nullptr;
+         clicArrivee_ = nullptr;
+      }
+   }
 }

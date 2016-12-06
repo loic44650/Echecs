@@ -31,7 +31,7 @@ class Fenetre : public QWidget
     public:
     	Fenetre(std::shared_ptr<Controleur> controleur);
 		~Fenetre();
-		void cliqueSurPiece(PieceCliquable* piece);
+		void cliqueSurPiece(QMouseEvent*, PieceCliquable* piece);
 
 	signals:
 		void mouvementEffectue();
@@ -56,7 +56,7 @@ class Fenetre : public QWidget
 
 
 	protected:
-		void mouseReleaseEvent(QMouseEvent *qevent);
+		//void mouseReleaseEvent(QMouseEvent *qevent);
 
     private:
     	QPushButton *boutonNewGame_;
@@ -66,6 +66,7 @@ class Fenetre : public QWidget
 		QString joueurs_[NB];
 
       QPixmap plateau_;
+		PieceCliquable* plat_;
 		PieceCliquable* pionB_[NB_PIONS];
 		PieceCliquable* tourB_[NB_ATOUTS];
 		PieceCliquable* cavalierB_[NB_ATOUTS];
@@ -79,6 +80,7 @@ class Fenetre : public QWidget
 		PieceCliquable* reineN_;
 		PieceCliquable* roiN_;
 
+		Coord clicPlateau_;
 		PieceCliquable* clicDepart_;
 		PieceCliquable* clicArrivee_;
 };
