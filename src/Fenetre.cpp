@@ -1,10 +1,10 @@
 #include "Fenetre.hpp"
 
-Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), controleur_(controleur), clicPlateau_(Coord(1,1)), clicDepart_(nullptr), clicArrivee_(nullptr)
+Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), controleur_(controleur)
 {
-    setFixedSize(800, 800);
- 	setWindowIcon(QIcon("picture/logo.png"));
- 	setWindowTitle("Echecs");
+   setFixedSize(800, 800);
+   setWindowIcon(QIcon("picture/logo.png"));
+   setWindowTitle("Echecs");
 
     boutonNewGame_ = new QPushButton("New Game vs IA", this);
     boutonNewGame_->setCursor(Qt::PointingHandCursor);
@@ -20,31 +20,14 @@ Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), controleur
     boutonAbout_->move(277, 0);
     QObject::connect(boutonAbout_, SIGNAL(clicked()), this, SLOT(ouvrirMessageAbout()));
 
-
-    QObject::connect(this, SIGNAL(mouvementEffectue()), this, SLOT(afficherEchiquier()));
 }
 
-Fenetre::~Fenetre() {
-   for(int i = 0; i < NB_PIONS; ++i) {
-      delete pionB_[i];
-      delete pionN_[i];
+Fenetre::~Fenetre() {/*
+   for(int i = 0; i < NB_CASES; ++i) {
+      for(int j = 0; j < NB_CASES; ++j)
+      delete cases[i][j];
    }
-   for(int i = 0; i < NB_ATOUTS; ++i) {
-      delete cavalierB_[i];
-      delete cavalierN_[i];
-      delete fouB_[i];
-      delete fouN_[i];
-      delete tourB_[i];
-      delete tourN_[i];
-   }
-   delete roiB_;
-   delete roiN_;
-   delete reineB_;
-   delete reineN_;
-
-   delete plat_;
-   delete clicDepart_;
-   delete clicArrivee_;
+      delete plateau_;*/
 }
 void Fenetre::ouvrirDialogueNewGameVSIA()
 {
@@ -144,17 +127,21 @@ void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()
 
 void Fenetre::startGameVSIA()
 {
+      std::cout << "bob dans startGameVSIA" << std::endl;
+
 	// création de la partie
 	controleur_->jouerContreIA(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString());
 
-	std::cout << "bob dans startGameVSIA" << std::endl;
+   // Affichage de l'échiquier   
+   plateau_ = new QLabel(this);
 
-   // Affichage de l'échiquier
-   plat_ = new PieceCliquable(this,this,'v');
-	QPixmap plateau_("picture/plateau.png");
-	plat_->setPixmap(plateau_);
-	plat_->setGeometry(0, 30, 640, 640);
-	plat_->show();
+      std::cout << "new QLabel" << std::endl;
+
+
+   QPixmap plat("picture/plateau.png");
+   plateau_->setPixmap(plat);
+   plateau_->setGeometry(0, 30, 640, 640);
+   plateau_->show();
 
 	std::cout << "bob selectionne couleurs" << std::endl;
 
@@ -182,11 +169,10 @@ void Fenetre::startGameVSPlayer()
 	std::cout << "bob dans startGameVSPlayer" << std::endl;
 
 	// Affichage de l'échiquier
-	plat_ = new PieceCliquable(this,this,'v');
-	QPixmap plateau_("picture/plateau.png");
-	plat_->setPixmap(plateau_);
-	plat_->setGeometry(0, 30, 640, 640);
-	plat_->show();
+	plateau_ = new QLabel(this);
+	plateau_->setPixmap(QPixmap("picture/plateau.png"));
+	plateau_->setGeometry(0, 30, 640, 640);
+	plateau_->show();
 
 	std::cout << "bob selectionne couleurs" << std::endl;
 
@@ -209,112 +195,59 @@ void Fenetre::startGameVSPlayer()
 
 void Fenetre::affichageInitialEchiquier()
 {
-   for(int i = 0; i < 8; ++i) {
-      pionB_[i] = new PieceCliquable(this,this,'B');
-      pionB_[i]->setPixmap(QPixmap("picture/pionB.png"));
-      pionN_[i] = new PieceCliquable(this,this,'N');
-      pionN_[i]->setPixmap(QPixmap("picture/pionN.png"));
+   std::cout << "je plante avant l'init" << std::endl;
+   for(int i = 0; i < NB_CASES; ++i) {
+      for(int j = 0; j < NB_CASES; ++j) {
+         cases[i][j] = new PieceCliquable(this, this);
+         cases[i][j]->setFixedSize(80,80);
+      }
    }
 
-   for(int i = 0; i < 2; ++i) {
-      tourB_[i] = new PieceCliquable(this,this,'B');
-	   tourB_[i]->setPixmap(QPixmap("picture/tourB.png"));
-      tourN_[i] = new PieceCliquable(this,this,'N');
-      tourN_[i]->setPixmap(QPixmap("picture/tourN.png"));
-      cavalierN_[i] = new PieceCliquable(this,this,'N');
-      cavalierN_[i]->setPixmap(QPixmap("picture/cavalierN.png"));
-      cavalierB_[i] = new PieceCliquable(this,this,'B');
-	   cavalierB_[i]->setPixmap(QPixmap("picture/cavalierB.png"));
-      fouB_[i] = new PieceCliquable(this,this,'B');
-	   fouB_[i]->setPixmap(QPixmap("picture/fouB.png"));
-      fouN_[i] = new PieceCliquable(this,this,'N');
-      fouN_[i]->setPixmap(QPixmap("picture/fouN.png"));
+   std::cout << "je plante avant le setPixmap et apres l'init" << std::endl;
+   for(int i = 0; i < NB_CASES; ++i) {
+      cases[1][i]->setPixmap(QPixmap("picture/pionB.png"));
+      cases[6][i]->setPixmap(QPixmap("picture/pionN.png"));
    }
-   reineB_ = new PieceCliquable(this,this,'B');
-	reineB_->setPixmap(QPixmap("picture/reineB.png"));
-   roiB_ = new PieceCliquable(this,this,'B');
-	roiB_->setPixmap(QPixmap("picture/roiB.png"));
 
-   reineN_ = new PieceCliquable(this,this,'N');
-   reineN_->setPixmap(QPixmap("picture/reineN.png"));
-   roiN_ = new PieceCliquable(this,this,'N');
-   roiN_->setPixmap(QPixmap("picture/roiN.png"));
+   cases[0][0]->setPixmap(QPixmap("picture/tourB.png"));
+   cases[0][1]->setPixmap(QPixmap("picture/cavalierB.png"));
+   cases[0][2]->setPixmap(QPixmap("picture/fouB.png"));
+   cases[0][3]->setPixmap(QPixmap("picture/reineB.png"));
+   cases[0][4]->setPixmap(QPixmap("picture/roiB.png"));
+   cases[0][5]->setPixmap(QPixmap("picture/fouB.png"));
+   cases[0][6]->setPixmap(QPixmap("picture/cavalierB.png"));
+   cases[0][7]->setPixmap(QPixmap("picture/tourB.png"));
+   cases[7][0]->setPixmap(QPixmap("picture/tourN.png"));
+   cases[7][1]->setPixmap(QPixmap("picture/cavalierN.png"));
+   cases[7][2]->setPixmap(QPixmap("picture/fouN.png"));
+   cases[7][3]->setPixmap(QPixmap("picture/reineN.png"));
+   cases[7][4]->setPixmap(QPixmap("picture/roiN.png"));
+   cases[7][5]->setPixmap(QPixmap("picture/fouN.png"));
+   cases[7][6]->setPixmap(QPixmap("picture/cavalierN.png"));
+   cases[7][7]->setPixmap(QPixmap("picture/tourN.png"));
+   std::cout << "je apres  le setPixmap et apres l'init" << std::endl;
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
    char type, col;
 
-	std::cout << "bob dans l'affichage" << std::endl;
-
    int x = 30;
    int y = 5;
-	for (int i = 0; i < 8; ++i)
+	for (int i = 0; i < NB_CASES; ++i)
 	{
       y = 5;
-		for (int j = 0; j < 8; ++j)
-		{
-			if (echiquier->estOccupee(Coord(i, j)))
-			{
-				type = echiquier->getType(Coord(i, j));
-				col = echiquier->getCouleur(Coord(i, j));
-				QLabel *label = new QLabel(this);
-
-            std::cerr << "En (" << i << "," << j << ") : " << type << " de couleur " << col << std::endl;
-				switch (type)
-				{
-					case 'P':
-						if (col == 'B')
-							label = (pionB_[j]);
-						else
-							label = (pionN_[j]);
-                  break;
-
-					case 'T':
-						if (col == 'B')
-							label = (tourB_[j/7]);
-						else
-							label = (tourN_[j/7]);
-                  break;
-
-					case 'C':
-						if (col == 'B')
-							label = (cavalierB_[j/6]);
-						else
-							label = (cavalierN_[j/6]);
-                  break;
-
-					case 'F':
-						if (col == 'B')
-							label = (fouB_[j/5]);
-						else
-							label = (fouN_[j/5]);
-                  break;
-
-					case 'D':
-						if (col == 'B')
-							label = (reineB_);
-						else
-							label = (reineN_);
-                  break;
-
-					case 'R':
-						if (col == 'B')
-							label = (roiB_);
-						else
-							label = (roiN_);
-                  break;
-            }
-		      //label->setGeometry(30 + j*8, i*80, 64, 64);
-            label->setGeometry(y, x, 64, 64);
-			   label->show();
+		for (int j = 0; j < NB_CASES; ++j)
+		{	   
+            cases[i][j]->setGeometry(y, x, 80, 80);
+			   cases[i][j]->show();
             y += 80;
-         }
-		}
+      }
       x += 80;
-	}
-   clicDepart_ = nullptr;
-   clicArrivee_ = nullptr;
+   }
+   std::cout << "fin affiche" << std::endl;
+
 }
 
+/*
 void Fenetre::afficherEchiquier() {
    std::cerr << "Fenetre::afficherEchiquier()" << std::endl;
    std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
@@ -385,7 +318,7 @@ void Fenetre::afficherEchiquier() {
          x += 80;
    	}
 }
-
+*/
 
 void Fenetre::ouvrirMessageAbout()
 {
@@ -445,29 +378,62 @@ void Fenetre::mouseReleaseEvent(QMouseEvent *qevent)
 }
 */
 
-void Fenetre::cliqueSurPiece(QMouseEvent *qevent, PieceCliquable* piece) {
+void Fenetre::cliqueSurPiece(QMouseEvent *qevent, PieceCliquable* piece) 
+{
+   Coord clic = Coord((piece->y() - 5)/80, (piece->x() - 30)/80);
+   std::cerr << "Coord case : " << clic.x << "," << clic.y << std::endl;
+   if (!clicPrecedent_ && controleur_->getEchiquier()->estOccupee(clic))
+   {
+      clicPrecedent_ = piece;
+      controleur_->gererClique(clic);
+   }
+   else
+   {
+      if (controleur_->gererClique(clic))
+      {
+         piece->setPixmap(*clicPrecedent_->pixmap());
+         clicPrecedent_->setPixmap(QPixmap());
+         //clicPrecedent_->repaint();
+      }
+      clicPrecedent_ = nullptr;
+   }
+
+
+}
+
+
+/*
+   QPoint p;
+   if(piece->col() == 'v') {
+      std::cerr << "case vide\n";
+      p = qevent->pos();
+      clicPlateau_ = Coord((p.y()-34)/80, p.x()/80);
+   }
+   else  {
+      std::cerr << "case occupée\n";
+      clicPlateau_ = Coord(piece->x(), piece->y());
+   }
+   std::cerr << "Coord case : " << clicPlateau_.x << "," << clicPlateau_.y << std::endl;
    if(piece) {
       if(piece->col() == 'v') {
          QPoint p = qevent->pos();
-         std::cerr << "coord du clic : (" << p.x() << "," << p.y() << ")" << std::endl;
          clicPlateau_ = Coord( (p.y()-34)/80, p.x()/80 );
       }
-      std::cerr << "Correspond a la case : (" << (piece->y()-34)/80  << "," << piece->x()/80 << ")" << std::endl;
 
       if(!clicDepart_) {
          std::cerr << "fenetre::cliqueSurPiece : plateau";
          if(piece->col() != 'v') {
    	        clicDepart_ = piece;
-		         std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ couleur " << piece->col() << std::endl;
+		         //std::cerr << "Fenetre::cliqueSurPiece : sélection pièce départ couleur " << piece->col() << std::endl;
                controleur_->gererClique(clicPlateau_, piece->col());
          }
       }
 	   else {
-	      std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
+	      //std::cerr << "Fenetre::cliqueSurPiece : sélection destination : ";
          if(piece->col() != 'v') clicArrivee_ = piece;
-         std::cerr <<  "gererClique " << clicPlateau_.x << ", " << clicPlateau_.y << " colDepart_ = " << clicDepart_->col() << std::endl;
+         //std::cerr <<  "gererClique " << clicPlateau_.x << ", " << clicPlateau_.y << " colDepart_ = " << clicDepart_->col() << std::endl;
          if ( controleur_->gererClique(clicPlateau_, clicDepart_->col())) {
-            std::cerr << "Bob set la geometry" << std::endl;
+            //std::cerr << "Bob set la geometry" << std::endl;
             clicDepart_->setGeometry(clicPlateau_.y*80+5,clicPlateau_.x*80+34,60,60);
          }
          clicDepart_ = nullptr;
@@ -475,3 +441,4 @@ void Fenetre::cliqueSurPiece(QMouseEvent *qevent, PieceCliquable* piece) {
       }
    }
 }
+*/ 

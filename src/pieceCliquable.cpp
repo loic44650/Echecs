@@ -2,8 +2,8 @@
 #include "Controleur.hpp"
 #include "Fenetre.hpp"
 
-PieceCliquable::PieceCliquable(QWidget* parent, Fenetre* fenetre, char col)
-    : QLabel(parent), col_(col)
+PieceCliquable::PieceCliquable(QWidget* parent, Fenetre* fenetre)
+    : QLabel(parent)
 {
    fenetre_ = std::shared_ptr<Fenetre>(fenetre);
 }
@@ -11,8 +11,6 @@ PieceCliquable::PieceCliquable(QWidget* parent, Fenetre* fenetre, char col)
 PieceCliquable::~PieceCliquable()
 {
 }
-
-char PieceCliquable::col() { return col_; }
 
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {

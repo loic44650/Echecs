@@ -48,9 +48,9 @@ void Partie::lancer() {
        *
        * @complexité
       **/
-bool Partie::jouer(const Coord& dep, const Coord& arrivee, const char joueur) {
+bool Partie::jouer(const Coord& dep, const Coord& arrivee) {
    bool moveDone = false;
-   if(joueur == joueur_[joueurActuel_].getCouleur()) {
+   if(e_->getCouleur(dep) == joueur_[joueurActuel_].getCouleur()) {
       std::cerr << "tour du joueur " << joueur_[joueurActuel_].getCouleur();
       if(e_->move(dep, arrivee)) {
          joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;

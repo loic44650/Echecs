@@ -45,7 +45,7 @@ class Partie
  		 *
  		 * @complexité
 		**/
-	    bool jouer(const Coord& dep, const Coord& arrivee, const char joueur);
+	    bool jouer(const Coord& dep, const Coord& arrivee);
 
 		/**
  		 * @brief
