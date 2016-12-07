@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <memory>
-#include <QtAlgorithms>
 #include <QApplication>
 #include <QWidget>
 #include <QPushButton>
@@ -29,34 +28,114 @@ class Fenetre : public QWidget
 	Q_OBJECT
 
     public:
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/      
     	Fenetre(std::shared_ptr<Controleur> controleur);
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
 		  ~Fenetre();
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
 		  void cliqueSurPiece(QMouseEvent*, PieceCliquable* piece);
 
 
     public slots:
-   		void ouvrirDialogueNewGameVSIA();
-   		void ouvrirDialogueNewGameVSPlayer();
-   		void ouvrirDialogueNewGameVSPlayerSuivant();
-   		void ouvrirMessageAbout();
 
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/        
+   		void ouvrirDialogueNewGameVSIA();
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
+   		void ouvrirDialogueNewGameVSPlayer();
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
+   		void ouvrirDialogueNewGameVSPlayerSuivant();
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/       		
+      void ouvrirMessageAbout();
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/    
       void ecrireNom(QString);
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/    
       void ecrirePrenom(QString);
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
       void ecrireCol(QString);
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
       void ecrireNom2(QString);
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
       void ecrirePrenom2(QString);
 
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/    
       void startGameVSIA();
+
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/          
       void startGameVSPlayer();
 
+      /**
+       * @brief      
+       * @entrées   
+       * @sorties   
+      **/    
       void affichageInitialEchiquier();
-		  //void afficherEchiquier();
-
-
-	protected:
-		//void mouseReleaseEvent(QMouseEvent *qevent);
 
     private:
+
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;

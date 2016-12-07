@@ -20,68 +20,66 @@ class Partie
 	public:
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
 		Partie();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
-	    void setPartie(const std::string& filename);
+	    void setPartie(const std::string&);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
-	    //void lancer();
+	    bool jouer(const Coord&, const Coord&);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
-	    bool jouer(const Coord& dep, const Coord& arrivee);
+		Coord selectionnerPiece(std::string);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
-		Coord selectionnerPiece(std::string msg);
+      	void afficherMouvementPiece(const int);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
-		**/
-      	void afficherMouvementPiece(const int numJoueur);
-
-		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
 		int menu();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
 		std::shared_ptr<Echiquier> getEchiquier();
+		
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		void setJoueur(Joueur, int);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
-		void setJoueur(Joueur j, int i);
-
 		void init();
 
 	private:

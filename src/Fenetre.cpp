@@ -29,6 +29,7 @@ Fenetre::~Fenetre() {/*
    }
       delete plateau_;*/
 }
+
 void Fenetre::ouvrirDialogueNewGameVSIA()
 {
 	QWidget *sousFenetre = new QWidget;

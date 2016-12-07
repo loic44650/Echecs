@@ -23,48 +23,132 @@ class Echiquier
 	public:
 		
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
 		**/
 		Echiquier();
 
-		Echiquier(const std::string &nomFichier);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		Echiquier(const std::string &);
 		
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
 		~Echiquier();
 		
-		void setEchiquier(const std::string &nomFichier);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		void setEchiquier(const std::string &);
 		
-		bool estOccupee(Coord coord);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		bool estOccupee(Coord);
 		
-		int getTypeMouvement(Coord dep,Coord but);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		int getTypeMouvement(Coord, Coord );
+
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		bool pieceEnPosInit(int, int);
 		
-		bool pieceEnPosInit(int x, int y);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		char getType(Coord);
 		
-		char getType(Coord c);
-		
-		char getCouleur(Coord c);
-		
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		char getCouleur(Coord);
+
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
 		void afficher();
 		
-		bool move(Coord dep, Coord but);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/	
+		bool move(Coord, Coord);
 		
-		void movePiece(Coord deb, Coord but);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/	
+		void movePiece(Coord, Coord);
 		
-		void mangerPiece(Coord deb, Coord but);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		void mangerPiece(Coord, Coord);
 		
-		bool estEchec(Coord roi);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		bool estEchec(Coord);
 		
-		bool estMat(Coord roi);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		bool estMat(Coord);
 		
-		Coord findPiece(char piece, char coul);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
+		Coord findPiece(char, char);
 		
-		std::vector<Coord> mouvementPossible(Coord dep);
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/	
+		std::vector<Coord> mouvementPossible(Coord);
 
+		/**
+ 		 * @brief 		 
+ 		 * @entrées 	
+ 		 * @sorties 	
+		**/
 		void annulerCoup(Coord, Coord);
 
 	private:
-		
-		std::unique_ptr<Piece> echiquier_[8][8];
-		std::unique_ptr<Piece> dernierePieceMangee_;
+		std::shared_ptr<Piece> echiquier_[8][8];
+		std::shared_ptr<Piece> dernierePieceMangee_;
 };

@@ -1,11 +1,21 @@
 #include "Controleur.hpp"
 #include "utils.hpp"
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 Controleur::Controleur(std::shared_ptr<Partie> p) : cliquePrecedent_(Coord(-1,-1))
 {
 	partie_ = p;
 }
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 void Controleur::jouerContreIA(std::string nom, std::string prenom, std::string coul)
 {
 	char col;
@@ -24,6 +34,11 @@ void Controleur::jouerContreIA(std::string nom, std::string prenom, std::string 
 	std::cerr << "Joueur créé" << std::endl;
 }
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 void Controleur::jouerContrePlayer(std::string nom, std::string prenom, std::string coul, std::string nom2, std::string prenom2)
 {
 	if(!nom.empty() && !prenom.empty())
@@ -43,21 +58,38 @@ void Controleur::jouerContrePlayer(std::string nom, std::string prenom, std::str
 		std::cerr << "Ca ne marche pas!!!!!!!!!!F**$!" << std::endl;
 }
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 void Controleur::setJoueur(Joueur j, int i)
 {
 	partie_->setJoueur(j,i);
 }
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 std::shared_ptr<Echiquier> Controleur::getEchiquier() { return partie_->getEchiquier(); }
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 void Controleur::setPartie(const std::string& filename)
 {
 	partie_->setPartie(filename);
 }
 
-
-
-
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 bool Controleur::gererClique(const Coord& coord) {
 	bool moveDone = false;
 	std::cerr << "Controleur::gererClique\n" << "coord : " << coord.x << "," << coord.y << std::endl;

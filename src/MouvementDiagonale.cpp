@@ -24,7 +24,7 @@ bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e)
 {
    bool isOk = true;
    int dx = abs(dep.x-but.x), dy = abs(dep.y-but.y);
-   
+     
    //Si la case d'arrivée et la case de départ ne sont pas sur la meme diagonale
    if(dx != dy || dx > distance_ || dy > distance_) return false;
 
@@ -35,7 +35,7 @@ bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e)
       x = dep.x-1;
       y = dep.y-1;
    
-      while (x > but.x) 
+      while (x > but.x && isOk) 
       {
          if (e->estOccupee(Coord(x,y))) isOk = false;
          --x;
@@ -47,7 +47,7 @@ bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e)
       x = dep.x-1;
       y = dep.y+1;
    
-      while (x < but.x) 
+      while (x > but.x && isOk) 
       {
          if (e->estOccupee(Coord(x,y))) isOk = false;
          --x;
@@ -59,7 +59,7 @@ bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e)
       x = dep.x+1;
       y = dep.y-1;
    
-      while (x > but.x) 
+      while (x < but.x && isOk) 
       {
          if (e->estOccupee(Coord(x,y))) isOk = false;
          ++x;
@@ -71,7 +71,7 @@ bool MouvementDiagonale::peutAllerEn(Coord &dep, Coord &but, Echiquier *e)
       x = dep.x+1;
       y = dep.y+1;
    
-      while (x > but.x) 
+      while (x < but.x && isOk) 
       {
          if (e->estOccupee(Coord(x,y))) isOk = false;
          ++x;

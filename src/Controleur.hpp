@@ -10,23 +10,59 @@
 class Controleur
 {
 
-    public:
-    	Controleur(std::shared_ptr<Partie> p);
+  public:
 
-      	void jouerContreIA(std::string, std::string, std::string);
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/    
+   	Controleur(std::shared_ptr<Partie> p);
 
-      	void jouerContrePlayer(std::string, std::string, std::string, std::string, std::string);
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/
+    void jouerContreIA(std::string, std::string, std::string);
 
-      	void setJoueur(Joueur, int );
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/
+    void jouerContrePlayer(std::string, std::string, std::string, std::string, std::string);
 
-      	std::shared_ptr<Echiquier> getEchiquier();
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/
+    void setJoueur(Joueur, int );
 
-      	void setPartie(const std::string& filename);
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/
+    std::shared_ptr<Echiquier> getEchiquier();
 
-         bool gererClique(const Coord& coord);
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/
+    void setPartie(const std::string& filename);
 
-    private:
-    	std::shared_ptr<Partie> partie_;
-      Coord cliquePrecedent_;
-      char colDepart_;
+    /**
+     * @brief      
+     * @entrées   
+     * @sorties   
+    **/
+    bool gererClique(const Coord& coord);
+
+  private:
+  	std::shared_ptr<Partie> partie_;
+    Coord cliquePrecedent_;
+    char colDepart_;
 };
