@@ -4,7 +4,7 @@
 
 Echiquier::Echiquier() {}
 
-Echiquier::Echiquier(const std::string &nomFichier)
+Echiquier::Echiquier(const std::string &nomFichier) : dernierePieceMangee_(nullptr)
 {
    FactoryPiece fp;
    std::ifstream fichier(nomFichier, std::ifstream::in);
@@ -161,9 +161,12 @@ void Echiquier::mangerPiece(Coord dep, Coord but)
 
 bool Echiquier::move(Coord dep, Coord but) 
 {
+   dernierePieceMangee_ = nullptr;
+
    bool mvmtEffectue = false;
    int typeMvmt = getTypeMouvement(dep,but);
-
+   std::cout << "mouve choisis : " << typeMvmt << std::endl;
+   
    // Case but vide
    if(typeMvmt == 0) {
       if(echiquier_[dep.x][dep.y]->moveTo(dep, but, this)) 
@@ -174,6 +177,10 @@ bool Echiquier::move(Coord dep, Coord but)
    // Case but occupée par pièce ennemie
    else if(typeMvmt == 1) 
    {
+      Piece *p =  echiquier_[but.x][but.y].get();
+      dernierePieceMangee_ = std::unique_ptr<Piece> (p);
+      echiquier_[but.x][but.y].reset(p);
+      
       if(echiquier_[dep.x][dep.y]->attaquer(dep,but,this))
       {
          mvmtEffectue = true;
@@ -194,24 +201,22 @@ bool Echiquier::move(Coord dep, Coord but)
 bool Echiquier::estEchec(Coord roi) 
 {
    bool echec = false;
-   if(echiquier_[roi.x][roi.y]) 
-   {
-      char coulRoi = echiquier_[roi.x][roi.y]->getCouleur();
-      Coord dep;
+      
+   char coulRoi = echiquier_[roi.x][roi.y]->getCouleur();
+   Coord dep;
 
-      for(int i = 0; i < 8; ++i) 
+   for(int i = 0; i < 8; ++i) 
+   {
+      for(int j = 0; j < 8; ++j) 
       {
-         for(int j = 0; j < 8; ++j) 
+         if(echiquier_[i][j] && echiquier_[i][j]->getCouleur() != coulRoi) 
          {
-            if(echiquier_[i][j] && echiquier_[i][j]->getCouleur() != coulRoi) 
+            dep.x = i; dep.y = j;
+              
+            if(echiquier_[i][j]->attaquer(dep,roi,this)) 
             {
-               dep.x = i; dep.y = j;
-               
-               if(echiquier_[i][j]->attaquer(dep,roi,this)) 
-               {
-                  echec = true;
-                  std::cout << "Echec par " << i << "," << j << std::endl;
-               }
+               echec = true;
+               std::cout << "Echec par " << i << "," << j << std::endl;
             }
          }
       }
@@ -225,7 +230,7 @@ bool Echiquier::estMat(Coord roi)
    bool mat = true;
    Coord positionInitiale = roi;
 
-   vector<Coord> movePoss;
+   /*vector<Coord> movePoss;
 
    // estMat si -> ne peut changer de case sans etre echec
    //           -> aucune pièce amie ne peut manger la pièce ennemie
@@ -249,9 +254,9 @@ bool Echiquier::estMat(Coord roi)
             }
          }
       }
-   }
+   }*/
 
-   return mat;;
+   return mat;
 }
 
 std::vector<Coord> Echiquier::mouvementPossible(Coord dep)
@@ -275,4 +280,14 @@ Coord Echiquier::findPiece(char piece, char coul)
    }
 
    return res;
+}
+
+void Echiquier::annulerCoup(Coord dep, Coord but)
+{
+   swap(echiquier_[dep.x][dep.y], echiquier_[but.x][but.y]);
+ 
+   if (dernierePieceMangee_)
+   {
+      swap(echiquier_[but.x][but.y], dernierePieceMangee_);
+   }
 }

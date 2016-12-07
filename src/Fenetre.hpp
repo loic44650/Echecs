@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <memory>
+#include <QtAlgorithms>
 #include <QApplication>
 #include <QWidget>
 #include <QPushButton>
@@ -20,9 +21,8 @@
 #include "pieceCliquable.hpp"
 
 
-#define NB 5
-#define NB_PIONS 8
-#define NB_ATOUTS 2
+#define NB_CASES 8
+#define NB_JOUEUR 5
 
 class Fenetre : public QWidget
 {
@@ -30,11 +30,9 @@ class Fenetre : public QWidget
 
     public:
     	Fenetre(std::shared_ptr<Controleur> controleur);
-		~Fenetre();
-		void cliqueSurPiece(QMouseEvent*, PieceCliquable* piece);
+		  ~Fenetre();
+		  void cliqueSurPiece(QMouseEvent*, PieceCliquable* piece);
 
-	signals:
-		void mouvementEffectue();
 
     public slots:
    		void ouvrirDialogueNewGameVSIA();
@@ -42,17 +40,17 @@ class Fenetre : public QWidget
    		void ouvrirDialogueNewGameVSPlayerSuivant();
    		void ouvrirMessageAbout();
 
-        void ecrireNom(QString);
-        void ecrirePrenom(QString);
-        void ecrireCol(QString);
-        void ecrireNom2(QString);
-        void ecrirePrenom2(QString);
+      void ecrireNom(QString);
+      void ecrirePrenom(QString);
+      void ecrireCol(QString);
+      void ecrireNom2(QString);
+      void ecrirePrenom2(QString);
 
-        void startGameVSIA();
-        void startGameVSPlayer();
+      void startGameVSIA();
+      void startGameVSPlayer();
 
-        void affichageInitialEchiquier();
-		  void afficherEchiquier();
+      void affichageInitialEchiquier();
+		  //void afficherEchiquier();
 
 
 	protected:
@@ -62,25 +60,12 @@ class Fenetre : public QWidget
     	QPushButton *boutonNewGame_;
     	QPushButton *boutonNewGameBis_;
     	QPushButton *boutonAbout_;
-      	std::shared_ptr<Controleur> controleur_;
-		QString joueurs_[NB];
 
-      	QPixmap plateau_;
-		PieceCliquable* plat_;
-		PieceCliquable* pionB_[NB_PIONS];
-		PieceCliquable* tourB_[NB_ATOUTS];
-		PieceCliquable* cavalierB_[NB_ATOUTS];
-		PieceCliquable* fouB_[NB_ATOUTS];
-		PieceCliquable* reineB_;
-		PieceCliquable* roiB_;
-		PieceCliquable* pionN_[NB_PIONS];
-		PieceCliquable* tourN_[NB_ATOUTS];
-		PieceCliquable* cavalierN_[NB_ATOUTS];
-		PieceCliquable* fouN_[NB_ATOUTS];
-		PieceCliquable* reineN_;
-		PieceCliquable* roiN_;
+      std::shared_ptr<Controleur> controleur_;
+		  QString joueurs_[NB_JOUEUR];
 
-		Coord clicPlateau_;
-		PieceCliquable* clicDepart_;
-		PieceCliquable* clicArrivee_;
+      QLabel* plateau_;
+		  PieceCliquable* cases[NB_CASES][NB_CASES];
+
+      PieceCliquable *clicPrecedent_;
 };

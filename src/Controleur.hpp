@@ -23,7 +23,7 @@ class Controleur
 
       	void setPartie(const std::string& filename);
 
-         bool gererClique(const Coord& coord, const char col);
+         bool gererClique(const Coord& coord);
 
     private:
     	std::shared_ptr<Partie> partie_;

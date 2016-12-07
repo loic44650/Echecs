@@ -57,21 +57,21 @@ void Controleur::setPartie(const std::string& filename)
 
 
 
-bool Controleur::gererClique(const Coord& coord, const char col) 
-{
+
+bool Controleur::gererClique(const Coord& coord) {
 	bool moveDone = false;
-	std::cerr << "Controleur::gererClique\n";
+	std::cerr << "Controleur::gererClique\n" << "coord : " << coord.x << "," << coord.y << std::endl;
 	
-	if(cliquePrecedent_.x < 0) {
+	if(cliquePrecedent_.x < 0) 
+	{
 		std::cerr << "clic prec init\n";
 		cliquePrecedent_ = coord;
-		colDepart_ = col;
 	}
 	else if(cliquePrecedent_.x != coord.x || cliquePrecedent_.y != coord.y)
 	{
 			std::cerr << "pas meme piece donc lance partie->jouer\n";
-			
-			if(partie_->jouer(cliquePrecedent_, coord, colDepart_)) 
+
+			if(partie_->jouer(cliquePrecedent_, coord)) 
 			{
 				moveDone = true;
 				std::cerr << "mouvement correct \n";

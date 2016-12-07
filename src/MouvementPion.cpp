@@ -22,16 +22,19 @@ MouvementPion::~MouvementPion() {}
 bool MouvementPion::peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit) 
 {
    bool isOk = false;
+   std::cout << "direction : " << direction_ << std::endl;
 
    if(dep.y != but.y || dep.x == but.x) return false;
    else if(posInit) 
    {
+      std::cout << "carac en posInit" << std::endl;
       if(direction_ == 'S' && but.x <= dep.x+2 ) isOk = true;
-      else if(direction_ == 'N' && dep.x <= but.x+2) isOk = true;
+      else if(direction_ == 'N' && but.x >= dep.x-2) isOk = true;
       else isOk = false;
    }
    else 
    {
+      std::cout << "pas en posInit" << std::endl;
       if(direction_ == 'S' && but.x == (dep.x+1) ) isOk = true;
       else if(direction_ == 'N' && but.x == (dep.x-1) ) isOk = true;
       else isOk = false;
@@ -83,7 +86,9 @@ bool MouvementPion::makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit)
 bool MouvementPion::makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit) 
 {
    bool peutAttaquer = false;
-   bool colonneOk = (but.y - dep.y == 1 || dep.y-but.y) ? true : false;
+   bool colonneOk = (but.y - dep.y == 1 || dep.y - but.y == 1) ? true : false;
+
+   //std::cout << "colonne ok ? " << colonneOk << std::endl;
 
    if(direction_ == 'S' && but.x == (dep.x+1) && colonneOk) peutAttaquer = true;
    else if(direction_ == 'N' && but.x == (dep.x-1) && colonneOk) peutAttaquer = true;

@@ -27,7 +27,7 @@ void Partie::setPartie(const std::string& filename)
        *
        * @complexité
       **/
-void Partie::lancer() {
+/*void Partie::lancer() {
    //on commence par le joueur qui a pris les blancs
    int numJoueur = (joueur_[0].getCouleur() == 'B') ? 0 : 1;
 
@@ -41,26 +41,38 @@ void Partie::lancer() {
       if(choix == 1) afficherMouvementPiece(numJoueur);
       numJoueur = (numJoueur+1) % NB_JOUEURS;
    }
-}
+}*/
 
       /**
        * @brief
        *
        * @complexité
       **/
-bool Partie::jouer(const Coord& dep, const Coord& arrivee, const char joueur) 
-{
+
+bool Partie::jouer(const Coord& dep, const Coord& arrivee) {
    bool moveDone = false;
-
-   if(joueur == joueur_[joueurActuel_].getCouleur()) {
-      std::cerr << "tour du joueur " << joueur_[joueurActuel_].getCouleur();
-      if(e_->move(dep, arrivee)) {
-         joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
-         moveDone = true;
-         std::cerr << "deplacement ok, joueur suivant" << std::endl;
+   
+   if(e_->getCouleur(dep) == joueur_[joueurActuel_].getCouleur()) 
+   {
+      std::cerr << "tour du joueur " << joueur_[joueurActuel_].getCouleur() << std::endl;
+      std::cerr << "partie dep : " << dep.x << "," << dep.y << std::endl;
+      std::cerr << "partie arr : " << arrivee.x << "," << arrivee.y << std::endl;
+      if(e_->move(dep, arrivee)) 
+      {
+        if (!e_->estEchec(roiDe_[joueurActuel_]))
+        {
+          joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
+          moveDone = true;
+          std::cerr << "deplacement ok, joueur suivant" << std::endl;
+        }
+        else
+        {
+          e_->annulerCoup(dep, arrivee);
+        }
       }
-   }
+    }
 
+    e_->afficher();
    return moveDone;
 }
 

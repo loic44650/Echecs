@@ -61,7 +61,10 @@ class Echiquier
 		
 		std::vector<Coord> mouvementPossible(Coord dep);
 
+		void annulerCoup(Coord, Coord);
+
 	private:
 		
 		std::unique_ptr<Piece> echiquier_[8][8];
+		std::unique_ptr<Piece> dernierePieceMangee_;
 };
