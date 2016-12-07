@@ -8,9 +8,7 @@ PieceCliquable::PieceCliquable(QWidget* parent, Fenetre* fenetre)
    fenetre_ = std::shared_ptr<Fenetre>(fenetre);
 }
 
-PieceCliquable::~PieceCliquable()
-{
-}
+PieceCliquable::~PieceCliquable() {}
 
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {

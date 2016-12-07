@@ -140,7 +140,12 @@ char Echiquier::getType(Coord c)
 **/
 char Echiquier::getCouleur(Coord c)
 {
-   return echiquier_[c.x][c.y]->getCouleur();
+   char ca = 'c';
+   if (echiquier_[c.x][c.y])
+      ca = echiquier_[c.x][c.y]->getCouleur();
+   
+   return ca;
+   //return echiquier_[c.x][c.y]->getCouleur();
 }
 
 /**
@@ -306,7 +311,7 @@ bool Echiquier::estEchec(Coord roi)
 **/
 bool Echiquier::estMat(Coord roi) 
 {
-   bool mat = true;
+   /*bool mat = true;
    dernierePieceMangee_ = echiquier_[roi.x][roi.y];
 
    if (echiquier_[roi.x][roi.y]) 
@@ -332,7 +337,7 @@ bool Echiquier::estMat(Coord roi)
 
    dernierePieceMangee_ = nullptr;
 
-   return mat;
+   return mat;*/
 }
 
 /**

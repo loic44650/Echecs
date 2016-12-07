@@ -309,16 +309,20 @@ void Fenetre::ecrirePrenom2(QString p)
 void Fenetre::cliqueSurPiece(QMouseEvent *qevent, PieceCliquable* piece) 
 {
    Coord clic = Coord(piece->y()/80, piece->x()/80);
-   std::cerr << "Coord case : " << clic.x << "," << clic.y << std::endl;
+
    if (!clicPrecedent_ && controleur_->getEchiquier()->estOccupee(clic))
    {
+      std::cout << "1er clic" << std::endl;
       clicPrecedent_ = piece;
       controleur_->gererClique(clic);
    }
-   else
+   else if (clicPrecedent_)
    {
+      std::cout << "2eme clic pas dans le if" << std::endl;
+
       if (controleur_->gererClique(clic))
       {
+         std::cout << "2eme clic" << std::endl;
          piece->setPixmap(*clicPrecedent_->pixmap());
          clicPrecedent_->setPixmap(QPixmap());
          //clicPrecedent_->repaint();
