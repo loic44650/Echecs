@@ -11,15 +11,15 @@
 
 struct Coord 
 {
-   int x;
-   int y;
+   	int x;
+   	int y;
 
-   Coord() { x=0; y=0; }
+   	Coord() { x=0; y=0; }
 
-   Coord(int a, int b) { x=a; y=b; }
+   	Coord(int a, int b) { x=a; y=b; }
 
-   Coord(std::string str)
-   {
+   	Coord(std::string str)
+   	{
 		if ((8 - (str[0] - '0')) >= 0 && (8 - (str[0] - '0')) <= 7)
 		{
 			x = (8 - (str[0] - '0'));
@@ -58,21 +58,20 @@ struct Coord
 		}
 	}
 
-   std::string toString() {
-      std::string res = '('+ std::to_string(x) + ',' + std::to_string(y) +')';
-      return res;
-   }
+   	std::string toString() {
+      	std::string res = '('+ std::to_string(x) + ',' + std::to_string(y) +')';
+      	return res;
+   	}
 
-   inline bool operator==(const Coord b) { return ( this->x == b.x && this->y == b.y ); }
+   	inline bool operator==(const Coord b) { return ( this->x == b.x && this->y == b.y ); }
 
-   void operator=(const Coord b) { this->x = b.x; this->y = b.y; }
+   	void operator=(const Coord b) { this->x = b.x; this->y = b.y; }
 };
-
 
 struct Coup 
 {
-   Coord dep;
-   Coord but;
+   	Coord dep;
+   	Coord but;
 
-   Coup(Coord a, Coord b) { dep = a; but = b; }
+   	Coup(Coord a, Coord b) { dep = a; but = b; }
 };

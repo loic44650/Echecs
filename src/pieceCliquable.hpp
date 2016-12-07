@@ -5,25 +5,48 @@
 #include <iostream>
 #include <memory>
 
-
 class Controleur;
 class Fenetre;
 
 class PieceCliquable : public QLabel
 {
+	Q_OBJECT
 
-Q_OBJECT
+		public:
+    	
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/   
+    		explicit PieceCliquable(QWidget*, Fenetre*);
+    	
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/   
+    		~PieceCliquable();
 
-public:
-    explicit PieceCliquable(QWidget* parent, Fenetre*);
-    ~PieceCliquable();
+		signals:
+    
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/       
+    		void clicked();
 
-signals:
-    void clicked();
+		protected:
 
-protected:
-    void mousePressEvent(QMouseEvent* event);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/       
+    		void mousePressEvent(QMouseEvent*);
 
-private:
-   std::shared_ptr<Fenetre> fenetre_;
+		private:
+    
+   			std::shared_ptr<Fenetre> fenetre_;
 };

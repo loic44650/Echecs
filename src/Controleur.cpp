@@ -23,7 +23,7 @@ void Controleur::jouerContreIA(std::string nom, std::string prenom, std::string 
 	if(prenom.empty()) prenom = "Bob";
 
 	if(coul.empty()) col = 'N';
-	else char col = coul[0];
+	else col = coul[0];
 
 	int numJoueur = (col == 'B') ? 0 : 1;
 	partie_->setJoueur(Joueur(nom,prenom,col), numJoueur);
@@ -101,15 +101,15 @@ bool Controleur::gererClique(const Coord& coord) {
 	}
 	else if(cliquePrecedent_.x != coord.x || cliquePrecedent_.y != coord.y)
 	{
-			std::cerr << "pas meme piece donc lance partie->jouer\n";
+		std::cerr << "pas meme piece donc lance partie->jouer\n";
 
-			if(partie_->jouer(cliquePrecedent_, coord)) 
-			{
-				moveDone = true;
-				std::cerr << "mouvement correct \n";
-			}
+		if(partie_->jouer(cliquePrecedent_, coord)) 
+		{
+			moveDone = true;
+			std::cerr << "mouvement correct \n";
+		}
 			
-			cliquePrecedent_.x = -1;
+		cliquePrecedent_.x = -1;
 	}
 	else 
 	{

@@ -18,7 +18,7 @@ class Fou : public Piece
  		 * @entrées 	un booléen pour l'état de la pièce et un char pour sa couleur
  		 * @sorties 	aucunes
 		**/
-		Fou(bool etat, char c);
+		Fou(bool, char);
 
 		/**
   		 * @brief 		destructeur 
@@ -39,19 +39,19 @@ class Fou : public Piece
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le déplacement a été effectué
 		**/
-		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
+		virtual bool moveTo(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement d'attaque d'un fou sur une autre piece	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le mouvement d'attaque a été effectué
 		**/
-		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
+		virtual bool attaquer(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle indiquant les mouvements réalisablent par un fou	
  		 * @entrées 	la coordonnée de départ de la pièce ainsi qu'un échuiquier
  		 * @sorties 	retourne un vector de coordonnées
 		**/
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e);
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier*);
 };

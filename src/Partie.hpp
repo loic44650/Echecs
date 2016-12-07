@@ -83,6 +83,7 @@ class Partie
 		void init();
 
 	private:
+		
 		int joueurActuel_;
       	Joueur joueur_[NB_JOUEURS];
       	std::shared_ptr<Echiquier> e_;

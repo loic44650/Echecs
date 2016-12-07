@@ -27,7 +27,7 @@ class Joueur
  		 * @entrées 	deux string pour le nom et le prenom ainsi qu'un char pour la couleur
  		 * @sorties 	aucunes
 		**/
-		Joueur(std::string nom, std::string prenom, char col);
+		Joueur(std::string, std::string, char);
 
 		/**
  		 * @brief 		destructeur
@@ -55,7 +55,7 @@ class Joueur
  		 * @entrées 	un joueur
  		 * @sorties 	aucunes
 		**/
-		void setJoueur(Joueur j);
+		void setJoueur(Joueur);
 
 	private:
 

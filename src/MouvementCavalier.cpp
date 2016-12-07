@@ -62,7 +62,11 @@ bool MouvementCavalier::makeAttack(Coord &dep, Coord &but, Echiquier *e, bool po
    if (peutAllerEn(dep,but,e)) 
    {
       e->mangerPiece(dep,but);
+
+      return true;
    }
+
+   return false;
 }
 
       /**

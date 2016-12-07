@@ -8,10 +8,8 @@
 
 using namespace std;
 
-
 int main(int argc, char* argv[])
 {
-
 	QApplication app(argc, argv);
 
    	shared_ptr<Partie> p = shared_ptr<Partie>(new Partie());

@@ -18,7 +18,7 @@ class Roi : public Piece
  		 * @entrées 	un booléen pour l'état de la pièce et un char pour sa couleur
  		 * @sorties 	aucunes
 		**/
-		Roi(bool etat, char c);
+		Roi(bool, char);
 
 		/**
   		 * @brief 		destructeur 
@@ -39,28 +39,28 @@ class Roi : public Piece
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le déplacement a été effectué
 		**/
-		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
+		virtual bool moveTo(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement d'attaque d'un roi sur une autre piece	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le mouvement d'attaque a été effectué
 		**/
-		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
+		virtual bool attaquer(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement roque	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le mouvement roque a été effectué
 		**/
-		bool roquer(Coord dep, Coord but, Echiquier *e);
+		bool roquer(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle indiquant les mouvements réalisablent par un roi	
  		 * @entrées 	la coordonnée de départ de la pièce ainsi qu'un échuiquier
  		 * @sorties 	retourne un vector de coordonnées
 		**/
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e);
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier*);
 
 	private:
 

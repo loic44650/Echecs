@@ -2,17 +2,31 @@
 #include "Controleur.hpp"
 #include "Fenetre.hpp"
 
-PieceCliquable::PieceCliquable(QWidget* parent, Fenetre* fenetre)
-    : QLabel(parent)
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
+PieceCliquable::PieceCliquable(QWidget* parent, Fenetre* fenetre) : QLabel(parent)
 {
-   fenetre_ = std::shared_ptr<Fenetre>(fenetre);
+   	fenetre_ = std::shared_ptr<Fenetre>(fenetre);
 }
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 PieceCliquable::~PieceCliquable() {}
 
+/**
+ * @brief       
+ * @entrées    
+ * @sorties    
+**/
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
-   std::cerr << "clique sur piece" << std::endl;
-   fenetre_->cliqueSurPiece(event, this);
+   	std::cerr << "clique sur piece" << std::endl;
+   	fenetre_->cliqueSurPiece(this);
     emit clicked();
 }

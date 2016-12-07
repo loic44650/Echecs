@@ -7,7 +7,7 @@
 **/
 Cavalier::Cavalier(bool etat, char c) : Piece(etat,c)
 {
-   mvmt_.push_back(new MouvementCavalier(8));
+	mvmt_.push_back(new MouvementCavalier(8));
 }
 
 /**
@@ -24,7 +24,7 @@ Cavalier::~Cavalier() {}
 **/
 char Cavalier::afficher()
 {
-   return 'C';
+	return 'C';
 }
 
 /**
@@ -34,16 +34,16 @@ char Cavalier::afficher()
 **/
 bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e)
 {
-   bool mvmtOk = false;
-   int i = 0;
+	bool mvmtOk = false;
+	int i = 0;
 
-   while(i < mvmt_.size() && !mvmtOk)
-   {
-      mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_);
-      ++i;
-   }
+	while(i < mvmt_.size() && !mvmtOk)
+	{
+		mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_);
+		++i;
+	}
 
-   return mvmtOk;
+	return mvmtOk;
 }
 
 /**
@@ -53,16 +53,16 @@ bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e)
 **/
 bool Cavalier::attaquer(Coord dep, Coord but, Echiquier *e)
 {
-   bool mvmtOk = false;
-   int i = 0;
+	bool mvmtOk = false;
+	int i = 0;
 
-   while(i < mvmt_.size() && !mvmtOk)
-   {
-      mvmtOk = mvmt_[i]->makeAttack(dep, but, e, posInitiale_);
-      ++i;
-   }
+	while(i < mvmt_.size() && !mvmtOk)
+	{
+		mvmtOk = mvmt_[i]->makeAttack(dep, but, e, posInitiale_);
+		++i;
+	}
 
-   return mvmtOk;
+	return mvmtOk;
 }
 
 /**
@@ -72,14 +72,14 @@ bool Cavalier::attaquer(Coord dep, Coord but, Echiquier *e)
 **/
 std::vector<Coord> Cavalier::mouvementPossible(Coord dep, Echiquier *e)
 {
-   std::vector<Coord> tousLesMouvements;
-   std::vector<Coord> tmp;
+	std::vector<Coord> tousLesMouvements;
+	std::vector<Coord> tmp;
 
-   for(auto m : mvmt_)
-   {
-      tmp = m->mouvementPossible(dep, e, c_, posInitiale_);
-      tousLesMouvements.insert(tousLesMouvements.end(), tmp.begin(), tmp.end());
-   }
+	for(auto m : mvmt_)
+	{
+		tmp = m->mouvementPossible(dep, e, c_, posInitiale_);
+		tousLesMouvements.insert(tousLesMouvements.end(), tmp.begin(), tmp.end());
+	}
 
-   return tousLesMouvements;
+	return tousLesMouvements;
 }

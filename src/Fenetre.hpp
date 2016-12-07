@@ -19,7 +19,6 @@
 #include "Controleur.hpp"
 #include "pieceCliquable.hpp"
 
-
 #define NB_CASES 8
 #define NB_JOUEUR 5
 
@@ -27,124 +26,121 @@ class Fenetre : public QWidget
 {
 	Q_OBJECT
 
-    public:
+		public:
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/      
-    	Fenetre(std::shared_ptr<Controleur> controleur);
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-		  ~Fenetre();
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-		  void cliqueSurPiece(QMouseEvent*, PieceCliquable* piece);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/      
+			Fenetre(std::shared_ptr<Controleur>);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			~Fenetre();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void cliqueSurPiece(PieceCliquable*);
 
 
-    public slots:
+		public slots:
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/        
-   		void ouvrirDialogueNewGameVSIA();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/        
+			void ouvrirDialogueNewGameVSIA();
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-   		void ouvrirDialogueNewGameVSPlayer();
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-   		void ouvrirDialogueNewGameVSPlayerSuivant();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void ouvrirDialogueNewGameVSPlayer();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void ouvrirDialogueNewGameVSPlayerSuivant();
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/       		
-      void ouvrirMessageAbout();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/       		
+			void ouvrirMessageAbout();
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/    
-      void ecrireNom(QString);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/    
+			void ecrireNom(QString);
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/    
-      void ecrirePrenom(QString);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/    
+			void ecrirePrenom(QString);
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-      void ecrireCol(QString);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void ecrireCol(QString);
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-      void ecrireNom2(QString);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void ecrireNom2(QString);
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-      void ecrirePrenom2(QString);
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void ecrirePrenom2(QString);
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/    
-      void startGameVSIA();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/    
+			void startGameVSIA();
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/          
-      void startGameVSPlayer();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/          
+			void startGameVSPlayer();
 
-      /**
-       * @brief      
-       * @entrées   
-       * @sorties   
-      **/    
-      void affichageInitialEchiquier();
+			/**
+			 * @brief      
+			 * @entrées   
+			 * @sorties   
+			**/    
+			void affichageInitialEchiquier();
 
-    private:
+		private:
 
-    	QPushButton *boutonNewGame_;
-    	QPushButton *boutonNewGameBis_;
-    	QPushButton *boutonAbout_;
-
-      std::shared_ptr<Controleur> controleur_;
-		  QString joueurs_[NB_JOUEUR];
-
-      QLabel* plateau_;
-		  PieceCliquable* cases[NB_CASES][NB_CASES];
-
-      PieceCliquable *clicPrecedent_;
+			QPushButton *boutonNewGame_;
+			QPushButton *boutonNewGameBis_;
+			QPushButton *boutonAbout_;
+			QLabel* plateau_;
+			std::shared_ptr<Controleur> controleur_;
+			QString joueurs_[NB_JOUEUR];
+			PieceCliquable* cases[NB_CASES][NB_CASES];
+			PieceCliquable *clicPrecedent_;
 };

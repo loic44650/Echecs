@@ -39,19 +39,19 @@ class Pion: public Piece
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le déplacement a été effectué
 		**/
-		virtual bool moveTo(Coord dep, Coord but, Echiquier *e);
+		virtual bool moveTo(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement d'attaque d'un pion sur une autre pièce	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le mouvement d'attaque a été effectué
 		**/
-		virtual bool attaquer(Coord dep, Coord but, Echiquier *e);
+		virtual bool attaquer(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle indiquant les mouvements réalisablent par un pion	
  		 * @entrées 	la coordonnée de départ de la pièce ainsi qu'un échuiquier
  		 * @sorties 	retourne un vector de coordonnées
 		**/
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e);
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier*);
 };

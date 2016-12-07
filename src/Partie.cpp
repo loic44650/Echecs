@@ -7,7 +7,7 @@
 **/
 Partie::Partie() 
 {
-      e_ = std::shared_ptr<Echiquier>(new Echiquier());
+	e_ = std::shared_ptr<Echiquier>(new Echiquier());
 }
 
 /**
@@ -17,10 +17,10 @@ Partie::Partie()
 **/
 void Partie::setPartie(const std::string& filename)
 {
-   e_->setEchiquier(filename);
-   estEchec_ = false;
-   roiDe_[0] = e_->findPiece('R', joueur_[0].getCouleur());
-   roiDe_[1] = e_->findPiece('R', joueur_[1].getCouleur());
+	e_->setEchiquier(filename);
+	estEchec_ = false;
+	roiDe_[0] = e_->findPiece('R', joueur_[0].getCouleur());
+	roiDe_[1] = e_->findPiece('R', joueur_[1].getCouleur());
 }
 
 /**
@@ -30,30 +30,30 @@ void Partie::setPartie(const std::string& filename)
 **/
 bool Partie::jouer(const Coord& dep, const Coord& arrivee) 
 {
-  bool moveDone = false;
-   
-  if(e_->getCouleur(dep) == joueur_[joueurActuel_].getCouleur()) 
-  {
-    if(e_->move(dep, arrivee)) 
-    {
-      if (!e_->estEchec(roiDe_[joueurActuel_]))
-      {
-        std::cout << "!est echec" << std::endl;
-        joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
-        moveDone = true;
-        roiDe_[joueurActuel_] = e_->findPiece('R', joueur_[joueurActuel_].getCouleur());
-      }
-      else
-      {
-        std::cout << "en echec" << std::endl;
-        e_->annulerCoup(dep, arrivee);
-      }
-    }
-  }
+	bool moveDone = false;
+	 
+	if(e_->getCouleur(dep) == joueur_[joueurActuel_].getCouleur()) 
+	{
+		if(e_->move(dep, arrivee)) 
+		{
+			if (!e_->estEchec(roiDe_[joueurActuel_]))
+			{
+				std::cout << "!est echec" << std::endl;
+				joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
+				moveDone = true;
+				roiDe_[joueurActuel_] = e_->findPiece('R', joueur_[joueurActuel_].getCouleur());
+			}
+			else
+			{
+				std::cout << "en echec" << std::endl;
+				e_->annulerCoup(dep, arrivee);
+			}
+		}
+	}
 
-  e_->afficher();
+	e_->afficher();
 
-  return moveDone;
+	return moveDone;
 }
 
 /**
@@ -63,10 +63,10 @@ bool Partie::jouer(const Coord& dep, const Coord& arrivee)
 **/
 Coord Partie::selectionnerPiece(std::string msg) 
 {
-  std::string strDep;
-  std::cout << msg;
-  std::cin >> strDep;
-  return Coord(strDep);
+	std::string strDep;
+	std::cout << msg;
+	std::cin >> strDep;
+	return Coord(strDep);
 }
 
 /**
@@ -76,15 +76,15 @@ Coord Partie::selectionnerPiece(std::string msg)
 **/
 int Partie::menu() 
 {
-  int choix = 0;
+	int choix = 0;
 
-  std::cout << "1. Donner les mouvements possibles d'une pièce \n";
-  std::cout << "2. Déplacer une pièce\n";
-  std::cin >> choix;
+	std::cout << "1. Donner les mouvements possibles d'une pièce \n";
+	std::cout << "2. Déplacer une pièce\n";
+	std::cin >> choix;
 
-  if(choix != 1 && choix != 2) menu();
+	if(choix != 1 && choix != 2) menu();
 
-  return choix;
+	return choix;
 }
 
 /**
@@ -94,18 +94,22 @@ int Partie::menu()
 **/
 void Partie::afficherMouvementPiece(int numJoueur) 
 {
-  Coord dep;
+	Coord dep;
 
-  do {
-    dep = selectionnerPiece("Selectionne la pièce dont vous souhaitez voir les mouvements possibles : ");
-  } while(!e_->estOccupee(dep) || (e_->getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
+	do 
+	{
+		dep = selectionnerPiece("Selectionne la pièce dont vous souhaitez voir les mouvements possibles : ");
+	} 
+	while(!e_->estOccupee(dep) || (e_->getCouleur(dep) != joueur_[numJoueur].getCouleur()) );
 
-  std::vector<Coord> tousLesMouvements = e_->mouvementPossible(dep);
-  if(!tousLesMouvements.empty())
-    for(auto c : tousLesMouvements) std::cout << c.toString() << " ";
-  else
-    std::cout << "Aucun mouvement possible pour cette pièce.";
-  std::cout << std::endl;
+	std::vector<Coord> tousLesMouvements = e_->mouvementPossible(dep);
+
+	if(!tousLesMouvements.empty())
+		for(auto c : tousLesMouvements) std::cout << c.toString() << " ";
+	else
+		std::cout << "Aucun mouvement possible pour cette pièce.";
+
+	std::cout << std::endl;
 }
 
 /**
@@ -115,7 +119,7 @@ void Partie::afficherMouvementPiece(int numJoueur)
 **/
 void Partie::setJoueur(Joueur j, int i) 
 {
-   joueur_[i].setJoueur(j);
+	joueur_[i].setJoueur(j);
 }
 
 /**
@@ -125,10 +129,10 @@ void Partie::setJoueur(Joueur j, int i)
 **/
 void Partie::init() 
 {
-  if (joueur_[0].getCouleur() == 'B')
-    joueurActuel_ = 0;
-  else
-    joueurActuel_ = 1;
+	if (joueur_[0].getCouleur() == 'B')
+		joueurActuel_ = 0;
+	else
+		joueurActuel_ = 1;
 }
 
 /**

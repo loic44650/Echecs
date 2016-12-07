@@ -16,7 +16,6 @@
 #include "Tour.hpp"
 #include "Pion.hpp"
 
-
 class FactoryPiece
 {
 	public:
@@ -33,5 +32,5 @@ class FactoryPiece
  		 * @entrées 	une string indiquant quelle pièce doit être créée et un char indiquant dans le cas d'un pion sa direcion
  		 * @sorties 	retourne un pointeur sur pièce
 		**/
-		std::shared_ptr<Piece> creerPiece(std::string piece, char dir);
+		std::shared_ptr<Piece> creerPiece(std::string, char);
 };

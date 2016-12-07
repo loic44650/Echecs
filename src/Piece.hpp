@@ -59,35 +59,35 @@ class Piece
  		 * @entrées 	un booléen correspondant au nouvel état de la pièce
  		 * @sorties 	aucunes
 		**/
-		void setPosInitiale(bool posInit);
+		void setPosInitiale(bool);
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement d'une pièce	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le déplacement a été effectué
 		**/
-		virtual bool moveTo(Coord dep, Coord but, Echiquier *e) = 0;
+		virtual bool moveTo(Coord, Coord, Echiquier*) = 0;
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement d'attaque d'une pièce sur une autres	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le mouvement d'attaque a été effectué
 		**/
-		virtual bool attaquer(Coord dep, Coord but, Echiquier *e) = 0;
+		virtual bool attaquer(Coord, Coord, Echiquier*) = 0;
 
 		/**
  		 * @brief 		fonction virtuelle effectuant le mouvement roque	
  		 * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
  		 * @sorties 	retourne un booléen indiquant si le mouvement roque a été effectué
 		**/
-		virtual bool roquer(Coord dep, Coord but, Echiquier *e);
+		virtual bool roquer(Coord, Coord, Echiquier*);
 
 		/**
  		 * @brief 		fonction virtuelle indiquant les mouvements réalisablent par une pièce	
  		 * @entrées 	la coordonnée de départ de la pièce ainsi qu'un échuiquier
  		 * @sorties 	retourne un vector de coordonnées
 		**/
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e) = 0;
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier*) = 0;
 
 	protected:
 

@@ -28,7 +28,7 @@ Joueur::~Joueur() {}
 **/
 std::string Joueur::sePresenter() 
 {
-   return nom_+" "+prenom_+", joue les "+col_;
+   	return nom_+" "+prenom_+", joue les "+col_;
 }
 
 /**
