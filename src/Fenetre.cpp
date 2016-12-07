@@ -6,6 +6,8 @@ Fenetre::Fenetre(std::shared_ptr<Controleur> controleur) : QWidget(), controleur
    setWindowIcon(QIcon("picture/logo.png"));
    setWindowTitle("Echecs");
 
+   clicPrecedent_ = nullptr;
+
     boutonNewGame_ = new QPushButton("New Game vs IA", this);
     boutonNewGame_->setCursor(Qt::PointingHandCursor);
     QObject::connect(boutonNewGame_, SIGNAL(clicked()), this, SLOT(ouvrirDialogueNewGameVSIA()));
