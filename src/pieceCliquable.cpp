@@ -17,6 +17,6 @@ char PieceCliquable::col() { return col_; }
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
    std::cerr << "clique sur piece" << std::endl;
-   fenetre_->cliqueSurPiece(this);
+   fenetre_->cliqueSurPiece(event, this);
     emit clicked();
 }

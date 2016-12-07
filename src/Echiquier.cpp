@@ -225,9 +225,32 @@ bool Echiquier::estMat(Coord roi)
    bool mat = true;
    Coord positionInitiale = roi;
 
+   vector<Coord> movePoss;
+
    // estMat si -> ne peut changer de case sans etre echec
    //           -> aucune pièce amie ne peut manger la pièce ennemie
    //           -> aucune pièce amie ne peut se mettre devant son roi
+
+   for (int i = 0; i < 8; ++i) 
+   {
+      for (int j = 0; j < 8; ++j) 
+      {
+         if (echiquier_[i][j] && echiquier_[i][j]->getCouleur() == coulRoi) 
+         {
+            movePoss = mouvementPossible(Coord(i, j));
+
+            for (auto m : movePoss)
+            {
+
+
+
+               if (!estEchec(roi))
+                  mat = false;
+            }
+         }
+      }
+   }
+
    return mat;;
 }
 
