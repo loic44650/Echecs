@@ -40,16 +40,17 @@ class Fenetre : public QWidget
 			 * @sorties   
 			**/          
 			~Fenetre();
+
+
+		public slots:
+
 			/**
 			 * @brief      
 			 * @entrées   
 			 * @sorties   
 			**/          
 			void cliqueSurPiece(PieceCliquable*);
-
-
-		public slots:
-
+			
 			/**
 			 * @brief      
 			 * @entrées   

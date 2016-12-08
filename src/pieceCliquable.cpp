@@ -26,6 +26,6 @@ PieceCliquable::~PieceCliquable() {}
 **/
 void PieceCliquable::mousePressEvent(QMouseEvent* event)
 {
-   	fenetre_->cliqueSurPiece(this);
-    emit clicked();
+   	//fenetre_->cliqueSurPiece(this);
+    emit clicked(this);
 }

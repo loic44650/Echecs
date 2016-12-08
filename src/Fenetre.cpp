@@ -261,6 +261,10 @@ void Fenetre::affichageInitialEchiquier()
 	cases[ligneN][6]->setPixmap(QPixmap("picture/cavalierN.png"));
 	cases[ligneN][7]->setPixmap(QPixmap("picture/tourN.png"));
 	
+	for(int i = 0; i < NB_CASES; ++i) {
+		for(int j = 0; j < NB_CASES; ++j) 
+			QObject::connect(cases[i][j], SIGNAL(clicked(PieceCliquable*)), this, SLOT(cliqueSurPiece(PieceCliquable*)));
+	}	
 
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
 

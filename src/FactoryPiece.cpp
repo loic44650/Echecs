@@ -37,4 +37,6 @@ std::shared_ptr<Piece> FactoryPiece::creerPiece(std::string piece, char dir)
 	else if(piece == "pionN") return std::shared_ptr<Piece>(new Pion(true, 'N',dir));
 	
 	else if(piece == "pionB") return std::shared_ptr<Piece>(new Pion(true, 'B',dir));
+
+	else return nullptr;
 }

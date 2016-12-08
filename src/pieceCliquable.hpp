@@ -35,7 +35,7 @@ class PieceCliquable : public QLabel
 			 * @entrées   
 			 * @sorties   
 			**/       
-    		void clicked();
+    		void clicked(PieceCliquable*);
 
 		protected:
 
