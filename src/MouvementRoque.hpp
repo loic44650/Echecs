@@ -14,51 +14,51 @@ class MouvementRoque : public Mouvement
 	public:
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		MouvementRoque(int d);
+		MouvementRoque(int);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
 		~MouvementRoque();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeMove(Coord &, Coord &, Echiquier *, bool, std::vector<Coord>&);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeAttack(Coord &, Coord &, Echiquier *, bool, std::vector<Coord>&);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier *, char, bool);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		bool isMoveOk(Coord &but, Coord& coordRoi, Coord& coordTour, Echiquier *e, bool posInit);
-
+		bool isMoveOk(Coord &, Coord&, Coord&, Echiquier *, bool);
+		
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		void setPositionsFinales(Coord &coordRoi, Coord &coordTour);
+		void setPositionsFinales(Coord &, Coord &);
 };

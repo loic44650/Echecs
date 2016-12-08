@@ -37,11 +37,11 @@ char Reine::afficher()
 bool Reine::moveTo(Coord dep, Coord but, Echiquier *e)
 {
 	bool mvmtOk = false;
-	int i = 0;
+	unsigned int i = 0;
 
 	while(i < mvmt_.size() && !mvmtOk)
 	{
-		mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_);
+		mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_, cheminMvmt_);
 		++i;
 	}
 
@@ -56,11 +56,13 @@ bool Reine::moveTo(Coord dep, Coord but, Echiquier *e)
 bool Reine::attaquer(Coord dep, Coord but, Echiquier *e)
 {
 	bool mvmtOk = false;
-	int i = 0;
+	unsigned int i = 0;
+	
+	cheminMvmt_.clear();
 
 	while(i < mvmt_.size() && !mvmtOk)
 	{
-		mvmtOk = mvmt_[i]->makeAttack(dep, but, e, posInitiale_);
+		mvmtOk = mvmt_[i]->makeAttack(dep, but, e, posInitiale_, cheminMvmt_);
 		++i;
 	}
 

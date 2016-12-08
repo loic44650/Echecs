@@ -35,11 +35,11 @@ char Cavalier::afficher()
 bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e)
 {
 	bool mvmtOk = false;
-	int i = 0;
+	unsigned int i = 0;
 
 	while(i < mvmt_.size() && !mvmtOk)
 	{
-		mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_);
+		mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_, cheminMvmt_);
 		++i;
 	}
 
@@ -54,11 +54,11 @@ bool Cavalier::moveTo(Coord dep, Coord but, Echiquier *e)
 bool Cavalier::attaquer(Coord dep, Coord but, Echiquier *e)
 {
 	bool mvmtOk = false;
-	int i = 0;
+	unsigned int i = 0;
 
 	while(i < mvmt_.size() && !mvmtOk)
 	{
-		mvmtOk = mvmt_[i]->makeAttack(dep, but, e, posInitiale_);
+		mvmtOk = mvmt_[i]->makeAttack(dep, but, e, posInitiale_, cheminMvmt_);
 		++i;
 	}
 

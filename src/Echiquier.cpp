@@ -14,7 +14,7 @@ Echiquier::Echiquier() {}
  * @entrées    
  * @sorties    
 **/
-Echiquier::Echiquier(const std::string &nomFichier) : dernierePieceMangee_(nullptr)
+Echiquier::Echiquier(const std::string &nomFichier) : dernierePieceMangee_(nullptr), pieceAttaquante_(Coord())
 {
 	FactoryPiece fp;
 	std::ifstream fichier(nomFichier, std::ifstream::in);
@@ -286,9 +286,10 @@ bool Echiquier::estEchec(Coord roi)
 				{  
 					dep.x = i; 
 					dep.y = j;
-					
+
 					if (echiquier_[i][j]->attaquer(dep, roi, this))
 					{
+						pieceAttaquante_ = dep;
 						echec = true;
 						annulerCoup(dep, roi);
 					}

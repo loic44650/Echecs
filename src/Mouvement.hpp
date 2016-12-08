@@ -16,36 +16,39 @@ class Mouvement
 	public:
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		Mouvement(int d);
+		Mouvement(int);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
 		~Mouvement();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-
+		virtual bool makeMove(Coord &, Coord &, Echiquier *, bool, std::vector<Coord>&) = 0;
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
+		virtual bool makeAttack(Coord &, Coord &, Echiquier *, bool, std::vector<Coord>&) = 0;
 
-		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit) = 0;
-
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit) = 0;
+		/**
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
+		**/
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier *, char, bool) = 0;
 
    protected:
 

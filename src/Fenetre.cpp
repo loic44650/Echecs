@@ -157,33 +157,23 @@ void Fenetre::ouvrirDialogueNewGameVSPlayerSuivant()
 **/
 void Fenetre::startGameVSIA()
 {
-	std::cout << "bob dans startGameVSIA" << std::endl;
-
 	controleur_->jouerContreIA(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString());
    
 	plateau_ = new QLabel(this);
-
-	std::cout << "new QLabel" << std::endl;
 
 	QPixmap plat("picture/plateau.png");
 	plateau_->setPixmap(plat);
 	plateau_->setGeometry(0, 30, 640, 640);
 	plateau_->show();
 
-	std::cout << "bob selectionne couleurs" << std::endl;
-
 	if (joueurs_[2].toStdString() == "" || joueurs_[2].toStdString() == "Noir")
 	{
-		std::cout << "bob noir" << std::endl;
 		controleur_->setPartie("echiquierDeBaseN.txt");
 	}
 	else
 	{
-		std::cout << "bob blanc" << std::endl;
 		controleur_->setPartie("echiquierDeBaseB.txt");
 	}
-
-	std::cout << "bob s affiche" << std::endl;
 
 	affichageInitialEchiquier();
 }
@@ -197,27 +187,19 @@ void Fenetre::startGameVSPlayer()
 {
 	controleur_->jouerContrePlayer(joueurs_[0].toStdString(), joueurs_[1].toStdString(), joueurs_[2].toStdString(), joueurs_[3].toStdString(), joueurs_[4].toStdString());
 
-	std::cout << "bob dans startGameVSPlayer" << std::endl;
-
 	plateau_ = new QLabel(this);
 	plateau_->setPixmap(QPixmap("picture/plateau.png"));
 	plateau_->setGeometry(0, 30, 640, 640);
 	plateau_->show();
 
-	std::cout << "bob selectionne couleurs" << std::endl;
-
 	if (joueurs_[2].toStdString() == "" || joueurs_[2].toStdString() == "Noir")
 	{
-		std::cout << "bob noir" << std::endl;
 		controleur_->setPartie("echiquierDeBaseN.txt");
 	}
 	else
 	{
-		std::cout << "bob blanc" << std::endl;
 		controleur_->setPartie("echiquierDeBaseB.txt");
 	}
-
-	std::cout << "bob s affiche" << std::endl;
 
 	affichageInitialEchiquier();
 }
@@ -247,8 +229,6 @@ void Fenetre::affichageInitialEchiquier()
 		lignePN = 6;
 	}
 
-	std::cout << "je plante avant l'init" << std::endl;
-
 	for(int i = 0; i < NB_CASES; ++i) 
 	{
 		for(int j = 0; j < NB_CASES; ++j) 
@@ -258,8 +238,6 @@ void Fenetre::affichageInitialEchiquier()
 		}
 	}
 
-	std::cout << "je plante avant le setPixmap et apres l'init" << std::endl;
-	
 	for(int i = 0; i < NB_CASES; ++i) 
 	{
 		cases[lignePB][i]->setPixmap(QPixmap("picture/pionB.png"));
@@ -283,8 +261,7 @@ void Fenetre::affichageInitialEchiquier()
 	cases[ligneN][6]->setPixmap(QPixmap("picture/cavalierN.png"));
 	cases[ligneN][7]->setPixmap(QPixmap("picture/tourN.png"));
 	
-	std::cout << "je apres  le setPixmap et apres l'init" << std::endl;
-	
+
 	std::shared_ptr<Echiquier> echiquier = controleur_->getEchiquier();
 
 	int x = 30;
@@ -301,8 +278,6 @@ void Fenetre::affichageInitialEchiquier()
 		}
 		x += 80;
 	}
-	
-	std::cout << "fin affiche" << std::endl;
 }
 
 /**
@@ -381,17 +356,13 @@ void Fenetre::cliqueSurPiece(PieceCliquable* piece)
 
 	if (!clicPrecedent_ && controleur_->getEchiquier()->estOccupee(clic))
 	{
-		std::cout << "1er clic" << std::endl;
 		clicPrecedent_ = piece;
 		controleur_->gererClique(clic);
 	}
 	else if (clicPrecedent_)
 	{
-		std::cout << "2eme clic pas dans le if" << std::endl;
-
 		if (controleur_->gererClique(clic))
 		{
-			std::cout << "2eme clic" << std::endl;
 			piece->setPixmap(*clicPrecedent_->pixmap());
 			clicPrecedent_->setPixmap(QPixmap());
 		}

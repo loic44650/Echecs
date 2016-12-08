@@ -38,14 +38,12 @@ bool Partie::jouer(const Coord& dep, const Coord& arrivee)
 		{
 			if (!e_->estEchec(roiDe_[joueurActuel_]))
 			{
-				std::cout << "!est echec" << std::endl;
 				joueurActuel_ = (joueurActuel_ + 1) % NB_JOUEURS;
 				moveDone = true;
 				roiDe_[joueurActuel_] = e_->findPiece('R', joueur_[joueurActuel_].getCouleur());
 			}
 			else
 			{
-				std::cout << "en echec" << std::endl;
 				e_->annulerCoup(dep, arrivee);
 			}
 		}

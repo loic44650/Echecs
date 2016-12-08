@@ -14,46 +14,46 @@ class MouvementPion : public Mouvement
 	public:
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		MouvementPion(int d, char dir);
+		MouvementPion(int, char);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
 		~MouvementPion();
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual bool makeMove(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeMove(Coord &, Coord &, Echiquier *, bool , std::vector<Coord>&);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual bool makeAttack(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		virtual bool makeAttack(Coord &, Coord &, Echiquier *, bool, std::vector<Coord>&);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		virtual std::vector<Coord> mouvementPossible(Coord dep, Echiquier *e, char col, bool posInit);
+		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier *, char, bool);
 
 		/**
- 		 * @brief
- 		 *
- 		 * @complexité
+		 * @brief       
+		 * @entrées    
+		 * @sorties    
 		**/
-		bool peutAllerEn(Coord &dep, Coord &but, Echiquier *e, bool posInit);
+		bool peutAllerEn(Coord &, Coord &, Echiquier *, bool);
 
    	private:
 

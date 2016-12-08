@@ -41,3 +41,13 @@ void Piece::setPosInitiale(bool posInit) { posInitiale_ = posInit; }
  * @sorties 	retourne un booléen indiquant si le mouvement roque a été effectué
 **/
 bool Piece::roquer(Coord dep, Coord but, Echiquier *e) { return false; }
+
+/**
+ * @brief 		fonction qui retourne le chemin du dernier déplacement
+ * @entrées 	les coordonnées de départ et d'arrivée ainsi qu'un échuiquier
+ * @sorties 	retourne un vector de coord indiquant 
+**/
+std::vector<Coord> Piece::chemin() 
+{ 
+	return cheminMvmt_; 
+}

@@ -7,7 +7,7 @@
 **/
 Pion::Pion(bool etat, char c, char dir) : Piece(etat,c)
 {
-   	mvmt_.push_back(new MouvementPion(1,dir));
+	mvmt_.push_back(new MouvementPion(1,dir));
 }
 
 /**
@@ -24,7 +24,7 @@ Pion::~Pion() {}
 **/
 char Pion::afficher()
 {
-   	return 'P';
+	return 'P';
 }
 
 /**
@@ -34,18 +34,18 @@ char Pion::afficher()
 **/
 bool Pion::moveTo(Coord dep, Coord but, Echiquier *e)
 {
-   	bool mvmtOk = false;
-   	int i = 0;
+	bool mvmtOk = false;
+	unsigned int i = 0;
 
-   	while(i < mvmt_.size() && !mvmtOk)
-   	{
-	  	mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_);
-	  	++i;
-   	}
+	while(i < mvmt_.size() && !mvmtOk)
+	{
+		mvmtOk = mvmt_[i]->makeMove(dep, but, e, posInitiale_, cheminMvmt_);
+		++i;
+	}
 
-   	if(mvmtOk) posInitiale_ = false;
+	if(mvmtOk) posInitiale_ = false;
 
-   	return mvmtOk;
+	return mvmtOk;
 }
 
 /**
@@ -55,18 +55,18 @@ bool Pion::moveTo(Coord dep, Coord but, Echiquier *e)
 **/
 bool Pion::attaquer(Coord dep, Coord but, Echiquier *e)
 {
-   	bool mvmtOk = false;
-   	int i = 0;
+	bool mvmtOk = false;
+	unsigned int i = 0;
 
-   	while(i < mvmt_.size() && !mvmtOk)
-   	{
-	  	mvmtOk = mvmt_[i]->makeAttack(dep, but, e,posInitiale_);
-	  	++i;
-   	}
+	while(i < mvmt_.size() && !mvmtOk)
+	{
+		mvmtOk = mvmt_[i]->makeAttack(dep, but, e,posInitiale_, cheminMvmt_);
+		++i;
+	}
 
-   	if(mvmtOk) posInitiale_ = false;
+	if(mvmtOk) posInitiale_ = false;
 
-   	return mvmtOk;
+	return mvmtOk;
 }
 
 /**
@@ -76,14 +76,14 @@ bool Pion::attaquer(Coord dep, Coord but, Echiquier *e)
 **/
 std::vector<Coord> Pion::mouvementPossible(Coord dep, Echiquier *e)
 {
-   	std::vector<Coord> tousLesMouvements;
-   	std::vector<Coord> tmp;
+	std::vector<Coord> tousLesMouvements;
+	std::vector<Coord> tmp;
 
-   	for(auto m : mvmt_)
-   	{
-	  	tmp = m->mouvementPossible(dep, e, c_, posInitiale_);
-	  	tousLesMouvements.insert(tousLesMouvements.end(), tmp.begin(), tmp.end());
-   	}
+	for(auto m : mvmt_)
+	{
+		tmp = m->mouvementPossible(dep, e, c_, posInitiale_);
+		tousLesMouvements.insert(tousLesMouvements.end(), tmp.begin(), tmp.end());
+	}
 
-   	return tousLesMouvements;
+	return tousLesMouvements;
 }

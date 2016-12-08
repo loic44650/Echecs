@@ -89,9 +89,20 @@ class Piece
 		**/
 		virtual std::vector<Coord> mouvementPossible(Coord, Echiquier*) = 0;
 
+		/**
+ 		 * @brief 		(getter) fonction retournant la couleur d'une pièce 
+ 		 * @entrées 	aucunes
+ 		 * @sorties 	retourne un char correspondant à la couleur de la pièce, soit 'B' soit 'N'
+		**/
+		std::vector<Coord> chemin();
+
+
+
 	protected:
 
 		bool posInitiale_;					// pièce sur sa position initiale ou non (pour coups spéciaux)
 		char c_;							// couleur de la pièce
 		std::vector<Mouvement*> mvmt_;		// contient les types de mouvement que peut effectuer une pièce
+		std::vector<Coord> cheminMvmt_;     // contient les coordonnées par lesquelles est passée la pièce
+											// 	lors de son dernier déplacement
 };

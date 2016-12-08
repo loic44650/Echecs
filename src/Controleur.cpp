@@ -31,7 +31,6 @@ void Controleur::jouerContreIA(std::string nom, std::string prenom, std::string 
 	col = (col == 'B') ? 'N' : 'B';
 	partie_->setJoueur(Joueur("Artificial","Intelligence",col), (numJoueur+1)%2 );
 	partie_->init();
-	std::cerr << "Joueur créé" << std::endl;
 }
 
 /**
@@ -43,7 +42,6 @@ void Controleur::jouerContrePlayer(std::string nom, std::string prenom, std::str
 {
 	if(!nom.empty() && !prenom.empty())
 	{
-		std::cerr << "Controleur : ca marche" << std::endl;
 		char col = coul[0];
 
 		partie_->setJoueur(Joueur(nom,prenom,col), 0);
@@ -51,11 +49,9 @@ void Controleur::jouerContrePlayer(std::string nom, std::string prenom, std::str
 		col = (coul == "Blanc") ? 'N' : 'B';
 		partie_->setJoueur(Joueur(nom2, prenom2, col), 1);
 
-		std::cerr << "Joueurs créés" << std::endl;
 		partie_->init();
 	}
 	else
-		std::cerr << "Ca ne marche pas!!!!!!!!!!F**$!" << std::endl;
 }
 
 /**
@@ -92,21 +88,16 @@ void Controleur::setPartie(const std::string& filename)
 **/
 bool Controleur::gererClique(const Coord& coord) {
 	bool moveDone = false;
-	std::cerr << "Controleur::gererClique\n" << "coord : " << coord.x << "," << coord.y << std::endl;
 	
 	if(cliquePrecedent_.x < 0) 
 	{
-		std::cerr << "clic prec init\n";
 		cliquePrecedent_ = coord;
 	}
 	else if(cliquePrecedent_.x != coord.x || cliquePrecedent_.y != coord.y)
 	{
-		std::cerr << "pas meme piece donc lance partie->jouer\n";
-
 		if(partie_->jouer(cliquePrecedent_, coord)) 
 		{
 			moveDone = true;
-			std::cerr << "mouvement correct \n";
 		}
 			
 		cliquePrecedent_.x = -1;

@@ -152,4 +152,5 @@ class Echiquier
 		
 		std::shared_ptr<Piece> echiquier_[8][8];
 		std::shared_ptr<Piece> dernierePieceMangee_;
+		Coord pieceAttaquante_;
 };
