@@ -40,18 +40,24 @@ void Controleur::jouerContreIA(std::string nom, std::string prenom, std::string 
 **/
 void Controleur::jouerContrePlayer(std::string nom, std::string prenom, std::string coul, std::string nom2, std::string prenom2)
 {
-	if(!nom.empty() && !prenom.empty())
-	{
-		char col = coul[0];
+	if(nom.empty()) nom = "Lenon";
+	if(prenom.empty()) prenom = "Bob";
+	if(nom2.empty()) nom = "Lenon";
+	if(prenom2.empty()) prenom = "John";
 
-		partie_->setJoueur(Joueur(nom,prenom,col), 0);
+	char col;
+	if(coul.empty()) col = 'N';
+	else col = coul[0];
 
-		col = (coul == "Blanc") ? 'N' : 'B';
-		partie_->setJoueur(Joueur(nom2, prenom2, col), 1);
 
-		partie_->init();
-	}
-	else
+	int numJoueur = (col == 'B') ? 0 : 1;
+	partie_->setJoueur(Joueur(nom,prenom,col), numJoueur);
+
+	col = (coul == "Blanc") ? 'N' : 'B';
+	partie_->setJoueur(Joueur(nom2, prenom2, col), (numJoueur+1)%2 );
+
+	partie_->init();
+	
 }
 
 /**
